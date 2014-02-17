@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jade Systems Inc <%= @item[:title] %></title>
+    <link rel="stylesheet" href="/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+  </head>
+  <body>
+    <div class="centre_in_browser content">
+      <div id="main">
+        <%= yield %>
+      </div>
+      <div id="sidebar">
+        <ul>
+          <li><%= link_to_unless_current("Home", "/") %></li>
+          <li><%= link_to_unless_current("Services", "/services/") %></li>
+          <ul>
+            <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
+            <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
+            <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
+          </ul>
+          <li>People</li>
+          <ul>
+            <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
+          </ul>
+          <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
+        </ul>
+      </div>
+      <br class="clear"/>
+    </div>
+  </body>
+</html>

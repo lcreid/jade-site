@@ -1,0 +1,190 @@
+$link-colour: #54A85B !default;
+$link-hover-colour: #3C7C41 !default;
+$width: 800px;
+$sidebar-width: 200px;
+$main-width: $width - $sidebar-width - 40px;
+$browser-background: rgb(236, 236, 236);
+$content-background: white !default;
+
+%heading-font {
+  font-family: 'Signika Negative', sans-serif;
+}
+
+%body-font {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  @extend %body-font;
+}
+
+body {
+  background: $browser-background;
+}
+
+.content { 
+  background: $content-background; 
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: $link-colour;
+}
+
+a:hover {
+  color: $link-hover-colour;
+}
+
+#main {
+//  position: absolute;
+
+//  top: 40px;
+//  left: 280px;
+
+  @extend .right;
+  width: $main-width;
+  margin-top: 40px;
+
+  h1 {
+    @extend %heading-font;
+    
+    font-size: 40px;
+    font-weight: normal;
+
+    line-height: 40px;
+
+    letter-spacing: -1px;
+  }
+
+  p {
+    margin: 20px 0;
+
+    font-size: 15px;
+
+    line-height: 20px;
+  }
+
+  ul, ol {
+    margin: 20px;
+  }
+
+  li {
+    font-size: 15px;
+
+    line-height: 20px;
+  }
+
+  ul li {
+//    list-style-type: square;
+  }
+}
+
+$font-size: 14px;
+
+#sidebar {
+//  position: absolute;
+
+//  top: 40px;
+//  left: 20px;
+  @extend .left;
+  width: $sidebar-width;
+  margin-top: 40px;
+
+  padding: 0 20px 0 0;
+
+  border-right: 1px solid #ccc;
+
+  text-align: right;
+
+  h2 {
+    @extend %heading-font;
+    text-transform: uppercase;
+
+    font-size: $font-size;
+
+    color: #333;
+
+    letter-spacing: 1px;
+
+    line-height: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    @extend %heading-font;
+
+  //  margin: 20px 0;
+    ul {
+      li { 
+        font-weight: normal;
+        font-size: $font-size - 1px; 
+      }
+    }
+
+    li {
+      font-weight: 700;
+      font-size: $font-size;
+
+      line-height: 20px;
+    }
+  }
+}
+
+.vertical_align_children * { vertical-align: middle; }
+
+.left {float: left;}
+.right {float: right;}
+.centre {margin-left: auto; margin-right: auto;}
+.clear {clear: both;}
+
+.centre_in_browser {
+  width: $width;
+  @extend .centre;
+}
+
+.clear { clear: both; }
+
+// Styles for the sample Infrastructure Analysis Report
+$report-font-size: 12px;
+
+#iar {
+  p, li, th, td {font-size: $report-font-size;}
+  
+  table {
+    border: solid black thin;
+    border-collapse: collapse;
+    
+    th, td {
+      border: solid black thin;    
+      padding: 2px;
+      vertical-align: middle;
+    }
+  }
+  
+  h1 { 
+    font-size: $report-font-size + 4px; 
+  }
+  h2 { 
+    font-size: $report-font-size + 2px; 
+  }
+  h2 { 
+    font-size: $report-font-size + 1px; 
+  }
+  h1, h2, h3 {
+    margin: 8px 0 8px 0;
+    line-height: 1.1;
+  }
+  
+  ul, li {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

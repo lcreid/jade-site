@@ -1,0 +1,275 @@
+---
+title: Infrastructure Analysis Report
+---
+
+<div id="iar">
+  <h1 align="center">Example.com Infrastructure Report 2007-06-08</h1>
+  <h1>Alerts</h1>
+  <ul>
+      <li><em>Based on storage growth trends, /dev/hda5 on exalin003 will run out of space in four weeks.</em></li>
+  </ul>
+  <h1>Availability</h1>
+  <h2>Ten Lowest Annual Uptimes</h2>
+  <table class="body-table">
+    <thead>
+          <tr>
+              <th>Device Name</th>
+              <th>Percent Available</th>
+          </tr>
+    </thead>
+      <tbody>
+          <tr>
+              <td>exawin014</td>
+              <td align="right">87.3</td>
+          </tr>
+          <tr>
+              <td>exawin027</td>
+              <td align="right">88.0</td>
+          </tr>
+          <tr>
+              <td>exawin041</td>
+              <td align="right">99.1</td>
+          </tr>
+          <tr>
+              <td>exasol003</td>
+              <td align="right">99.1</td>
+          </tr>
+          <tr>
+              <td>exawin101</td>
+              <td align="right">99.1</td>
+          </tr>
+          <tr>
+              <td>exawin111</td>
+              <td align="right">99.1</td>
+          </tr>
+          <tr>
+              <td>exawin072</td>
+              <td align="right">99.3</td>
+          </tr>
+          <tr>
+              <td>exacis004</td>
+              <td align="right">99.7</td>
+          </tr>
+          <tr>
+              <td>exawin114</td>
+              <td align="right">99.8</td>
+          </tr>
+          <tr>
+              <td>exawin223</td>
+              <td align="right">99.8</td>
+          </tr>
+      </tbody>
+  </table>
+  <h2>Changes to the Ten Lowest Uptimes List Since Last Report</h2>
+  <ul>
+      <li>exalin004 has dropped off the list. It's been on the list since a major downtime a year ago. It's been up 100 percent since then.</li>
+      <li>exawin223 has moved onto the list. As most devices are generally available, the Windows boxes dominate this list due to scheduled downtimes for Patch Tuesday.</li>
+  </ul>
+  <h1>Storage</h1>
+  <h2>Total</h2>
+  <p>16.3 TB, up 200 GB from last report.</p>
+  <table class="body-table">
+    <thead>
+          <tr valign="middle" align="left">
+              <th class="deviceColumn">Device</th>
+              <th class="filesysColumn">File System</th>
+              <th class="pctColumn">Percent Used</th>
+          </tr>
+    </thead>
+      <tbody>
+          <tr valign="middle" align="left">
+              <td>exaaix050</td>
+              <td>/dev/sda5</td>
+              <td align="right">98.0</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exaaix051</td>
+              <td>/dev/sda5</td>
+              <td align="right">98.0</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exalin003</td>
+              <td>/dev/hdb5</td>
+              <td align="right">90.0</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exasol003</td>
+              <td>/dev/sda6</td>
+              <td align="right">89.9</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exalin001</td>
+              <td>/dev/hda5</td>
+              <td align="right">88.4</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin040</td>
+              <td>C:</td>
+              <td align="right">80.7</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin041</td>
+              <td>C:</td>
+              <td align="right">77.0</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exalin011</td>
+              <td>/dev/hda5</td>
+              <td align="right">73.5</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin042</td>
+              <td>C:</td>
+              <td align="right">70.2</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin043</td>
+              <td>C:</td>
+              <td align="right">69.8</td>
+          </tr>
+      </tbody>
+  </table>
+  <h1>Changes</h1>
+  <p>Two new servers. One server decommissioned. One new filesystem.</p>
+  <table class="body-table">
+    <thead>
+          <tr valign="middle" align="left">
+              <th class="deviceColumn">Device</th>
+              <th>Change</th>
+          </tr>
+    </thead>
+      <tbody>
+          <tr valign="middle" align="left">
+              <td>exalin002</td>
+              <td>Down all week. Assumed to be decommissioned.</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin144</td>
+              <td>New.</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>exawin145</td>
+              <td>New.</td>
+          </tr>
+          <tr valign="middle" align="left">
+              <td>/dev/sdc5 on exasol003</td>
+              <td>New.</td>
+          </tr>
+      </tbody>
+  </table>
+  <h1>Underutilization</h1>
+  <table>
+    <thead>
+      <tr valign="middle" align="left">
+          <th colspan="2">CPU</th>
+          <th colspan="2">Memory</th>
+          <th colspan="3">File Systems</th>
+      </tr>
+      <tr valign="middle" align="left">
+          <th class="deviceColumn">Device</th>
+          <th class="pctColumn">Percent Used</th>
+          <th class="deviceColumn">Device</th>
+          <th class="pctColumn">Percent Used</th>
+          <th class="deviceColumn">Device</th>
+          <th class="filesysColumn">File System</th>
+          <th class="pctColumn">Percent Used</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr valign="middle" align="left">
+          <td>exalin007</td>
+          <td align="right">8.1</td>
+          <td>exawin070</td>
+          <td align="right">38.9</td>
+          <td>exawin050</td>
+          <td>C:</td>
+          <td align="right">18.0</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin070</td>
+          <td align="right">8.3</td>
+          <td>exalin007</td>
+          <td align="right">40.0</td>
+          <td>exawin051</td>
+          <td>C:</td>
+          <td align="right">18.0</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin071</td>
+          <td align="right">9.7</td>
+          <td>exasol023</td>
+          <td align="right">41.2</td>
+          <td>exalin010</td>
+          <td>/dev/hda5</td>
+          <td align="right">18.8</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin072</td>
+          <td align="right">10.1</td>
+          <td>exawin078</td>
+          <td align="right">41.5</td>
+          <td>exawin052</td>
+          <td>C:</td>
+          <td align="right">21.0</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin074</td>
+          <td align="right">11.4</td>
+          <td>exawin076</td>
+          <td align="right">41.7</td>
+          <td>exawin053</td>
+          <td>C:</td>
+          <td align="right">22.0</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin078</td>
+          <td align="right">11.8</td>
+          <td>exawin071</td>
+          <td align="right">42.0</td>
+          <td>exawin060</td>
+          <td>C:</td>
+          <td align="right">22.4</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin075</td>
+          <td align="right">14.2</td>
+          <td>exawin079</td>
+          <td align="right">44.2</td>
+          <td>exawin061</td>
+          <td>C:</td>
+          <td align="right">26.0</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin077</td>
+          <td align="right">14.3</td>
+          <td>exawin077</td>
+          <td align="right">44.7</td>
+          <td>exalin011</td>
+          <td>/dev/hda5</td>
+          <td align="right">26.4</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin079</td>
+          <td align="right">14.6</td>
+          <td>exaaix003</td>
+          <td align="right">44.9</td>
+          <td>exawin062</td>
+          <td>C:</td>
+          <td align="right">26.5</td>
+      </tr>
+      <tr valign="middle" align="left">
+          <td>exawin073</td>
+          <td align="right">17.0</td>
+          <td>exalin011</td>
+          <td align="right">45.3</td>
+          <td>exawin063</td>
+          <td>C:</td>
+          <td align="right">26.5</td>
+      </tr>
+    </tbody>
+  </table>
+  <h1>Additional Comments</h1>
+  <ul>
+      <li>The monitoring server was down for scheduled maintenance for two hours on 2007-06-06. Devices that were down during that time are not counted in the availability statistics.</li>
+  </ul>
+</div>

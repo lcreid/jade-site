@@ -5,3 +5,7 @@ output/
 
 # Temporary file directory
 tmp/
+
+crash.log
+Guardfile
+.sass-cache/
