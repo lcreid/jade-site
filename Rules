@@ -15,7 +15,7 @@
 
 compile '/stylesheet/' do
   filter :sass, syntax: :scss
-  filter :relativize_paths, :type => :css
+  filter :relativize_paths, type: :css
 end
 
 compile '*' do
@@ -23,8 +23,8 @@ compile '*' do
     # don’t filter binary items
   else
     filter :erb
-    filter :relativize_paths, :type => :html
     layout 'default'
+    filter :relativize_paths, type: :html
   end
 end
 
