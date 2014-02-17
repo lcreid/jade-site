@@ -5,6 +5,7 @@ $sidebar-width: 200px;
 $main-width: $width - $sidebar-width - 40px;
 $browser-background: rgb(236, 236, 236);
 $content-background: white !default;
+$box-shadow: rgb(128, 128, 128) !default;
 
 %heading-font {
   font-family: 'Signika Negative', sans-serif;
@@ -27,7 +28,9 @@ body {
 
 .content { 
   background: $content-background; 
-  position: relative;
+  padding: 40px 0 40px 0;
+  box-shadow: 2px 2px 3px $box-shadow;
+//  position: relative;
 }
 
 a {
@@ -51,7 +54,7 @@ a:hover {
 
   @extend .right;
   width: $main-width;
-  margin-top: 40px;
+//  margin-top: 40px;
 
   h1 {
     @extend %heading-font;
@@ -96,7 +99,7 @@ $font-size: 14px;
 //  left: 20px;
   @extend .left;
   width: $sidebar-width;
-  margin-top: 40px;
+//  margin-top: 40px;
 
   padding: 0 20px 0 0;
 
@@ -186,5 +189,17 @@ $report-font-size: 12px;
   ul, li {
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+
+.footer {
+  margin: 10px 0 10px 0;
+  
+  p {
+    font-size: $font-size - 2px;
+    font-style: italic;
+    width: $width / 2;
+    @extend .centre;
+    text-align: center;
   }
 }
