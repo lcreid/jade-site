@@ -24,6 +24,8 @@ compile '*' do
   else
     filter :erb
     layout 'default'
+    # It seems completely bizarre to me, but the relativize paths has to be the last
+    # filter in the compile.
     filter :relativize_paths, type: :html
   end
 end
