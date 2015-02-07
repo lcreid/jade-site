@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Jade Systems Inc <%= @item[:title] %></title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/oss-styles.css">
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -13,32 +14,70 @@
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
   </head>
   <body>
-    <div class="centre_in_browser content">
-      <div id="main">
-        <%= yield %>
+    <div class="centre_in_browser">
+      <div class="header">
+      	<div id="oss-wrap">
+      		<div id="oss-header">
+      		</div>
+      		<div id="oss-facet">
+      <div class="osscmnrdr oss-facet">
       </div>
-      <div id="sidebar">
-        <ul>
-          <li><%= link_to_unless_current("Home", "/") %></li>
-          <li><%= link_to_unless_current("Services", "/services/") %></li>
-          <ul>
-            <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
-            <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
-            <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
-          </ul>
-          <li>People</li>
-          <ul>
-            <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
-          </ul>
-          <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
-        </ul>
+      				</div>
+      			<div id="oss-main">
+      <div class="osscmnrdr oss-input-div">
+      	<form id="osssearchform" method="get" autocomplete="off" action="renderer">
+      		<input type="hidden" name="use" value="Jade" />
+      		<input type="hidden" name="name" value="default" />
+      		<input class="osscmnrdr ossinputrdr" size="60" type="text"
+      			id="osssearchbox" name="query"
+      			value=""
+      			onkeyup="OpenSearchServer.autosuggest(event, 'autocompletion?use=Jade&name=autocomplete&query=', 'osssearchform', 'osssearchbox', 'ossautocomplete')"
+      			autocomplete="off" /> <input class="osscmnrdr ossbuttonrdr"
+      			type="submit" value="Search" />
+      	</form>
+      	<div style="position: relative">
+      		<div id="ossautocomplete" class="osscmnrd" style="position: absolute;"></div>
+      	</div>
       </div>
-      <br class="clear"/>
-      <div class="footer">
-        <p>
-          This site was built by Jade Systems Inc using
-          <%= link_to("nanoc", "http://nanoc.ws", target: "_blank") %>.
-        </p>
+      			</div>
+      		<div id="oss-footer">
+      		</div>
+      		<div align="right" style="clear:both;">
+      			<a href="http://www.open-search-server.com/" target="_blank"><img
+      				alt="OpenSearchServer Logo" src="https://www.open-search-server.com/images/oss_logo_32.png"
+      				style="vertical-align: bottom" /></a>
+      		</div>
+      	</div>
+      </div>
+      <div class="content">
+        <div id="main">
+          <%= yield %>
+        </div>
+        <div id="sidebar">
+          <ul>
+            <li><%= link_to_unless_current("Home", "/") %></li>
+            <li><%= link_to_unless_current("Services", "/services/") %></li>
+            <ul>
+              <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
+              <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
+              <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
+            </ul>
+            <li>People</li>
+            <ul>
+              <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
+            </ul>
+            <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
+          </ul>
+        </div>
+        <br class="clear"/>
+        <div class="footer">
+          <p>
+            This site was built by Jade Systems Inc using
+            <%= link_to("nanoc", "http://nanoc.ws", target: "_blank") %>.
+          </p>
+          <p>
+            Search by <%= link_to("Open Search Server", "http://www.opensearchserver.com", target: "_blank") %>.
+        </div>
       </div>
     </div>
     <script>
