@@ -6,6 +6,10 @@ module OSS
   class Search
     def initialize(query_string)
       @query_string = query_string
+      @index = "Jade"
+      @server = "opensearchserver01"
+      @port = ":9090"
+      @url = "http://#{@server+@port}"
     end
     def html
       "<div>" + @query_string + "</div>"
@@ -39,6 +43,9 @@ module OSS
     end
     def curl
       `#{curl_string}`
+    end
+    def autocomplete_url(string = "")
+      "#{@url}/services/rest/index/#{@index}/autocompletion/autocomplete?prefix=#{string}&rows=10"
     end
   end
 end

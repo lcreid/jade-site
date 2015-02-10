@@ -18,6 +18,10 @@ compile '/stylesheet/' do
   filter :relativize_paths, type: :css
 end
 
+compile '/search/' do
+  filter :coffeescript
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items
@@ -36,6 +40,10 @@ end
 
 route '/oss-styles/' do
   '/oss-styles.css'
+end
+
+route '/search/' do
+  '/search.js'
 end
 
 route '*' do

@@ -5,7 +5,11 @@
     <title>Jade Systems Inc <%= @item[:title] %></title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/oss-styles.css">
-    <link rel="stylesheet" href="http://opensearchserver01:9090/js/opensearchserver.js">
+    <link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="/search.js"></script>
+    <script src="http://opensearchserver01:9090/js/opensearchserver.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -18,6 +22,12 @@
     <div class="centre_in_browser">
       <div class="content">
         <div class="header">
+          <div>
+            <form>
+              <input size=40 type="text" id="search" name="query" value="" />
+              <input type="submit" value="Search" />
+            </form>
+          </div>
           <div id="oss-wrap">
             <div id="oss-header">
             </div>
@@ -27,7 +37,7 @@
             </div>
             <div id="oss-main">
               <div class="osscmnrdr oss-input-div">
-                <form id="osssearchform" method="get" autocomplete="off" action="renderer">
+                <form id="osssearchform" method="get" autocomplete="off" action="http://opensearchserver01:9090/renderer">
                   <input type="hidden" name="use" value="Jade" />
                   <input type="hidden" name="name" value="default" />
                   <input class="osscmnrdr ossinputrdr" size="60" type="text" id="osssearchbox" name="query" value="" onkeyup="OpenSearchServer.autosuggest(event, 'autocompletion?use=Jade&name=autocomplete&query=', 'osssearchform', 'osssearchbox', 'ossautocomplete')" autocomplete="off"
@@ -75,6 +85,7 @@
           </p>
           <p>
             Search by <%= link_to("Open Search Server", "http://www.opensearchserver.com", target: "_blank") %>.
+          </p>
         </div>
       </div>
     </div>
