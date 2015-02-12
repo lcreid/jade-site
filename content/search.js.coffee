@@ -7,7 +7,9 @@ jQuery ->
     source: ( request, response ) ->
       $.ajax
         url: "http://opensearchserver01:9090/services/rest/index/Jade/autocompletion/autocomplete"
-        dataType: "jsonp"
+        header: { Origin: "http://www.jadesystems.ca" }
+        # url: "/test-redirect"
+        dataType: "json"
         data:
           prefix: request.term
           rows: 10
