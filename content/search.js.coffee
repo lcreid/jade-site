@@ -6,16 +6,17 @@ jQuery ->
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: "http://opensearchserver01:9090/services/rest/index/Jade/autocompletion/autocomplete"
+        url: "http://solr01:8983/solr/select"
         header: { Origin: "http://www.jadesystems.ca" }
-        # url: "/test-redirect"
-        dataType: "json"
+        dataType: "jsonp"
         data:
-          prefix: request.term
+          q: request.term
           rows: 10
+          wt: 'json'
+        jsonp: 'json.wrf'
         success: ( data ) ->
-          alert( "Good: " + data.terms )
-          response( data.terms )
+          alert( "Good: " + data.response.docs.map((x) -> x.title[0] ).toString() )
+          response( data.response.docs.map((x) -> x.title[0] ) )
         error: ( xhr, textStatus, errorThrown ) ->
           alert( "Bad: " + errorThrown )
     delay: 500
