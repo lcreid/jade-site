@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Jade Systems Inc <%= @item[:title] %></title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/oss-styles.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/search-styles.css">
     <link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -27,6 +27,9 @@
               <input size=40 type="text" id="search" name="query" value="" autocomplete="off" />
               <input type="submit" value="Search" />
             </form>
+            <div id="search-results">
+              Results
+            </div>
           </div>
           <div id="oss-wrap">
             <div id="oss-header">
