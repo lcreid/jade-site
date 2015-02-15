@@ -21,3 +21,58 @@ jQuery ->
           alert( "Bad: " + errorThrown )
     delay: 500
     minLength: 2
+
+  $('#search-button').click(->
+    test_data = {
+      "responseHeader":{
+        "status":0,
+        "QTime":0,
+        "params":{
+          "indent":"true",
+          "start":"0",
+          "q":"solr",
+          "wt":"json",
+          "lang":"ENGLISH",
+          "rows":"10"}},
+      "response":{"numFound":3,"start":0,"docs":[
+        {
+          "links":["rect",
+            "Links of first",
+            "rect",
+            "ClientUtils.html"],
+          "id":"ID of first",
+          "title":["Title of first"],
+          "content_type":["text/html"],
+          "resourcename":"Resourcename of first",
+          "content":["Content of first"],
+          "_version_":1492696537061392384},
+        {
+          "links":["rect",
+            "Links of second",
+            "rect",
+            "ClientUtils.html"],
+          "id":"ID of second",
+          "title":["Title of second"],
+          "content_type":["text/html"],
+          "resourcename":"Resourcename of second",
+          "content":["Content of second"],
+          "_version_":1492696537061392384},
+        {
+          "links":["rect",
+            "Links of third",
+            "rect",
+            "ClientUtils.html"],
+          "id":"ID of third",
+          "title":["Title of third"],
+          "content_type":["text/html"],
+          "resourcename":"Resourcename of third",
+          "content":["Content of third"],
+          "_version_":1492696537061392384}]}}
+
+    results_element = $('#search-results')
+
+    $.each(test_data.response.docs, (i, o) ->
+      p = document.createElement('p')
+      p.innerHTML = o.title[0]
+      results_element.append(p))
+    results_element.show())

@@ -1,14 +1,15 @@
 include Nanoc::Helpers::LinkTo
 
 require 'json'
+require 'uri'
 
 module OSS
   class Search
     def initialize(query_string)
       @query_string = query_string
-      @index = "Jade"
-      @server = "opensearchserver01"
-      @port = ":9090"
+      @index = "collection1"
+      @server = "solr01"
+      @port = ":8983"
       @url = "http://#{@server+@port}"
     end
     def html
@@ -26,26 +27,33 @@ module OSS
       #     "backlinkCount"
       #   ]
       # }'
-      JSON.pretty_generate( {
-        query: @query_string,
+      return {
+        q: @query_string,
         start: 0,
         rows: 10,
         lang: "ENGLISH",
-        returnedFields: [
+        fl: [
           "url"
-        ]
-      })
+        ],
+        wt: "json",
+        indent: "true"
+      }
+    end
+    def parameter_string
+      # JSON.pretty_generate( parameters_for_post)
+      '?' + URI.encode_www_form(parameters_for_post)
     end
     def curl_string
-      'curl -XPOST -H "Content-Type: application/json" -d \'' +
-        parameters_for_post +
-        '\' http://opensearchserver01:9090/services/rest/index/Jade/search/pattern'
+      'curl "' + search_url + '"'
     end
     def curl
       `#{curl_string}`
     end
     def autocomplete_url(string = "")
       "#{@url}/services/rest/index/#{@index}/autocompletion/autocomplete?prefix=#{string}&rows=10"
+    end
+    def search_url(string = "")
+      @url + '/solr/' + @index + '/select' + parameter_string
     end
   end
 end
