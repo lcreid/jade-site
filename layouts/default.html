@@ -23,41 +23,16 @@
       <div class="content">
         <div class="header">
           <div>
-            <form>
-              <input size=40 type="text" id="search" name="query" value="" autocomplete="off" />
-              <input id="search-button" type="button" value="Search" />
-            </form>
+            <div class="right">
+              <form>
+                <input size=40 type="text" id="search" name="query" value="" autocomplete="off" />
+                <input id="search-button" type="button" value="Search" />
+              </form>
+            </div>
+            <div class="clear"></div>
             <div id="search-results">
-              Results
-            </div>
-          </div>
-          <div id="oss-wrap">
-            <div id="oss-header">
-            </div>
-            <div id="oss-facet">
-              <div class="osscmnrdr oss-facet">
-              </div>
-            </div>
-            <div id="oss-main">
-              <div class="osscmnrdr oss-input-div">
-                <form id="osssearchform" method="get" autocomplete="off" action="http://opensearchserver01:9090/renderer">
-                  <input type="hidden" name="use" value="Jade" />
-                  <input type="hidden" name="name" value="default" />
-                  <input class="osscmnrdr ossinputrdr" size="60" type="text" id="osssearchbox" name="query" value="" onkeyup="OpenSearchServer.autosuggest(event, 'autocompletion?use=Jade&name=autocomplete&query=', 'osssearchform', 'osssearchbox', 'ossautocomplete')" autocomplete="off"
-                  />
-                  <input class="osscmnrdr ossbuttonrdr" type="submit" value="Search" />
-                </form>
-                <div style="position: relative">
-                  <div id="ossautocomplete" class="osscmnrd" style="position: absolute;"></div>
-                </div>
-              </div>
-            </div>
-            <div id="oss-footer">
-            </div>
-            <div align="right" style="clear:both;">
-              <a href="http://www.open-search-server.com/" target="_blank">
-                <img alt="OpenSearchServer Logo" src="http://opensearchserver01:9090/images/oss_logo_32.png" style="vertical-align: bottom" />
-              </a>
+              <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+              <p>Results</p>
             </div>
           </div>
         </div>

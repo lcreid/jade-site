@@ -71,8 +71,12 @@ jQuery ->
 
     results_element = $('#search-results')
 
+    $('#search-results p.transient').remove()
+
     $.each(test_data.response.docs, (i, o) ->
-      p = document.createElement('p')
+      (p = document.createElement('p')).className='transient'
       p.innerHTML = o.title[0]
       results_element.append(p))
     results_element.show())
+
+  $('#clear-results').click(-> $('#search-results').hide())
