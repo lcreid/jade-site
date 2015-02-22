@@ -12,8 +12,8 @@
     <script src="http://opensearchserver01:9090/js/opensearchserver.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
@@ -25,7 +25,7 @@
           <div>
             <div class="right">
               <form>
-                <input size=40 type="text" id="search" name="query" value="" autocomplete="off" />
+                <input size=20em type="text" id="search" name="query" value="" autocomplete="off" />
                 <input id="search-button" type="button" value="Search" />
               </form>
             </div>
@@ -33,6 +33,7 @@
             <div id="search-results">
               <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
               <p>Results</p>
+              <ul></ul>
             </div>
           </div>
         </div>
@@ -62,7 +63,7 @@
             <%= link_to("nanoc", "http://nanoc.ws", target: "_blank") %>.
           </p>
           <p>
-            Search by <%= link_to("Open Search Server", "http://www.opensearchserver.com", target: "_blank") %>.
+            Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
           </p>
         </div>
       </div>
