@@ -11,13 +11,14 @@ jQuery ->
         dataType: "jsonp"
         data:
           "terms.prefix": request.term
-          "terms.fl": 'text'
+          "terms.fl": 'content'
           rows: 10
           wt: 'json'
         jsonp: 'json.wrf'
         success: ( data ) ->
           # alert( "Good: " + data.terms.text.toString() )
-          response( data.terms.text )
+          response( $.grep( data.terms.content, ( o, i ) ->
+            (i % 2) == 0 ))
         error: ( xhr, textStatus, errorThrown ) ->
           alert( "Bad: " + errorThrown )
     delay: 500
@@ -80,16 +81,13 @@ jQuery ->
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
-        "q": $("#search").val()
-        "fl": "text"
-        "fl": "url"
-        "fl": "title"
+        "q": 'content:' + $("#search").val()
         rows: 10
         wt: 'json'
       jsonp: 'json.wrf'
       success: ( data ) ->
         useful_results = data.response.docs.filter((x) -> `'title' in x` )
-        alert( "Good: " + useful_results.map((x) -> x.title[0] ).toString() )
+        # alert( "Good: " + useful_results.map((x) -> x.title ).toString() )
         search_result = useful_results
 
         results_list = $('#search-results ul')
@@ -97,8 +95,12 @@ jQuery ->
         $('#search-results ul li.transient').remove()
 
         $.each(search_result, (i, o) ->
-          (p = document.createElement('li')).className='transient'
-          p.innerHTML = o.title[0]
+          (p = document.createElement('li')).className = 'transient'
+          a = $(document.createElement('a'))
+          a.prop('href', o.url)
+          a.text(o.title)
+          $(p).append(a)
+          # p.innerHTML = o.title
           results_list.append(p))
         $('#search-results').show()
       error: ( xhr, textStatus, errorThrown ) ->
