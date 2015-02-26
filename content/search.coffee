@@ -2,6 +2,12 @@
 # query below each time the key comes up, with the value of the input form (thi)
 # in the query.
 
+###
+Set up the autocomplete on the search field.
+I tried using Solr's Suggester, but it just wouldn't work.
+There's another thing call Terms which works.
+It has a quirk about the return value is an array with pairs of term, weight
+###
 jQuery ->
   $( '#search' ).autocomplete
     source: ( request, response ) ->
@@ -24,58 +30,11 @@ jQuery ->
     delay: 500
     minLength: 2
 
+  ###
+  Click on the search button gets search results from the search server,
+  puts them into the search document, and shows the element.
+  ###
   $('#search-button').click(->
-    test_data = {
-      "responseHeader":{
-        "status":0,
-        "QTime":0,
-        "params":{
-          "indent":"true",
-          "start":"0",
-          "q":"solr",
-          "wt":"json",
-          "lang":"ENGLISH",
-          "rows":"10"}},
-      "response":{"numFound":3,"start":0,"docs":[
-        {
-          "links":["rect",
-            "Links of first",
-            "rect",
-            "ClientUtils.html"],
-          "url":"url of first",
-          "id":"ID of first",
-          "title":["Title of first"],
-          "content_type":["text/html"],
-          "resourcename":"Resourcename of first",
-          "content":["Content of first"],
-          "_version_":1492696537061392384},
-        {
-          "links":["rect",
-            "Links of second",
-            "rect",
-            "ClientUtils.html"],
-          "url":"url of second",
-          "id":"ID of second",
-          "title":["Title of second"],
-          "content_type":["text/html"],
-          "resourcename":"Resourcename of second",
-          "content":["Content of second"],
-          "_version_":1492696537061392384},
-        {
-          "links":["rect",
-            "Links of third",
-            "rect",
-            "ClientUtils.html"],
-          "url":"url of third",
-          "id":"ID of third",
-          "title":["Title of third"],
-          "content_type":["text/html"],
-          "resourcename":"Resourcename of third",
-          "content":["Content of third"],
-          "_version_":1492696537061392384}]}}
-
-    search_result = test_data.response.docs.filter((x) -> `'title' in x` )
-
     $.ajax
       url: "http://solr01:8983/solr/select"
       header: { Origin: "http://www.jadesystems.ca" }
@@ -86,9 +45,8 @@ jQuery ->
         wt: 'json'
       jsonp: 'json.wrf'
       success: ( data ) ->
-        useful_results = data.response.docs.filter((x) -> `'title' in x` )
-        # alert( "Good: " + useful_results.map((x) -> x.title ).toString() )
-        search_result = useful_results
+        search_result = data.response.docs.filter((x) -> x.url? and x.title? )
+        # alert( "Good: " + search_result.map((x) -> x.title ).toString() )
 
         results_list = $('#search-results ul')
 
@@ -106,4 +64,7 @@ jQuery ->
       error: ( xhr, textStatus, errorThrown ) ->
         alert( "Bad: " + errorThrown ))
 
+  ###
+  Hide the search results area.
+  ###
   $('#clear-results').click(-> $('#search-results').hide())
