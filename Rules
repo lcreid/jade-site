@@ -31,8 +31,10 @@ compile '*' do
   if item[:extension] == 'css' || item[:extension] == 'scss'
     filter :sass, syntax: :scss
     filter :relativize_paths, type: :css
-  elsif item[:extension] == 'js' || item[:extension] == 'coffee'
+  elsif item[:extension] == 'coffee'
     filter :coffeescript
+  elsif item[:extension] == 'js'
+    # don't filter javascript
   elsif item.binary?
     # don’t filter binary items
   else

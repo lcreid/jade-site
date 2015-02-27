@@ -5,9 +5,11 @@
     <title>Jade Systems Inc <%= @item[:title] %></title>
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/search-styles.css">
+    <link type="text/css" rel="stylesheet" href="/simplePagination.css"/>
     <link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="/jquery.simplePagination.js"></script>
     <script src="/search.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
 
@@ -33,6 +35,7 @@
           <div id="search-results">
             <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
             <ul></ul>
+            <div id="pagination"></div>
           </div>
           <%= yield %>
         </div>
