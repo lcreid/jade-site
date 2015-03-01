@@ -6,8 +6,14 @@
   min-height: 12px;
   margin: 6px 0 6px 0;
   padding: 2px;
+  ul {
+    list-style: none;
+    margin: 6px 4px;
+  }
 }
 
+
+// The next two I learned from Google's Blogger
 div.clear-button {
   display : inline;
   text-align : right;

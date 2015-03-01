@@ -204,3 +204,12 @@ $report-font-size: 12px;
     text-align: center;
   }
 }
+
+// ID Styles
+#pagination-outer-container {
+  width: 100%;
+  text-align: center;
+}
+#pagination-inner-container {
+  display: inline-block;
+}
