@@ -2,13 +2,22 @@
 # query below each time the key comes up, with the value of the input form (thi)
 # in the query.
 
+# TODO: query against different search servers, for dev, test, production, etc.
+# TODO: Make a proper object hanging off the window.
+# TODO: Make the search button the default.
+
 ###
 Set up the autocomplete on the search field.
 I tried using Solr's Suggester, but it just wouldn't work.
-There's another thing call Terms which works.
+There's another thing called Terms which works.
 It has a quirk about the return value is an array with pairs of term, weight
 ###
 jQuery ->
+  ((((exports ? window).ca = new Object)
+    .jadesystems = new Object)
+      .pagination = new Object)
+        .itemsOnPage = 3
+
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
@@ -36,10 +45,14 @@ jQuery ->
   populateSearchResults = ( data ) ->
     $('#search-results ul li.transient').remove()
 
-    search_result = data.response.docs.filter((x) -> x.url? and x.title? )
+    search_result = data
+      .response
+      .docs
+      # .slice( 0, (exports ? window).ca.jadesystems.pagination.itemsOnPage )
+      .filter((x) -> x.url? and x.title? )
     # alert( "Good: " + search_result.map((x) -> x.title ).toString() )
 
-    results_list = $('#search-results ul')
+    results_list = $('#search-results-list')
     $.each(search_result, (i, o) ->
       (p = document.createElement('li')).className = 'transient'
       a = $(document.createElement('a'))
@@ -48,47 +61,62 @@ jQuery ->
       $(p).append(a)
       # p.innerHTML = o.title
       results_list.append(p))
-    $('#pagination').pagination(
-      items: data.response.numFound
-      itemsOnPage: 3
-      cssStyle: 'light-theme')
-    $('#search-results').show()
 
-  ###
-  Click on the search button gets search results from the search server,
-  puts them into the search document, and shows the element.
-  ###
-  ###
-  $('#search-button').click(->
+  getSearchResults = ( page, firstSearchActions ) ->
+    # alert first_page + " " + last_page
+    # fakeSearchResults( page, firstSearchActions )
+    return if ! $('#search').val()
+
+    itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
+    first_item = (page - 1) * itemsOnPage
     $.ajax
       url: "http://solr01:8983/solr/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
         "q": 'content:' + $("#search").val()
-        rows: 10
+        start: first_item
+        rows: itemsOnPage
         wt: 'json'
       jsonp: 'json.wrf'
       success: ( data ) ->
-        results_list = $('#search-results ul')
-
-        $('#search-results ul li.transient').remove()
-
-        $.each(search_result, (i, o) ->
-          (p = document.createElement('li')).className = 'transient'
-          a = $(document.createElement('a'))
-          a.prop('href', o.url)
-          a.text(o.title)
-          $(p).append(a)
-          # p.innerHTML = o.title
-          results_list.append(p))
-        $('#search-results').show()
+        populateSearchResults( data )
+        firstSearchActions( data ) if firstSearchActions?
       error: ( xhr, textStatus, errorThrown ) ->
-        alert( "Bad: " + errorThrown ))
-  ###
+        alert( "Bad: " + errorThrown )
 
-  $('#search-button').click(->
-    search_result = {
+  ###
+  Use the pagination plugin
+  http://flaviusmatis.github.io/simplePagination.js/
+  ###
+  firstSearchActions = ( data ) ->
+    $('#pagination').pagination(
+      items: data.response.numFound
+      itemsOnPage: (exports ? window).ca.jadesystems.pagination.itemsOnPage
+      cssStyle: 'light-theme'
+      onPageClick: ( pageNumber, event ) ->
+        # alert pageNumber
+        getSearchResults( pageNumber, null ))
+
+    $('#search-results').show()
+
+  ###
+  Click on the button
+  ###
+  $('#search-button').click( -> getSearchResults( 1, firstSearchActions ))
+
+  # TODO: Disable search button when there's nothing in the search box
+
+  ###
+  Hide the search results area.
+  ###
+  $('#clear-results').click(-> $('#search-results').hide())
+
+  ###
+  For testing.
+  ###
+  fakeSearchResults = ( page, firstSearchActions ) ->
+    whole_list = {
       "responseHeader":{
         "status":0,
         "QTime":1,
@@ -163,9 +191,11 @@ jQuery ->
             "url":"http://jadesystems.ca/services/infrastructure_analysis/",
             "_version_":1493948582722535424}]
       }}
-    populateSearchResults( search_result ))
 
-  ###
-  Hide the search results area.
-  ###
-  $('#clear-results').click(-> $('#search-results').hide())
+    return_list = $.extend(true, {}, whole_list)
+    itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
+    first_item = (page - 1) * itemsOnPage
+    return_list.response.docs = whole_list.response.docs.slice( first_item, first_item + itemsOnPage )
+    return_list.responseHeader.rows = return_list.response.docs.length
+    populateSearchResults( return_list )
+    firstSearchActions( return_list ) if firstSearchActions?
