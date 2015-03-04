@@ -2,8 +2,6 @@
 # query below each time the key comes up, with the value of the input form (thi)
 # in the query.
 
-# TODO: query against different search servers, for dev, test, production, etc.
-# TODO: Make a proper object hanging off the window.
 # TODO: Make the search button the default.
 
 ###
@@ -13,15 +11,19 @@ There's another thing called Terms which works.
 It has a quirk about the return value is an array with pairs of term, weight
 ###
 jQuery ->
-  ((((exports ? window).ca = new Object)
-    .jadesystems = new Object)
-      .pagination = new Object)
+  ((((exports ? window).ca ||= new Object)
+    .jadesystems ||= new Object)
+      .pagination ||= new Object)
         .itemsOnPage = 3
+
+  ((exports ? window).ca.jadesystems.search ||= new Object).search_engine ||= "http://search.jadesystems.ca:8983"
+
+  searchEngine = -> (exports ? window).ca.jadesystems.search.search_engine
 
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: "http://solr01:8983/solr/terms"
+        url: searchEngine() + "/solr/terms"
         header: { Origin: "http://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
@@ -70,7 +72,7 @@ jQuery ->
     itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
     first_item = (page - 1) * itemsOnPage
     $.ajax
-      url: "http://solr01:8983/solr/select"
+      url: searchEngine() + "/solr/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:

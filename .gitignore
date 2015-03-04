@@ -9,3 +9,4 @@ tmp/
 crash.log
 Guardfile
 .sass-cache/
+dev.coffee
