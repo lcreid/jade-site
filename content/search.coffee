@@ -23,7 +23,7 @@ jQuery ->
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: searchEngine() + "/solr/terms"
+        url: searchEngine() + "/solr/cark/terms"
         header: { Origin: "http://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
@@ -72,7 +72,7 @@ jQuery ->
     itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
     first_item = (page - 1) * itemsOnPage
     $.ajax
-      url: searchEngine() + "/solr/select"
+      url: searchEngine() + "/solr/cark/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
