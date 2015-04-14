@@ -2,8 +2,6 @@
 # query below each time the key comes up, with the value of the input form (thi)
 # in the query.
 
-# TODO: Make the search button the default.
-
 ###
 Set up the autocomplete on the search field.
 I tried using Solr's Suggester, but it just wouldn't work.
@@ -20,10 +18,12 @@ jQuery ->
 
   searchEngine = -> (exports ? window).ca.jadesystems.search.search_engine
 
+  unless solrCore? then solrCore = -> "collection1" 
+
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: searchEngine() + "/solr/cark/terms"
+        url: searchEngine() + "/solr/" + solrCore() + "/terms"
         header: { Origin: "http://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
@@ -72,7 +72,7 @@ jQuery ->
     itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
     first_item = (page - 1) * itemsOnPage
     $.ajax
-      url: searchEngine() + "/solr/cark/select"
+      url: searchEngine() + "/solr/" + solrCore() + "/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
