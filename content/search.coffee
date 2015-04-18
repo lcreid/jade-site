@@ -14,16 +14,13 @@ jQuery ->
       .pagination ||= new Object)
         .itemsOnPage = 3
 
-  ((exports ? window).ca.jadesystems.search ||= new Object).search_engine ||= "http://search.jadesystems.ca:8983"
-
-  searchEngine = -> (exports ? window).ca.jadesystems.search.search_engine
-
-  unless solrCore? then solrCore = -> "collection1" 
+  unless window.searchEngine? then window.searchEngine = "http://search.jadesystems.ca:8983"
+  unless window.solrCore? then window.solrCore = "collection1"
 
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: searchEngine() + "/solr/" + solrCore() + "/terms"
+        url: window.searchEngine + "/solr/" + window.solrCore + "/terms"
         header: { Origin: "http://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
@@ -71,8 +68,9 @@ jQuery ->
 
     itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
     first_item = (page - 1) * itemsOnPage
+    # alert window.searchEngine + "/solr/" + window.solrCore + "/select"
     $.ajax
-      url: searchEngine() + "/solr/" + solrCore() + "/select"
+      url: window.searchEngine + "/solr/" + window.solrCore + "/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
