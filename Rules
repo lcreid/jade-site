@@ -35,6 +35,11 @@ compile '*' do
     filter :coffeescript
   elsif item[:extension] == 'js'
     # don't filter javascript
+  elsif item[:extension] == 'md'
+    filter :erb
+    filter :kramdown
+    layout 'default'
+    filter :relativize_paths, type: :html
   elsif item.binary?
     # don’t filter binary items
   else

@@ -9,18 +9,16 @@ There's another thing called Terms which works.
 It has a quirk about the return value is an array with pairs of term, weight
 ###
 jQuery ->
-  ((((exports ? window).ca ||= new Object)
-    .jadesystems ||= new Object)
-      .pagination ||= new Object)
-        .itemsOnPage = 3
+  ns = namespace("ca.jadesystems.search")
+  ns.itemsOnPage = 3
 
-  unless window.searchEngine? then window.searchEngine = "http://search.jadesystems.ca:8983"
-  unless window.solrCore? then window.solrCore = "collection1"
+  ns.searchEngine or= "http://search.jadesystems.ca:8983"
+  ns.solrCore or= "collection1"
 
   $( '#search' ).autocomplete
     source: ( request, response ) ->
       $.ajax
-        url: window.searchEngine + "/solr/" + window.solrCore + "/terms"
+        url: ns.searchEngine + "/solr/" + ns.solrCore + "/terms"
         header: { Origin: "http://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
@@ -47,7 +45,6 @@ jQuery ->
     search_result = data
       .response
       .docs
-      # .slice( 0, (exports ? window).ca.jadesystems.pagination.itemsOnPage )
       .filter((x) -> x.url? and x.title? )
     # alert( "Good: " + search_result.map((x) -> x.title ).toString() )
 
@@ -58,7 +55,6 @@ jQuery ->
       a.prop('href', o.url)
       a.text(o.title)
       $(p).append(a)
-      # p.innerHTML = o.title
       results_list.append(p))
 
   getSearchResults = ( page, firstSearchActions ) ->
@@ -66,17 +62,16 @@ jQuery ->
     # fakeSearchResults( page, firstSearchActions )
     return if ! $('#search').val()
 
-    itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
-    first_item = (page - 1) * itemsOnPage
-    # alert window.searchEngine + "/solr/" + window.solrCore + "/select"
+    first_item = (page - 1) * ns.itemsOnPage
+    # alert ns.searchEngine + "/solr/" + ns.solrCore + "/select"
     $.ajax
-      url: window.searchEngine + "/solr/" + window.solrCore + "/select"
+      url: ns.searchEngine + "/solr/" + ns.solrCore + "/select"
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
         "q": 'content:' + $("#search").val()
         start: first_item
-        rows: itemsOnPage
+        rows: ns.itemsOnPage
         wt: 'json'
       jsonp: 'json.wrf'
       success: ( data ) ->
@@ -92,7 +87,7 @@ jQuery ->
   firstSearchActions = ( data ) ->
     $('#pagination').pagination(
       items: data.response.numFound
-      itemsOnPage: (exports ? window).ca.jadesystems.pagination.itemsOnPage
+      itemsOnPage: ns.itemsOnPage
       cssStyle: 'light-theme'
       onPageClick: ( pageNumber, event ) ->
         # alert pageNumber
@@ -193,9 +188,8 @@ jQuery ->
       }}
 
     return_list = $.extend(true, {}, whole_list)
-    itemsOnPage = (exports ? window).ca.jadesystems.pagination.itemsOnPage
-    first_item = (page - 1) * itemsOnPage
-    return_list.response.docs = whole_list.response.docs.slice( first_item, first_item + itemsOnPage )
+    first_item = (page - 1) * ns.itemsOnPage
+    return_list.response.docs = whole_list.response.docs.slice( first_item, first_item + ns.itemsOnPage )
     return_list.responseHeader.rows = return_list.response.docs.length
     populateSearchResults( return_list )
     firstSearchActions( return_list ) if firstSearchActions?

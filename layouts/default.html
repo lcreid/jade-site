@@ -48,16 +48,28 @@
         <div id="sidebar">
           <ul>
             <li><%= link_to_unless_current("Home", "/") %></li>
-            <li><%= link_to_unless_current("Services", "/services/") %></li>
-            <ul>
-              <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
-              <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
-              <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
-            </ul>
-            <li>People</li>
-            <ul>
-              <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
-            </ul>
+            <li><%= link_to_unless_current("Services", "/services/") %>
+              <ul>
+                <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
+                <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
+                <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
+              </ul>
+            </li>
+            <li><%= link_to_unless_current("People", "/people/larry_reid") %>
+              <ul>
+                <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
+              </ul>
+            </li>
+            <li><%= link_to_unless_current("Knowledgebase", "/knowledgebase/") %>
+              <ul>
+                <li>
+                  <%= link_to_unless_current("Static Web Sites", "/knowledgebase/static-web-sites/") %>
+                </li>
+                <li>
+                  <%= link_to_unless_current("Search Engines", "/knowledgebase/search-engines/") %>
+                </li>
+              </ul>
+            </li>
             <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
           </ul>
         </div>
