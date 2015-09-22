@@ -4,7 +4,7 @@ $width: 800px;
 $padding-width: 20px;
 $sidebar-width: 160px + $padding-width + 1px;
 $main-width: $width - $sidebar-width - 3 * $padding-width;
-$browser-background: rgb(236, 236, 236);
+$browser-background: white; //rgb(236, 236, 236);
 $content-background: white !default;
 $box-shadow: rgb(128, 128, 128) !default;
 
