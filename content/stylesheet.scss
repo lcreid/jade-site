@@ -27,12 +27,22 @@ body {
   background: $browser-background;
 }
 
-.content {
-  background: $content-background;
-  padding: 40px 20px 20px 20px;
-  box-shadow: 2px 2px 3px $box-shadow;
-//  position: relative;
+// The following is to fix a known issue with Bootstrap that the top bar
+// overlaps the content. The @media avoids issues on phones and smaller
+// screens.
+// See: http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
+@media (min-width: 980px) {
+  body {
+    padding-top: 50px;
+    padding-bottom: 42px;
+  }
 }
+// .content {
+//   background: $content-background;
+//   padding: 40px 20px 20px 20px;
+//   box-shadow: 2px 2px 3px $box-shadow;
+// //  position: relative;
+// }
 
 a {
   text-decoration: none;

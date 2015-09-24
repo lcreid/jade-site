@@ -44,32 +44,34 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Jade Systems Inc</a>
+          <!-- <a class="navbar-brand" href="#">Jade Systems Inc</a> -->
+          <%= link_to("Jade Systems Inc", "/", class: 'navbar-brand') %>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Project Management</a></li>
-                <li><a href="#">Infrastructure Analysis</a></li>
-                <li><a href="#">IT Consulting</a></li>
+                <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
+                <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
+                <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">People <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Larry Reid</a></li>
+                <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Knowledgebase <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Static Web Sites</a></li>
-                <li><a href="#">Search Engines</a></li>
+                <li><%= link_to_unless_current("Static Web Sites", "/knowledgebase/static-web-sites/") %></li>
+                <li><%= link_to_unless_current("Search Engines", "/knowledgebase/search-engines/") %></li>
               </ul>
             </li>
+            <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
           </ul>
 
           <form class="navbar-form navbar-right">
@@ -131,31 +133,4 @@
     <script src="/dev.js"></script>
     <script src="/search.js"></script>
   </body>
-          <ul>
-            <li><%= link_to_unless_current("Services", "/services/", :class => 'dropdown') %>
-              <ul>
-                <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
-                <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
-                <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
-              </ul>
-            </li>
-            <li><%= link_to_unless_current("People", "/people/larry_reid") %>
-              <ul>
-                <li><%= link_to_unless_current("Larry Reid", "/people/larry_reid/") %></li>
-              </ul>
-            </li>
-            <li><%= link_to_unless_current("Knowledgebase", "/knowledgebase/") %>
-              <ul>
-                <li>
-                  <%= link_to_unless_current("Static Web Sites", "/knowledgebase/static-web-sites/") %>
-                </li>
-                <li>
-                  <%= link_to_unless_current("Search Engines", "/knowledgebase/search-engines/") %>
-                </li>
-              </ul>
-            </li>
-            <li><%= link_to_unless_current("Contact Us", "/contact/") %></li>
-          </ul>
-
-
 </html>

@@ -1,4 +1,5 @@
 include Nanoc::Helpers::LinkTo
+include Nanoc::Helpers::Rendering
 
 require 'json'
 require 'uri'
