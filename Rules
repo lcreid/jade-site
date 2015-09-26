@@ -36,9 +36,12 @@ compile '*' do
   elsif item[:extension] == 'js'
     # don't filter javascript
   elsif item[:extension] == 'md'
-    filter :erb
+    # puts item.reps.each { | r | puts r.name }
+    puts @item.identifier
     filter :kramdown
+    filter :erb
     layout 'default'
+    @item_rep.compiled_content(shapshot: :pre)
     filter :relativize_paths, type: :html
   elsif item.binary?
     # don’t filter binary items
@@ -50,18 +53,6 @@ compile '*' do
     filter :relativize_paths, type: :html
   end
 end
-
-# route '/stylesheet/' do
-#   '/style.css'
-# end
-#
-# route '/search-styles/' do
-#   '/search-styles.css'
-# end
-#
-# route '/search/' do
-#   '/search.js'
-# end
 
 route '*' do
   if item[:extension] == 'css' || item[:extension] == 'scss'
