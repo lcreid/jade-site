@@ -37,6 +37,7 @@ body {
     padding-bottom: 42px;
   }
 }
+
 // .content {
 //   background: $content-background;
 //   padding: 40px 20px 20px 20px;
@@ -55,6 +56,10 @@ a:visited {
 
 a:hover {
   color: $link-hover-colour;
+}
+
+li {
+  list-style-position: inside;
 }
 
 #main {

@@ -9,5 +9,6 @@ We have extensive experience with a wide variety of modern web technologies, and
 
 * <%= link_to("Static Web Sites", "/knowledgebase/static-web-sites/") %>
 * <%= link_to("Search Engines", "/knowledgebase/search-engines/") %>
+^
 
 <% end %>
