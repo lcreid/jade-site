@@ -13,6 +13,13 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
+compile '/' do
+  puts "in /index/" + @item.identifier
+  filter :erb
+  layout 'home'
+  filter :relativize_paths, type: :html
+end
+
 compile '*' do
   if item[:extension] == 'css' || item[:extension] == 'scss'
     filter :sass, syntax: :scss
@@ -22,10 +29,8 @@ compile '*' do
   elsif item[:extension] == 'js'
     # don't filter javascript
   elsif item[:extension] == 'md'
-    # puts item.reps.each { | r | puts r.name }
-    # puts @item.identifier
     filter :erb
-    filter :kramdown#, parse_block_html: true
+    filter :kramdown
     layout 'default'
     filter :relativize_paths, type: :html
   elsif item.binary?

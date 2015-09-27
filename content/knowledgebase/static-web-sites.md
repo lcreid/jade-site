@@ -2,7 +2,6 @@
 title: Static Web Sites
 ---
 
-<% render 'simple' do %>
 # Static Web Sites
 A previous version of the Jade Systems web site was built with [Drupal](http://drupal.org). Drupal is a fine content management system. But with all the capability comes complexity, and with complexity, inevitably, security issues. Drupal provides frequent security updates, but I have other work to do, and updating my web site's content management system was becoming a drag.
 
@@ -56,5 +55,3 @@ Here are my ideas about when to consider using a static web site. The more often
 * Hosting of the site needs to be low-maintenance
 * The site needs to be secure
 * You want to host your own site, for example, if your content is sensitive and for legal or business reasons you need to keep it in house
-^
-<% end %>
