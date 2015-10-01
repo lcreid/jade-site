@@ -14,7 +14,7 @@
 #   because “*” matches zero or more characters.
 
 compile '/' do
-  puts "in /index/" + @item.identifier
+  # puts "in /index/" + @item.identifier
   filter :erb
   layout 'home'
   filter :relativize_paths, type: :html
@@ -47,10 +47,10 @@ end
 route '*' do
   if item[:extension] == 'css' || item[:extension] == 'scss'
     # Write item with identifier /foo/ to /foo.css
-    puts item.identifier.chop + '.css'
+    # puts item.identifier.chop + '.css'
     item.identifier.chop + '.css'
   elsif item[:extension] == 'js' || item[:extension] == 'coffee'
-    puts item.identifier.chop + '.js'
+    # puts item.identifier.chop + '.js'
     item.identifier.chop + '.js'
   elsif item.binary?
     # Write item with identifier /foo/ to /foo.ext
