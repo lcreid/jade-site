@@ -31,12 +31,12 @@ body {
 // overlaps the content. The @media avoids issues on phones and smaller
 // screens.
 // See: http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
-@media (min-width: 980px) {
+// @media (min-width: 980px) {
   body {
     padding-top: 50px;
     padding-bottom: 42px;
   }
-}
+// }
 
 // .content {
 //   background: $content-background;

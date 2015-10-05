@@ -44,6 +44,10 @@ compile '*' do
   end
 end
 
+route '/dev/' do
+  # Do nothing for dev.js so it doesn't get copied to output.
+end
+
 route '*' do
   if item[:extension] == 'css' || item[:extension] == 'scss'
     # Write item with identifier /foo/ to /foo.css
