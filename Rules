@@ -46,6 +46,9 @@ end
 
 route '/dev/' do
   # Do nothing for dev.js so it doesn't get copied to output.
+  # This isn't a good approach overall, because every time someone clones
+  # the project, they have to comment this out, generate the dev.js, then
+  # uncomment.
 end
 
 route '*' do
