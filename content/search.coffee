@@ -13,7 +13,7 @@ jQuery ->
   ns.itemsOnPage = 3
 
   ns.searchEngine or= "http://search.jadesystems.ca:8983"
-  ns.solrCore or= "collection1"
+  ns.solrCore or= "cark"
 
   $( '#search' ).autocomplete
     source: ( request, response ) ->
