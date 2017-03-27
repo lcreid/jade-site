@@ -38,8 +38,6 @@
   <body>
     <!-- TODO:  The selected menu item doesn't have a nice style in the drop down
                 Perhaps my styles conflict with Bootstrap's? -->
-    <!-- TODO:  The original site organization had that web idea that you could go
-                to the overview of a topic by clicking on the top level menu.
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -58,6 +56,7 @@
               <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><%= link_to_unless_current("Overview", "/services/") %></li>
                 <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
                 <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
                 <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li>
@@ -72,6 +71,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Knowledgebase <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><%= link_to_unless_current("Overview", "/knowledgebase/") %></li>
                 <li><%= link_to_unless_current("Static Web Sites", "/knowledgebase/static-web-sites/") %></li>
                 <li><%= link_to_unless_current("Search Engines", "/knowledgebase/search-engines/") %></li>
               </ul>
@@ -101,8 +101,6 @@
       </div>
     </div>
 
-                Bootstrap doesn't seem to support that, which is cool, but I have to
-                implement a new navigation structure in that case. -->
     <div class="container">
       <%= yield %>
     </div>
