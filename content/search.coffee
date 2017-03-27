@@ -23,13 +23,13 @@ jQuery ->
         dataType: "jsonp"
         data:
           "terms.prefix": request.term
-          "terms.fl": 'content'
+          "terms.fl": '_text_'
           rows: 10
           wt: 'json'
         jsonp: 'json.wrf'
         success: ( data ) ->
           # alert( "Good: " + data.terms.text.toString() )
-          response( $.grep( data.terms.content, ( o, i ) ->
+          response( $.grep( data.terms._text_, ( o, i ) ->
             (i % 2) == 0 ))
         error: ( xhr, textStatus, errorThrown ) ->
           alert( "Bad: " + errorThrown )
@@ -69,7 +69,7 @@ jQuery ->
       header: { Origin: "http://www.jadesystems.ca" }
       dataType: "jsonp"
       data:
-        "q": 'content:' + $("#search").val()
+        "q": $("#search").val()
         start: first_item
         rows: ns.itemsOnPage
         wt: 'json'
