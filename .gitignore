@@ -1,7 +1,8 @@
 # For projects using nanoc (http://nanoc.stoneship.org/)
 
 # Default location for output, needs to match output_dir's value found in config.yaml
-output/
+# To deplaoy with AWS CodeDeploy, we need to store the generated site, too.
+output/dev.js
 
 # Temporary file directory
 tmp/
