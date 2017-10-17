@@ -13,59 +13,99 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile '/' do
-  # puts "in /index/" + @item.identifier
+compile '/*.html' do
   filter :erb
-  layout 'home'
+  layout '/home.html'
   filter :relativize_paths, type: :html
+  write @item.identifier.without_ext + '.html'
 end
 
-compile '*' do
-  if item[:extension] == 'css' || item[:extension] == 'scss'
-    filter :sass, syntax: :scss
-    filter :relativize_paths, type: :css
-  elsif item[:extension] == 'coffee'
-    filter :coffeescript
-  elsif item[:extension] == 'js'
-    # don't filter javascript
-  elsif item[:extension] == 'md'
-    filter :erb
-    filter :kramdown
-    layout 'default'
-    filter :relativize_paths, type: :html
-  elsif item.binary?
-    # don’t filter binary items
-  else
-    filter :erb
-    layout 'default'
-    # It seems completely bizarre to me, but the relativize paths has to be the last
-    # filter in the compile.
-    filter :relativize_paths, type: :html
-  end
+compile '/**/*.coffee' do
+  filter :coffeescript
+  write ext: '.js'
 end
 
-route '/dev/' do
-  # Do nothing for dev.js so it doesn't get copied to output.
-  # This isn't a good approach overall, because every time someone clones
-  # the project, they have to comment this out, generate the dev.js, then
-  # uncomment.
+compile '/**/*.{css,scss}' do
+  filter :sass, syntax: :scss
+  filter :relativize_paths, type: :css
+  write ext: 'css'
 end
 
-route '*' do
-  if item[:extension] == 'css' || item[:extension] == 'scss'
-    # Write item with identifier /foo/ to /foo.css
-    # puts item.identifier.chop + '.css'
-    item.identifier.chop + '.css'
-  elsif item[:extension] == 'js' || item[:extension] == 'coffee'
-    # puts item.identifier.chop + '.js'
-    item.identifier.chop + '.js'
-  elsif item.binary?
-    # Write item with identifier /foo/ to /foo.ext
-    item.identifier.chop + '.' + item[:extension]
-  else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
-  end
+compile '/**/*.html' do
+  filter :erb
+  layout '/default.html'
+  filter :relativize_paths, type: :html
+  write @item.identifier.without_ext + '.html'
 end
 
-layout '*', :erb
+compile '/*.html' do
+  filter :erb
+  layout '/default.html'
+  filter :relativize_paths, type: :html
+  write @item.identifier.without_ext + '.html'
+end
+
+compile '/**/*.{ico,jpg,jpeg,png}' do
+  write item.identifier.to_s
+end
+
+compile '/**/*.js' do
+  write item.identifier.to_s
+end
+
+compile '/**/*.md' do
+  filter :kramdown
+  layout '/default.html'
+  filter :relativize_paths, type: :html
+  write @item.identifier.without_ext + '.html'
+end
+
+# compile '*' do
+#   if item[:extension] == 'css' || item[:extension] == 'scss'
+#     # filter :sass, syntax: :scss
+#     # filter :relativize_paths, type: :css
+#   # elsif item[:extension] == 'coffee'
+#   #   filter :coffeescript
+#   elsif item[:extension] == 'js'
+#     # don't filter javascript
+#   # elsif item[:extension] == 'md'
+#   #   filter :erb
+#   #   filter :kramdown
+#   #   layout 'default'
+#   #   filter :relativize_paths, type: :html
+#   elsif item.binary?
+#     # don’t filter binary items
+#   # else
+#   #   filter :erb
+#   #   layout 'default'
+#   #   # It seems completely bizarre to me, but the relativize paths has to be the last
+#   #   # filter in the compile.
+#   #   filter :relativize_paths, type: :html
+#   end
+# end
+
+# route '/dev/' do
+#   # Do nothing for dev.js so it doesn't get copied to output.
+#   # This isn't a good approach overall, because every time someone clones
+#   # the project, they have to comment this out, generate the dev.js, then
+#   # uncomment.
+# end
+
+# route '*' do
+#   if item[:extension] == 'css' || item[:extension] == 'scss'
+#     # Write item with identifier /foo/ to /foo.css
+#     # puts item.identifier.chop + '.css'
+#     item.identifier.chop + '.css'
+#   elsif item[:extension] == 'js' || item[:extension] == 'coffee'
+#     # puts item.identifier.chop + '.js'
+#     item.identifier.chop + '.js'
+#   elsif item.binary?
+#     # Write item with identifier /foo/ to /foo.ext
+#     item.identifier.chop + '.' + item[:extension]
+#   else
+#     # Write item with identifier /foo/ to /foo/index.html
+#     item.identifier + 'index.html'
+#   end
+# end
+
+layout '/**/*', :erb
