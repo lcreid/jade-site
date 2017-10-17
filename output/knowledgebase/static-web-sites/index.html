@@ -33,7 +33,7 @@
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.8.0">
+    <meta name="generator" content="nanoc 4.8.10">
   </head>
 
   <body>
@@ -73,7 +73,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Knowledgebase <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="../">Overview</a></li>
-                <li><span class="active" title="You're here.">Static Web Sites</span></li>
+                <li><span class="active">Static Web Sites</span></li>
                 <li><a href="../search-engines/">Search Engines</a></li>
               </ul>
             </li>
@@ -149,7 +149,7 @@
 
 <p>Even then, a static web site doesn’t have to mean a simple web site. As JavaScript and browsers mature, we’re putting more and more functionality back into the user’s device. By combining a static web site with strategic calls to simple APIs, you can build sites that combine rich functionality, version control, backups, and robust security.</p>
 
-<p>A simple example is <a href="../search-engines/">how I added search</a> to Jade’s web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client’s browser.</p>
+<p>A simple example is &lt;%= link_to(“how I added search”, “/knowledgebase/search-engines/”) %&gt; to Jade’s web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client’s browser.</p>
 
 <h2 id="when-to-use-a-static-site">When to Use a Static Site</h2>
 <p>Here are my ideas about when to consider using a static web site. The more often you answer “yes” to the following, the more likely you have a good fit for a static site:</p>

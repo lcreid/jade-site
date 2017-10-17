@@ -13,13 +13,6 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile '/*.html' do
-  filter :erb
-  layout '/home.html'
-  filter :relativize_paths, type: :html
-  write @item.identifier.without_ext + '.html'
-end
-
 compile '/**/*.coffee' do
   filter :coffeescript
   write ext: '.js'
@@ -35,14 +28,14 @@ compile '/**/*.html' do
   filter :erb
   layout '/default.html'
   filter :relativize_paths, type: :html
-  write @item.identifier.without_ext + '.html'
+  write @item.identifier.without_ext + '/index.html'
 end
 
-compile '/*.html' do
+compile '/index.html' do
   filter :erb
   layout '/default.html'
   filter :relativize_paths, type: :html
-  write @item.identifier.without_ext + '.html'
+  write @item.identifier
 end
 
 compile '/**/*.{ico,jpg,jpeg,png}' do
@@ -57,7 +50,7 @@ compile '/**/*.md' do
   filter :kramdown
   layout '/default.html'
   filter :relativize_paths, type: :html
-  write @item.identifier.without_ext + '.html'
+  write @item.identifier.without_ext + '/index.html'
 end
 
 # compile '*' do
