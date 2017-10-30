@@ -12,7 +12,7 @@ jQuery ->
   ns = namespace("ca.jadesystems.search")
   ns.itemsOnPage = 3
 
-  ns.searchEngine or= "http://search.jadesystems.ca:8983"
+  ns.searchEngine or= "https://search.jadesystems.ca:8983"
   ns.solrCore or= "cark"
 
   $( '#search' ).autocomplete

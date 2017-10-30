@@ -11,7 +11,7 @@ It has a quirk about the return value is an array with pairs of term, weight
     var fakeSearchResults, firstSearchActions, getSearchResults, ns, populateSearchResults;
     ns = namespace("ca.jadesystems.search");
     ns.itemsOnPage = 3;
-    ns.searchEngine || (ns.searchEngine = "http://search.jadesystems.ca:8983");
+    ns.searchEngine || (ns.searchEngine = "https://search.jadesystems.ca:8983");
     ns.solrCore || (ns.solrCore = "cark");
     $('#search').autocomplete({
       source: function(request, response) {
