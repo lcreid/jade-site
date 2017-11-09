@@ -12,7 +12,8 @@ jQuery ->
   ns = namespace("ca.jadesystems.search")
   ns.itemsOnPage = 3
 
-  ns.searchEngine or= "https://search.jadesystems.ca:8983"
+  # The reverse proxy adds the port.
+  ns.searchEngine or= "https://search.jadesystems.ca"
   ns.solrCore or= "cark"
 
   $( '#search' ).autocomplete
