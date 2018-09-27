@@ -1,9 +1,13 @@
-<% render '/home.*' do %>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8" markdown="1">
-      <%= yield %>
-    </div>
-  </div>
-</div>
-<% end %>
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include header.html %}
+    <section>
+      {{ content }}
+    </section>
+    {% include footer.html %}
+  </body>
+</html>
