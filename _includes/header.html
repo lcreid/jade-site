@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <!-- TODO: Put "fixed-top" back in here. -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="{{ site.baseurl }}{% link index.html %}">Jade Systems Inc</a>
     <!-- <%= link_to("Jade Systems Inc", "/", class: 'navbar-brand') %> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +8,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse">
-      <ul class="navbar-nav text-lg-center">
+      <ul class="navbar-nav justify-content-between w-100">
         <li class="nav-item dropdown">
           <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
           <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
@@ -17,10 +17,6 @@
             <li><a href="{{ site.baseurl }}{% link services/project_management.html %}">Project Management</a></li>
             <li><a href="{{ site.baseurl }}{% link services/infrastructure_analysis.html %}">Infrastructure Analysis</a></li>
             <li><a href="{{ site.baseurl }}{% link services/it_consulting.html %}">IT Consulting</a></li>
-            <!-- <li><%= link_to_unless_current("Overview", "/services/") %></li>
-            <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
-            <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
-            <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li> -->
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -40,12 +36,12 @@
         <li><a class="nav-item" href="{{ site.baseurl }}{% link contact.html %}">Contact Us</a></li>
       </ul>
 
-      <form class="form-inline ml-auto">
+      <!-- <form class="form-inline ml-auto">
         <div class="form-group">
           <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
         </div>
         <button type="button" class="btn btn-success" id="search-button">Search</button>
-      </form>
+      </form> -->
     </div>
   </nav>
 </div>
