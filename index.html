@@ -7,14 +7,7 @@ layout: default
   <div class="container">
     <h1>Jade Systems</h1>
     <p>
-      At Jade Systems,
-      we love to put technology to work
-      to help people get their work done,
-      learn,
-      or simply enjoy their life.
-      If you've ever said,
-      "There should be an app for this,"
-      then we can help you.
+      At Jade Systems, we love to put technology to work to help people get their work done, learn, or simply enjoy their life. If you've ever said, "There should be an app for this," then we can help you.
     </p>
   </div>
 </div>
@@ -25,16 +18,9 @@ layout: default
     <div class="col-md-4">
       <h2>Software Development</h2>
       <p>
-        We want to change your mind about custom software development.
-        We want to show you that it can be low-risk,
-        high-benefit,
-        and frustration-free.
-        The time has never been better
-        for technology to solve everyday problems.
+        We want to change your mind about custom software development. We want to show you that it can be low-risk, high-benefit, and frustration-free. The time has never been better for technology to solve everyday problems.
       </p>
       <p>
-        <!-- <%= link_to("View details &raquo;", "/services/", class: "btn btn-default", role: "button") %> -->
-          <!-- <a class="btn btn-default" href="#" role="button">View details &raquo;</a> -->
       </p>
     </div>
     <div class="col-md-4">
@@ -43,7 +29,7 @@ layout: default
         Our people will understand your organization and adapt our solutions to fit your needs. We don't just sell you a "best practice" that doesn't work for you.
       </p>
       <p>
-        <%= link_to("View details &raquo;", "/people/larry_reid/", class: "btn btn-default", role: "button") %>
+        <a href="{{ page.base_url }}{% link people/larry_reid.html %}", class: "btn btn-default", role: "button">View details &raquo;</a>
       </p>
     </div>
     <div class="col-md-4">
@@ -52,7 +38,7 @@ layout: default
         We believe in sharing what we know and do.
       </p>
       <p>
-        <%= link_to("View details &raquo;", "/knowledgebase/", class: "btn btn-default", role: "button") %>
+        <a href="{{ page.base_url }}{% link knowledgebase.md %}", class: "btn btn-default", role: "button">View details &raquo;</a>
       </p>
     </div>
   </div>
