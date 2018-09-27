@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <!-- TODO: Put "fixed-top" back in here. -->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="{{ site.baseurl }}{% link index.md %}">Jade Systems Inc</a>
+    <!-- <%= link_to("Jade Systems Inc", "/", class: 'navbar-brand') %> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav text-lg-center">
+        <li class="nav-item dropdown">
+          <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ site.baseurl }}{% link services/services.html %}">Overview</a></li>
+            <li><a href="{{ site.baseurl }}{% link services/project_management.html %}">Project Management</a></li>
+            <li><a href="{{ site.baseurl }}{% link services/infrastructure_analysis.html %}">Infrastructure Analysis</a></li>
+            <li><a href="{{ site.baseurl }}{% link services/it_consulting.html %}">IT Consulting</a></li>
+            <!-- <li><%= link_to_unless_current("Overview", "/services/") %></li>
+            <li><%= link_to_unless_current("Project Management", "/services/project_management/") %></li>
+            <li><%= link_to_unless_current("Infrastructure Analysis", "/services/infrastructure_analysis/") %></li>
+            <li><%= link_to_unless_current("IT Consulting", "/services/it_consulting/") %></li> -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-item" href="{{ site.baseurl }}{% link people/larry_reid.html %}">Larry Reid</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase.md %}">Overview</a></li>
+            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase/static-web-sites.md %}">Static Web Sites</a></li>
+            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase/search-engines.md %}">Search Engines</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-item" href="{{ site.baseurl }}{% link contact.html %}">Contact Us</a></li>
+      </ul>
+
+      <form class="form-inline ml-auto">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
+        </div>
+        <button type="button" class="btn btn-success" id="search-button">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="search-results">
+    <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+    <ul id="search-results-list"></ul>
+    <div id="pagination-outer-container">
+      <div id="pagination-inner-container" class="centre">
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
