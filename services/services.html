@@ -1,18 +1,25 @@
 ---
 title: Services
+layout: default
 ---
 
-<h1><%= @item[:title] %></h1>
-<h2>Project Management</h2>
-<p>Jade Systems provides project managers for software development or IT implementations.
-Our PMs are results focused and work with your organization to give you the best value for your project dollar.</p>
-<h2>Infrastructure Analysis</h2>
-<p>Would you like to know where you're overspending on IT infrastructure dollars?
-Would you like to know when you're going to have to buy more disk storage?
-Do you know how often your network or servers are down?
-We have standard, semi-custom and custom infrastructure analysis services
-that will improve your IT services and reduce your IT costs.</p>
-<h2>IT Consulting</h2>
-<p>Our senior consultants can write your business case or project charter
-to ensure that your projects start off on the right foot.
-We can help write Requests for Proposal that get the best value from your vendors.</p>
+<h1>{{ page.title }}</h1>
+<h2><a href="{{ page.base_url }}{% link services/project_management.html %}">Project Management</a></h2>
+<p>
+  Jade Systems provides project managers for software development or IT implementations.
+  Our PMs are results focused and work with your organization to give you the best value for your project dollar.
+</p>
+<h2><a href="{{ page.base_url }}{% link services/infrastructure_analysis.html %}">Infrastructure Analysis</a></h2>
+<p>
+  Would you like to know where you're overspending on IT infrastructure dollars?
+  Would you like to know when you're going to have to buy more disk storage?
+  Do you know how often your network or servers are down?
+  We have standard, semi-custom and custom infrastructure analysis services
+  that will improve your IT services and reduce your IT costs.
+</p>
+<h2><a href="{{ page.base_url }}{% link services/it_consulting.html %}">IT Consulting</a></h2>
+<p>
+  Our senior consultants can write your business case or project charter
+  to ensure that your projects start off on the right foot.
+  We can help write Requests for Proposal that get the best value from your vendors.
+</p>

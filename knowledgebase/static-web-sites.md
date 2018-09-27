@@ -1,5 +1,6 @@
 ---
 title: Static Web Sites
+layout: default
 ---
 
 # Static Web Sites
