@@ -1,3 +1,5 @@
+---
+---
 window.namespace = (namespace) ->
   target = top = this
   target = target[item] or= {} for item in namespace.split(".")

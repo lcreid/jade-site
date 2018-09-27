@@ -1,3 +1,5 @@
+---
+---
 # I want to setup up a keyup event on the value of the form, then execute the
 # query below each time the key comes up, with the value of the input form (thi)
 # in the query.
@@ -16,26 +18,27 @@ jQuery ->
   ns.searchEngine or= "https://search.jadesystems.ca"
   ns.solrCore or= "cark"
 
-  $( '#search' ).autocomplete
-    source: ( request, response ) ->
-      $.ajax
-        url: ns.searchEngine + "/solr/" + ns.solrCore + "/terms"
-        header: { Origin: "https://www.jadesystems.ca" }
-        dataType: "jsonp"
-        data:
-          "terms.prefix": request.term
-          "terms.fl": '_text_'
-          rows: 10
-          wt: 'json'
-        jsonp: 'json.wrf'
-        success: ( data ) ->
-          # alert( "Good: " + data.terms.text.toString() )
-          response( $.grep( data.terms._text_, ( o, i ) ->
-            (i % 2) == 0 ))
-        error: ( xhr, textStatus, errorThrown ) ->
-          alert( "Bad: " + errorThrown )
-    delay: 500
-    minLength: 2
+  # TODO: Autocomplete on search.
+  # $( '#search' ).autocomplete
+  #   source: ( request, response ) ->
+  #     $.ajax
+  #       url: ns.searchEngine + "/solr/" + ns.solrCore + "/terms"
+  #       header: { Origin: "https://www.jadesystems.ca" }
+  #       dataType: "jsonp"
+  #       data:
+  #         "terms.prefix": request.term
+  #         "terms.fl": '_text_'
+  #         rows: 10
+  #         wt: 'json'
+  #       jsonp: 'json.wrf'
+  #       success: ( data ) ->
+  #         # alert( "Good: " + data.terms.text.toString() )
+  #         response( $.grep( data.terms._text_, ( o, i ) ->
+  #           (i % 2) == 0 ))
+  #       error: ( xhr, textStatus, errorThrown ) ->
+  #         alert( "Bad: " + errorThrown )
+  #   delay: 500
+  #   minLength: 2
 
   ###
   When you get search results, put them into the page.
