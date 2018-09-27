@@ -20,7 +20,7 @@ jQuery ->
     source: ( request, response ) ->
       $.ajax
         url: ns.searchEngine + "/solr/" + ns.solrCore + "/terms"
-        header: { Origin: "http://www.jadesystems.ca" }
+        header: { Origin: "https://www.jadesystems.ca" }
         dataType: "jsonp"
         data:
           "terms.prefix": request.term

@@ -18,7 +18,7 @@ It has a quirk about the return value is an array with pairs of term, weight
         return $.ajax({
           url: ns.searchEngine + "/solr/" + ns.solrCore + "/terms",
           header: {
-            Origin: "http://www.jadesystems.ca"
+            Origin: "https://www.jadesystems.ca"
           },
           dataType: "jsonp",
           data: {

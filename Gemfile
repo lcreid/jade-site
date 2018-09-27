@@ -1,9 +1,15 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem 'nanoc'
-gem 'adsf'
-gem 'guard-nanoc'
-gem 'nokogiri'
-gem 'sass'
-gem 'coffee-script'
-gem 'kramdown'
+source "https://rubygems.org"
+
+gem "adsf"
+gem "coffee-script"
+gem "kramdown"
+gem "nanoc"
+gem "nokogiri"
+gem "sass"
+
+group :nanoc do
+  gem "guard-nanoc"
+  gem "adsf-live"
+end
