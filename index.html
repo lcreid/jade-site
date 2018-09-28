@@ -5,40 +5,70 @@ layout: home
 
 <div class="jumbotron">
   <div class="container">
-    <h1>Jade Systems</h1>
-    <p>
-      At Jade Systems, we love to put technology to work to help people get their work done, learn, or simply enjoy their life. If you've ever said, "There should be an app for this," then we can help you.
-    </p>
+    <h1 class="text-center">Jade Systems</h1>
+    <div class="row justify-content-around">
+      <div class="col-12 col-sm-8 col-lg-8">
+        <p class="text-center">
+          At Jade Systems, we love to put technology to work to help people get their work done, learn, or simply enjoy their life. If you've ever said, "There should be an app for this," then we can help you.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container">
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Software Development</h2>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">Software Development</h2>
       <p>
-        We want to change your mind about custom software development. We want to show you that it can be low-risk, high-benefit, and frustration-free. The time has never been better for technology to solve everyday problems.
-      </p>
-      <p>
+        We want to change your mind about custom software development. We want to show you that it can be low-risk, high-benefit, and frustration-free. There has never been a better time for technology to solve everyday problems.
       </p>
     </div>
-    <div class="col-md-4">
-      <h2>People</h2>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">People</h2>
       <p>
-        Our people will understand your organization and adapt our solutions to fit your needs. We don't just sell you a "best practice" that doesn't work for you.
+        Jade Systems is me, Larry Reid. I've worked in the IT field since 1978, when I was paid to be a Unix v6 system administrator at the University of Saskatchewan. I've had my own start-up, worked as an employee, and contracted to such clients as Nortel, Cognos, Canada Post, BMW America, Canada Centre for Remote Sensing, Australian Centre for Remote Sensing, HealthSouth, SourceMed, Vancouver Coastal Health, ICBC, Teck Resources, and BC Hydro.
+      </p>
+      <div class="d-none d-md-block text-center">
+        <img src="images/nortel.png" alt="Nortel Logo">
+        <img src="images/ibm-cognos.png" alt="Cognos Logo">
+        <img src="images/bmw.jpeg" alt="BMW Logo">
+        <img src="images/healthsouth.gif" alt="HealthSouth Logo">
+        <img src="images/sourcemed.png" alt="SourceMed Logo">
+        <img src="images/vch.png" alt="VCH Logo">
+        <img src="images/teck.png" alt="Teck Logo">
+        <img src="images/vbt.png" alt="VBT Logo">
+      </div>
+      <p>
+        I got a B. Sc. with High Honours in Computational Science from the University of Saskatchewan in 1980. From there, I wrote software for a few different companies, before joining the first personal computer revolution, writing software for the CP/M operating system.
       </p>
       <p>
-        <a href="{{ site.baseurl }}{% link people/larry_reid.html %}", class: "btn btn-default", role: "button">View details &raquo;</a>
+        Over the years I've been a programmer, architect, database administrator, system administrator. I was doing test driven development in the early nineties, before we even had the term. My system builds and deploys were automated -- what we now call DevOps. Later, I was a development director, and project manager, and branched into infrastructure.
+      </p>
+      <p>
+        But what motivates me most is simply to create systems that solve someone's problems. So I'm now focussing on programming again, primarily web applications, and primarily on Ruby on Rails. I'm open to contract opportunities or full-time employment.
+      </p>
+      <p class="text-center">
+        <a href="{{ site.baseurl }}{% link contact.html %}">Contact me >></a>
       </p>
     </div>
-    <div class="col-md-4">
-      <h2>Knowledgebase</h2>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">Knowledge</h2>
       <p>
-        We believe in sharing what we know and do.
-      </p>
-      <p>
-        <a href="{{ site.baseurl }}{% link knowledgebase.md %}", class: "btn btn-default", role: "button">View details &raquo;</a>
+        I believe in sharing what I know and do. I
+        <a href="https://technopragmatica.blogspot.com">blog</a>,
+        contribute to the
+        <a href="https://github.com/bootstrap-ruby/bootstrap_form">bootstrap_form gem</a>,
+        publish two other Ruby gems,
+        <a href="https://github.com/lcreid/devise-bootstrap-form">devise-bootstrap-form</a>, and
+        <a href="https://github.com/weenhanceit/gaapi">gaapi</a>
+        to query Google Analytics, and am starting a
+        <a href="{{ site.baseurl }}{% link knowledgebase.md %}">knowledge base</a>
+        here on this site.
       </p>
     </div>
   </div>

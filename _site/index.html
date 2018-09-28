@@ -40,22 +40,6 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav justify-content-between w-100">
         <li class="nav-item dropdown">
-          <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
-          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</span></a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/services/services.html">Overview</a>
-            <a class="dropdown-item" href="/services/project_management.html">Project Management</a>
-            <a class="dropdown-item" href="/services/infrastructure_analysis.html">Infrastructure Analysis</a>
-            <a class="dropdown-item" href="/services/it_consulting.html">IT Consulting</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People</span></a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/people/larry_reid.html">Larry Reid</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
           <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/knowledgebase.html">Overview</a>
@@ -63,7 +47,7 @@
             <a class="dropdown-item" href="/knowledgebase/search-engines.html">Search Engines</a>
           </div>
         </li>
-        <li><a class="nav-item" href="/contact.html">Contact Us</a></li>
+        <li class="ml-auto"><a class="nav-item" href="/contact.html">Contact Us</a></li>
       </ul>
 
       <!-- <form class="form-inline ml-auto">
@@ -91,76 +75,107 @@
     <section>
       <div class="jumbotron">
   <div class="container">
-    <h1>Jade Systems</h1>
-    <p>
-      At Jade Systems, we love to put technology to work to help people get their work done, learn, or simply enjoy their life. If you've ever said, "There should be an app for this," then we can help you.
-    </p>
+    <h1 class="text-center">Jade Systems</h1>
+    <div class="row justify-content-around">
+      <div class="col-12 col-sm-8 col-lg-8">
+        <p class="text-center">
+          At Jade Systems, we love to put technology to work to help people get their work done, learn, or simply enjoy their life. If you've ever said, "There should be an app for this," then we can help you.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container">
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Software Development</h2>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">Software Development</h2>
       <p>
-        We want to change your mind about custom software development. We want to show you that it can be low-risk, high-benefit, and frustration-free. The time has never been better for technology to solve everyday problems.
-      </p>
-      <p>
+        We want to change your mind about custom software development. We want to show you that it can be low-risk, high-benefit, and frustration-free. There has never been a better time for technology to solve everyday problems.
       </p>
     </div>
-    <div class="col-md-4">
-      <h2>People</h2>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">People</h2>
       <p>
-        Our people will understand your organization and adapt our solutions to fit your needs. We don't just sell you a "best practice" that doesn't work for you.
+        Jade Systems is me, Larry Reid. I've worked in the IT field since 1978, when I was paid to be a Unix v6 system administrator at the University of Saskatchewan. I've had my own start-up, worked as an employee, and contracted to such clients as Nortel, Cognos, Canada Post, BMW America, Canada Centre for Remote Sensing, Australian Centre for Remote Sensing, HealthSouth, SourceMed, Vancouver Coastal Health, ICBC, Teck Resources, and BC Hydro.
+      </p>
+      <div class="d-none d-md-block text-center">
+        <img src="images/nortel.png" alt="Nortel Logo">
+        <img src="images/ibm-cognos.png" alt="Cognos Logo">
+        <img src="images/bmw.jpeg" alt="BMW Logo">
+        <img src="images/healthsouth.gif" alt="HealthSouth Logo">
+        <img src="images/sourcemed.png" alt="SourceMed Logo">
+        <img src="images/vch.png" alt="VCH Logo">
+        <img src="images/teck.png" alt="Teck Logo">
+        <img src="images/vbt.png" alt="VBT Logo">
+      </div>
+      <p>
+        I got a B. Sc. with High Honours in Computational Science from the University of Saskatchewan in 1980. From there, I wrote software for a few different companies, before joining the first personal computer revolution, writing software for the CP/M operating system.
       </p>
       <p>
-        <a href="/people/larry_reid.html", class: "btn btn-default", role: "button">View details &raquo;</a>
+        Over the years I've been a programmer, architect, database administrator, system administrator. I was doing test driven development in the early nineties, before we even had the term. My system builds and deploys were automated -- what we now call DevOps. Later, I was a development director, and project manager, and branched into infrastructure.
+      </p>
+      <p>
+        But what motivates me most is simply to create systems that solve someone's problems. So I'm now focussing on programming again, primarily web applications, and primarily on Ruby on Rails. I'm open to contract opportunities or full-time employment.
+      </p>
+      <p class="text-center">
+        <a href="/contact.html">Contact me >></a>
       </p>
     </div>
-    <div class="col-md-4">
-      <h2>Knowledgebase</h2>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-12 col-sm-8 col-lg-8">
+      <h2 class="text-center">Knowledge</h2>
       <p>
-        We believe in sharing what we know and do.
-      </p>
-      <p>
-        <a href="/knowledgebase.html", class: "btn btn-default", role: "button">View details &raquo;</a>
+        I believe in sharing what I know and do. I
+        <a href="https://technopragmatica.blogspot.com">blog</a>,
+        contribute to the
+        <a href="https://github.com/bootstrap-ruby/bootstrap_form">bootstrap_form gem</a>,
+        publish two other Ruby gems,
+        <a href="https://github.com/lcreid/devise-bootstrap-form">devise-bootstrap-form</a>, and
+        <a href="https://github.com/weenhanceit/gaapi">gaapi</a>
+        to query Google Analytics, and am starting a
+        <a href="/knowledgebase.html">knowledge base</a>
+        here on this site.
       </p>
     </div>
   </div>
 </div>
 
     </section>
-    <hr>
-<footer class="text-center">
-  This site was built by Jade Systems Inc using
-  <a href="https://jekyllrb.com">Jekyll</a>.
-  Layout by <a href="https://getbootstrap.com">Bootstrap</a>.
-  <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
-  Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
-</footer>
+    <div class="fixed-bottom bg-white">
+  <hr>
+  <footer class="text-center mb-2">
+    This site was built by Jade Systems Inc using
+    <a href="https://jekyllrb.com">Jekyll</a>.
+    Layout and styling by <a href="https://getbootstrap.com">Bootstrap</a>.
+    <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
+    Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
+  </footer>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-1728165-2', 'jadesystems.ca');
-  ga('send', 'pageview');
+    ga('create', 'UA-1728165-2', 'jadesystems.ca');
+    ga('send', 'pageview');
+  </script>
 
-</script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
-<script src="/js/jadesystems_namespace.js"></script>
-<script src="/js/dev.js"></script>
-<script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+  <script src="/js/jadesystems_namespace.js"></script>
+  <script src="/js/dev.js"></script>
+  <script src="/js/search.js"></script>
+</div>
 
   </body>
 </html>
