@@ -11,27 +11,27 @@
       <ul class="navbar-nav justify-content-between w-100">
         <li class="nav-item dropdown">
           <!-- <a href="#">Link <span class="sr-only">(current)</span></a> -->
-          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ site.baseurl }}{% link services/services.html %}">Overview</a></li>
-            <li><a href="{{ site.baseurl }}{% link services/project_management.html %}">Project Management</a></li>
-            <li><a href="{{ site.baseurl }}{% link services/infrastructure_analysis.html %}">Infrastructure Analysis</a></li>
-            <li><a href="{{ site.baseurl }}{% link services/it_consulting.html %}">IT Consulting</a></li>
-          </ul>
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link services/services.html %}">Overview</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link services/project_management.html %}">Project Management</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link services/infrastructure_analysis.html %}">Infrastructure Analysis</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link services/it_consulting.html %}">IT Consulting</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a class="nav-item" href="{{ site.baseurl }}{% link people/larry_reid.html %}">Larry Reid</a></li>
-          </ul>
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link people/larry_reid.html %}">Larry Reid</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase.md %}">Overview</a></li>
-            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase/static-web-sites.md %}">Static Web Sites</a></li>
-            <li><a class="nav-item" href="{{ site.baseurl }}{% link knowledgebase/search-engines.md %}">Search Engines</a></li>
-          </ul>
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase.md %}">Overview</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase/static-web-sites.md %}">Static Web Sites</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase/search-engines.md %}">Search Engines</a>
+          </div>
         </li>
         <li><a class="nav-item" href="{{ site.baseurl }}{% link contact.html %}">Contact Us</a></li>
       </ul>
