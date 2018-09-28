@@ -6,7 +6,7 @@ layout: default
 # Static Web Sites
 A previous version of the Jade Systems web site was built with [Drupal](http://drupal.org). Drupal is a fine content management system. But with all the capability comes complexity, and with complexity, inevitably, security issues. Drupal provides frequent security updates, but I have other work to do, and updating my web site's content management system was becoming a drag.
 
-For years I thought there had to be a different way. Many web sites don't need to be interactive. They certainly don't need all the functionality in a general purpose content management system. Web sites that have as a main goal to provide information, like wikis and blogs, don't need to be interactive. Marketing sites are another example. A corporate knowledge base would be a perfect candidate.
+For years I thought there had to be a different way. Many web sites don't need to be interactive. They certainly don't need all the functionality in a general purpose content management system. Web sites that have as a main goal to provide information, like wikis and blogs, don't need to be interactive. Marketing sites are another example. A corporate knowledge base would also be a good candidate for a static site.
 
 Even for those simple types of sites, however, using basic HTML and CSS while trying to maintain a consistent look and feel across pages means a lot of repetition. That's a different kind of maintenance nightmare I also didn't want to deal with.
 
@@ -44,7 +44,7 @@ Obviously, there's a lot you can't do with a static site. You're not going to bu
 
 Even then, a static web site doesn't have to mean a simple web site. As JavaScript and browsers mature, we're putting more and more functionality back into the user's device. By combining a static web site with strategic calls to simple APIs, you can build sites that combine rich functionality, version control, backups, and robust security.
 
-A simple example is <%= link_to("how I added search", "/knowledgebase/search-engines/") %> to Jade's web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client's browser.
+A simple example is [how I added search]({{ site.baseurl }}{% link knowledgebase/search-engines.md %}) to Jade's web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client's browser.
 
 ## When to Use a Static Site
 Here are my ideas about when to consider using a static web site. The more often you answer "yes" to the following, the more likely you have a good fit for a static site:
