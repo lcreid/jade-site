@@ -30,6 +30,7 @@ github_username:  lcreid
 markdown: kramdown
 theme: minima
 plugins:
+  - jekyll-assets
   - jekyll-feed
   - jekyll-coffeescript
 
@@ -39,10 +40,13 @@ plugins:
 # If you customize this list, you have to include the old defaults.
 exclude:
   - log/
+  - Capfile
   - config/
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - README.md
+  - Vagrantfile
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/
