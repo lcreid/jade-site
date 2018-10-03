@@ -28,6 +28,8 @@ github_username:  lcreid
 
 # Build settings
 markdown: kramdown
+sass:
+  sass_dir: assets/css
 theme: minima
 plugins:
   - jekyll-assets
