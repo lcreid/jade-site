@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+gem "bootstrap"
+
 group :development do
   gem "capistrano", require: false
 end

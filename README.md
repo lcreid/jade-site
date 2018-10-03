@@ -10,4 +10,6 @@ Need [`jekyll-assets` gem](https://github.com/envygeeks/jekyll-assets). It's qui
 
 I made an `assets/css` folder and put the `application.scss` in it. It got built, but not included because it was built to the new location. Had to specify the `sass_dir` to be `assets/css` in `_config.yml` and put all the SASS files in `assets/css`.
 
+Once I had that figured out, I just removed the link to Bootstrap from the CDN, and added `@import "bootstrap";` to the end of `application.scss`. It took a few heartbeats to compile, but then everything was fine.
+
 [Get Bootstrap](https://github.com/twbs/bootstrap/archive/v4.1.3.zip).
