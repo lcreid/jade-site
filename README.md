@@ -12,4 +12,8 @@ I made an `assets/css` folder and put the `application.scss` in it. It got built
 
 Once I had that figured out, I just removed the link to Bootstrap from the CDN, and added `@import "bootstrap";` to the end of `application.scss`. It took a few heartbeats to compile, but then everything was fine.
 
+Oops. It looks like I should have put the source SASS in `_assets`.
+
+Okay. Now on to Javascript. Using the Rails gem (`jquery-rails`) didn't seem to work, but simply copying the `jquery-3.1.1.js` file into the `_assets/js` directory and changing its name to `jquery3` seems to have worked. (I could have also changed the file name in `application.js` instead).
+
 [Get Bootstrap](https://github.com/twbs/bootstrap/archive/v4.1.3.zip).
