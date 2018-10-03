@@ -1,31 +1,5 @@
 $link-colour: #54A85B !default;
 $link-hover-colour: #3C7C41 !default;
-$width: 800px;
-$padding-width: 20px;
-$sidebar-width: 160px + $padding-width + 1px;
-$main-width: $width - $sidebar-width - 3 * $padding-width;
-$browser-background: white; //rgb(236, 236, 236);
-$content-background: white !default;
-$box-shadow: rgb(128, 128, 128) !default;
-
-%heading-font {
-  font-family: 'Signika Negative', sans-serif;
-}
-
-%body-font {
-  font-family: 'Droid Sans', sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-
-  @extend %body-font;
-}
-
-body {
-  background: $browser-background;
-}
 
 // The following is to fix a known issue with Bootstrap that the top bar
 // overlaps the content. The @media avoids issues on phones and smaller
@@ -38,138 +12,11 @@ body {
   }
 // }
 
-// .content {
-//   background: $content-background;
-//   padding: 40px 20px 20px 20px;
-//   box-shadow: 2px 2px 3px $box-shadow;
-// //  position: relative;
-// }
-
-a {
-  text-decoration: none;
-}
-
-a:link,
-a:visited {
-  color: $link-colour;
-}
-
-a:hover {
-  color: $link-hover-colour;
-}
-
-ul, ol {
-  margin-left: 20px;
-}
-
-#main {
-//  position: absolute;
-
-//  top: 40px;
-//  left: 280px;
-
-  @extend .right;
-  width: $main-width;
-//  margin-top: 40px;
-
-  h1 {
-    @extend %heading-font;
-
-    font-size: 40px;
-    font-weight: normal;
-
-    line-height: 40px;
-
-    letter-spacing: -1px;
-  }
-
-  p {
-    margin: 20px 0;
-
-    font-size: 15px;
-
-    line-height: 20px;
-  }
-
-  ul, ol {
-    margin: 20px;
-  }
-
-  li {
-    font-size: 15px;
-
-    line-height: 20px;
-  }
-
-  ul li {
-//    list-style-type: square;
-  }
-}
-
-$font-size: 14px;
-
-#sidebar {
-//  position: absolute;
-
-//  top: 40px;
-//  left: 20px;
-  @extend .left;
-  width: $sidebar-width - $padding-width;
-//  margin-top: 40px;
-
-  padding: 0 $padding-width 0 0;
-
-  border-right: 1px solid #ccc;
-
-  text-align: right;
-
-  h2 {
-    @extend %heading-font;
-    text-transform: uppercase;
-
-    font-size: $font-size;
-
-    color: #333;
-
-    letter-spacing: 1px;
-
-    line-height: 20px;
-  }
-
-  ul {
-    list-style-type: none;
-    @extend %heading-font;
-
-  //  margin: 20px 0;
-    ul {
-      li {
-        font-weight: normal;
-        font-size: $font-size - 1px;
-      }
-    }
-
-    li {
-      font-weight: 700;
-      font-size: $font-size;
-
-      line-height: 20px;
-    }
-  }
+.jumbotron {
+  @extend .text-light;
 }
 
 .vertical_align_children * { vertical-align: middle; }
-
-.left {float: left;}
-.right {float: right;}
-.centre {margin-left: auto; margin-right: auto;}
-.clear {clear: both;}
-
-.centre_in_browser {
-  width: $width;
-  @extend .centre;
-}
-
-.clear { clear: both; }
 
 // Styles for the sample Infrastructure Analysis Report
 $report-font-size: 12px;
@@ -205,18 +52,6 @@ $report-font-size: 12px;
   ul, li {
     margin-top: 0;
     margin-bottom: 0;
-  }
-}
-
-.footer {
-  margin: 20px 0 10px 0;
-
-  p {
-    font-size: $font-size - 2px;
-    font-style: italic;
-    width: $width / 2;
-    @extend .centre;
-    text-align: center;
   }
 }
 
