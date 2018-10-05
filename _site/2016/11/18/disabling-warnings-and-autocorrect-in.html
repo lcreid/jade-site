@@ -88,7 +88,23 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>I finally found how to disable Rubocop messages and auto-correction on a file or individual line basis.</p> <p>I have Atom set up to run Rubocop and auto-correct my files on save. Most of the time this is very handy. I especially like how most of the time it indents my code to the standard. But I was struggling to debug some test cases, and I wanted to use Capybara’s  <code>save_and_open_page</code> to see what Capybara was actually looking at. When I saved the file, Rubocop and Atom helpfully deleted the line before I could even run the test case.</p> <p>But then I discovered this:</p>   <pre class="prettyprint"><code class=" hljs bash">save_and_open_page <span class="hljs-comment"># rubocop:disable Lint/Debugger</span></code></pre> <p>Problem solved.</p> <p>Since the <code>Lint/Debugger</code> cop is arguably not applicable to your test files, I sometimes put this at the top of a test file:</p> <pre class="prettyprint"><code class=" hljs vala"><span class="hljs-preprocessor"># rubocop:disable Lint/Debugger</span></code></pre> <p>In the above case, I could turn Rubocop back on if I needed it with:</p>   <pre class="prettyprint"><code class=" hljs vala"><span class="hljs-preprocessor"># rubocop:enable Lint/Debugger</span></code></pre> <p>This is described in the manual at <a href="http://rubocop.readthedocs.io/en/latest/configuration/#disabling-cops-within-source-code">http://rubocop.readthedocs.io/en/latest/configuration/#disabling-cops-within-source-code</a>, but I had trouble finding that section with Google.</p>
+    <p>I finally found how to disable Rubocop messages and auto-correction on a file or individual line basis.</p>
+
+<p>I have Atom set up to run Rubocop and auto-correct my files on save. Most of the time this is very handy. I especially like how most of the time it indents my code to the standard. But I was struggling to debug some test cases, and I wanted to use Capybara’s  <code class="highlighter-rouge">save_and_open_page</code> to see what Capybara was actually looking at. When I saved the file, Rubocop and Atom helpfully deleted the line before I could even run the test case.</p>
+
+<p>But then I discovered this:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>save_and_open_page # rubocop:disable Lint/Debugger
+</code></pre></div></div>
+<p>Problem solved.</p>
+
+<p>Since the <code class="highlighter-rouge">Lint/Debugger</code> cop is arguably not applicable to your test files, I sometimes put this at the top of a test file:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rubocop:disable Lint/Debugger
+</code></pre></div></div>
+<p>In the above case, I could turn Rubocop back on if I needed it with:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rubocop:enable Lint/Debugger
+</code></pre></div></div>
+<p>This is described in the manual at <a href="http://rubocop.readthedocs.io/en/latest/configuration/#disabling-cops-within-source-code">http://rubocop.readthedocs.io/en/latest/configuration/#disabling-cops-within-source-code</a>, but I had trouble finding that section with Google.</p>
+
   </div><a class="u-url" href="/2016/11/18/disabling-warnings-and-autocorrect-in.html" hidden></a>
 </article>
 

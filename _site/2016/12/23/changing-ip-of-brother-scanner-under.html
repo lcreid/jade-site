@@ -88,7 +88,22 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>We had a power outage this week. Some devices on my home network got new IP addresses when the power came back on. One of the devices that got a new IP address was my Brother MFC-9340CDW printer/scanner/fax. The printer was still working fine, but I couldn’t scan.</p> <p>The tl;dr is to remove the old configuration and set the new one:</p> <pre class="prettyprint"><code class=" hljs bash"><span class="hljs-built_in">sudo</span> brsaneconfig4 -r MFC-<span class="hljs-number">9340</span>CDW<br /><span class="hljs-built_in">sudo</span> brsaneconfig4 <span class="hljs-operator">-a</span> name=MFC-<span class="hljs-number">9340</span>CDW model=MFC-<span class="hljs-number">9340</span>CDW ip=<span class="hljs-number">192.168</span>.<span class="hljs-number">0.124</span></code></pre> <p>I got the new IP address from poking buttons on the front panel of the printer. <br>The name of the device may be different, but the above is what I had from the default setup. <br><code>brsaneconfig4 -q</code> gives all the devices supported, and also the last line is the current configuration. <br>That’s useful to see what the currently configured IP address is, according to the software on the computer.</p> <p>To figure out what was wrong with <code>simple-scan</code>, I did this in a terminal to see debugging output:</p> <pre class="prettyprint"><code class=" hljs lasso">simple<span class="hljs-attribute">-scan</span> <span class="hljs-attribute">-d</span></code></pre> <p>Another useful command is:</p>   <pre class="prettyprint"><code class=" hljs lasso">brsaneconfig4 <span class="hljs-attribute">-p</span></code></pre> <p>which runs <code>ping</code> on the scanner. However, in my case another device had the scanner’s old IP address, <br>so the <code>ping</code> appeared to be working fine.</p>
+    <p>We had a power outage this week. Some devices on my home network got new IP addresses when the power came back on. One of the devices that got a new IP address was my Brother MFC-9340CDW printer/scanner/fax. The printer was still working fine, but I couldn’t scan.</p>
+
+<p>The tl;dr is to remove the old configuration and set the new one:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo brsaneconfig4 -r MFC-9340CDW
+sudo brsaneconfig4 -a name=MFC-9340CDW model=MFC-9340CDW ip=192.168.0.124
+</code></pre></div></div>
+<p>I got the new IP address from poking buttons on the front panel of the printer. The name of the device may be different, but the above is what I had from the default setup. <code class="highlighter-rouge">brsaneconfig4 -q</code> gives all the devices supported, and also the last line is the current configuration. That’s useful to see what the currently configured IP address is, according to the software on the computer.</p>
+
+<p>To figure out what was wrong with <code class="highlighter-rouge">simple-scan</code>, I did this in a terminal to see debugging output:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>simple-scan -d
+</code></pre></div></div>
+<p>Another useful command is:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brsaneconfig4 -p
+</code></pre></div></div>
+<p>which runs <code class="highlighter-rouge">ping</code> on the scanner. However, in my case another device had the scanner’s old IP address, so the <code class="highlighter-rouge">ping</code> appeared to be working fine.</p>
+
   </div><a class="u-url" href="/2016/12/23/changing-ip-of-brother-scanner-under.html" hidden></a>
 </article>
 

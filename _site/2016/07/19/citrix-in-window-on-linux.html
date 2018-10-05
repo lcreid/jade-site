@@ -88,7 +88,16 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    [Edit: This was not the solution. It worked the first time, but now it isn't working again.]<br /><br />I was using Citrix Receiver quite successfully on Ubuntu 16.04 and Linux Mint 13 to remotely access my customer's network, but I couldn't make it start in a window. It was coming up in full screen mode. I could minimize the whole Citrix session by doing Ctrl-F2 (to tell Receiver to pass the next key to Linux), then Ctrl-Super-downarrow (Super is the "Windows" key). However, I wanted to be able to watch the Citrix session on one monitor, while I worked on other stuff on the other monitor.<br /><br />I finally found this blog that told me how to set up the Receiver config files to get Receiver to start in a window:&nbsp;<a href="http://blog.eek-a-geek.info/2014/10/citrix-receiver-for-linux-131-on-64-bit.html">http://blog.eek-a-geek.info/2014/10/citrix-receiver-for-linux-131-on-64-bit.html</a>. What it says is:<br /><br />Edit "~/.ICAClient/All_Regions.ini", replacing the line "TWIMode=*" to "TWIMode=Off".<br /><br />Edit "~/.ICAClient/wfclient.ini", adding a line "TWIMode=off" to the "[WFClient]" section, and adding a line "UseFullScreen=True" to the "[Thinwire3.0]" section.<br /><br />
+    <p>[Edit: This was not the solution. It worked the first time, but now it isn’t working again.]</p>
+
+<p>I was using Citrix Receiver quite successfully on Ubuntu 16.04 and Linux Mint 13 to remotely access my customer’s network, but I couldn’t make it start in a window. It was coming up in full screen mode. I could minimize the whole Citrix session by doing Ctrl-F2 (to tell Receiver to pass the next key to Linux), then Ctrl-Super-downarrow (Super is the “Windows” key). However, I wanted to be able to watch the Citrix session on one monitor, while I worked on other stuff on the other monitor.</p>
+
+<p>I finally found this blog that told me how to set up the Receiver config files to get Receiver to start in a window: <a href="http://blog.eek-a-geek.info/2014/10/citrix-receiver-for-linux-131-on-64-bit.html">http://blog.eek-a-geek.info/2014/10/citrix-receiver-for-linux-131-on-64-bit.html</a>. What it says is:</p>
+
+<p>Edit <code class="highlighter-rouge">~/.ICAClient/All_Regions.ini</code>, replacing the line <code class="highlighter-rouge">TWIMode=*</code> to <code class="highlighter-rouge">TWIMode=Off</code>.</p>
+
+<p>Edit <code class="highlighter-rouge">~/.ICAClient/wfclient.ini</code>, adding a line <code class="highlighter-rouge">TWIMode=off</code> to the <code class="highlighter-rouge">[WFClient]</code> section, and adding a line <code class="highlighter-rouge">UseFullScreen=True</code> to the <code class="highlighter-rouge">[Thinwire3.0]</code> section.</p>
+
   </div><a class="u-url" href="/2016/07/19/citrix-in-window-on-linux.html" hidden></a>
 </article>
 

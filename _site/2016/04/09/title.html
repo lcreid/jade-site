@@ -88,7 +88,24 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>The printer install was easy. Just follow Brother’s instructions, which at the time were at: <a href="http://support.brother.com/g/b/downloadtop.aspx?c=ca&amp;lang=en&amp;prod=mfc9340cdw_all">http://support.brother.com/g/b/downloadtop.aspx?c=ca&amp;lang=en&amp;prod=mfc9340cdw_all</a>. Brother seems to change the location of their documents. A lot of the links on the net were broken. </p> <p>The trick was when I installed on the second computer. It couldn’t find the printer. Once it woke up the printer, then I was able to install. </p> <p>(I think I saw some references to wake-on-lan being an issue. I haven’t had a chance to look into it.)</p> <p>As usual, installing the scanner was a bit of an adventure. I did the instructions here: <a href="http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;comple=on&amp;redirect=on#u13.04">http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;comple=on&amp;redirect=on#u13.04</a></p> <p>and this:</p> <pre><code>sudo usermod -a -G lp &lt;username&gt;<br />sudo usermod -a -G lp saned<br /></code></pre> <p>and rebooted, and it still didn’t work. But then I just ignored it for about eight hours and did some yard work and cooking, and scanning worked. Go figure.</p> <p>It’s sure nice to have double-sided scanning and printing. One trick with <code>xsane</code> and double sided-scanning is that you enter the number of page sides you’re going to scan, not the number of physical sheets of paper. In other words, when you’re scanning three pieces of paper double-sided, tell <code>xsane</code> that you’re scanning six pages.</p>
+    <p>The printer install was easy. Just follow Brother’s instructions, which at the time were at: <a href="http://support.brother.com/g/b/downloadtop.aspx?c=ca&amp;lang=en&amp;prod=mfc9340cdw_all">http://support.brother.com/g/b/downloadtop.aspx?c=ca&amp;lang=en&amp;prod=mfc9340cdw_all</a>. Brother seems to change the location of their documents. A lot of the links on the net were broken.</p>
+
+<p>The trick was when I installed on the second computer. It couldn’t find the printer. Once it woke up the printer, then I was able to install.</p>
+
+<p>(I think I saw some references to wake-on-lan being an issue. I haven’t had a chance to look into it.)</p>
+
+<p>As usual, installing the scanner was a bit of an adventure. I did the instructions here: <a href="http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;comple=on&amp;redirect=on#u13.04">http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;comple=on&amp;redirect=on#u13.04</a></p>
+
+<p>and this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -a -G lp &lt;username&gt;
+sudo usermod -a -G lp saned
+</code></pre></div></div>
+
+<p>and rebooted, and it still didn’t work. But then I just ignored it for about eight hours and did some yard work and cooking, and scanning worked. Go figure.</p>
+
+<p>It’s sure nice to have double-sided scanning and printing. One trick with <code class="highlighter-rouge">xsane</code> and double sided-scanning is that you enter the number of page sides you’re going to scan, not the number of physical sheets of paper. In other words, when you’re scanning three pieces of paper double-sided, tell <code class="highlighter-rouge">xsane</code> that you’re scanning six pages.</p>
+
   </div><a class="u-url" href="/2016/04/09/title.html" hidden></a>
 </article>
 

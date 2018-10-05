@@ -88,7 +88,102 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h2 id="introduction">Introduction</h2> <p>I recently switched a Rails 5.1 application’s system tests from <a href="https://github.com/teamcapybara/capybara">Capybara</a>, <a href="https://github.com/teampoltergeist/poltergeist">Poltergeist</a>, and <a href="http://phantomjs.org/">PhantomJS</a>, to Capybara, Selenium, and headless Chrome. We run the development and test environments of the application on a Vagrant box running Ubuntu 16.04 server.</p> <p>With the release of headless Chrome, <a href="https://github.com/ariya/phantomjs/issues/15105">PhantomJS is no longer being developed or maintained</a>. It also used a different browser engine that the major browsers, and I was noticing that some test cases didn’t run exactly like they would in a real browser. So when I saw that there was a <a href="https://github.com/rails/rails/pull/30930">pull request</a> in to Rails to change to Selenium and headless Chrome, I thought it was time to try it myself.</p>   <h2 id="installation">Installation</h2> <p>The first thing I did was to install Google Chrome from a Google repository, so it’s easy to get updates: </p>   <pre class="prettyprint"><code class=" hljs lasso">wget <span class="hljs-attribute">-q</span> <span class="hljs-attribute">-O</span> <span class="hljs-subst">-</span> https:<span class="hljs-comment">//dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add</span><br />echo <span class="hljs-string">'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'</span> <span class="hljs-subst">|</span> sudo tee /etc/apt/sources<span class="hljs-built_in">.</span><span class="hljs-built_in">list</span><span class="hljs-built_in">.</span>d/google<span class="hljs-attribute">-chrome</span><span class="hljs-built_in">.</span><span class="hljs-built_in">list</span><br />sudo apt<span class="hljs-attribute">-get</span> update<br />sudo apt<span class="hljs-attribute">-get</span> install google<span class="hljs-attribute">-chrome</span><span class="hljs-attribute">-stable</span></code></pre>   <h2 id="configuration">Configuration</h2> <p>(Note that this configuration will change if/when <a href="https://github.com/rails/rails/pull/30930">Rails comes with configuration for headless Chrome</a>.)</p> <p>I set up the configuration in <code>test/application_system_test_case.rb</code>. The Rails 5.1 <code>driven_by</code> allows some options to be set, but I couldn’t figure out how to set the options I needed, so I registered a separate driver for headless Chrome:</p>   <pre class="prettyprint"><code class=" hljs avrasm">  Capybara<span class="hljs-preprocessor">.register</span>_driver(:headless_chrome) do |app|<br />    capabilities = Selenium::WebDriver::Remote::Capabilities<span class="hljs-preprocessor">.chrome</span>(<br />      <span class="hljs-preprocessor"># This makes logs available, but doesn't cause them to appear</span><br />      <span class="hljs-preprocessor"># in real time on the console</span><br />      loggingPrefs: {<br />        browser: <span class="hljs-string">"ALL"</span>,<br />        client: <span class="hljs-string">"ALL"</span>,<br />        driver: <span class="hljs-string">"ALL"</span>,<br />        server: <span class="hljs-string">"ALL"</span><br />      }<br />    )<br /><br />    options = Selenium::WebDriver::Chrome::Options<span class="hljs-preprocessor">.new</span><br />    options<span class="hljs-preprocessor">.add</span>_argument(<span class="hljs-string">"window-size=1400,1200"</span>)<br />    options<span class="hljs-preprocessor">.add</span>_argument(<span class="hljs-string">"headless"</span>)<br />    options<span class="hljs-preprocessor">.add</span>_argument(<span class="hljs-string">"disable-gpu"</span>)<br /><br />    Capybara::Selenium::Driver<span class="hljs-preprocessor">.new</span>(<br />      app,<br />      browser: :chrome,<br />      desired_capabilities: capabilities,<br />      options: options<br />    )<br />  end<br /><br />  driven_by :headless_chrome</code></pre> <p>The arguments for <code>"headless"</code> and <code>"disable-gpu"</code> were necessary to make testing with headless Chrome work. I had to set the window size, because the default window size caused my application’s menu to collapse to a mobile device menu (I’m using Bootstrap 4).</p>   <h2 id="upgrade-capybara">Upgrade Capybara</h2> <p>My  <code>Gemfile</code> had the version of Capybara locked down. I found that a lot of problems went away simply by taking away the version constraint in the <code>Gemfile</code> and letting <code>bundle upgrade capybara --conservative</code> do its thing.</p>   <h2 id="fillin-doesnt-fire-change-event"><code>fill_in</code> Doesn’t Fire Change Event</h2> <p>I had some JavaScript that ran when input fields changed, via the <code>changed</code> event. I had to add a newline to the end of the input text for force the change event to fire:</p>   <pre class="prettyprint"><code class=" hljs bash">fill_<span class="hljs-keyword">in</span> <span class="hljs-string">"Fragment"</span>, with: <span class="hljs-string">"Outage B\n"</span></code></pre>   <h2 id="fillin-date-time-field-with-doesnt-work"><code>fill_in</code> Date Time Field With “” Doesn’t Work</h2> <p>Filling in a date time field with “” to clear it worked with Poltergeist/PhantomJS. With Selenium and headless Chrome it gives:</p>   <pre class="prettyprint"><code class=" hljs lasso">Selenium<span class="hljs-tag">::WebDriver</span><span class="hljs-tag">::Error</span><span class="hljs-tag">::InvalidElementStateError</span>: invalid element state: Element must be user<span class="hljs-attribute">-editable</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">to</span> clear it<span class="hljs-built_in">.</span></code></pre> <p>So I changed the places where I had to clear a date or date time field to this instead:</p>   <pre class="prettyprint"><code class=" hljs ruby">find_field(<span class="hljs-string">"Outages Before"</span>).send_keys <span class="hljs-symbol">:delete</span></code></pre>   <h2 id="fillin-date-field-with-date-works-differently"><code>fill_in</code> Date Field With Date Works Differently</h2> <p>Selenium and headless Chrome seem to process <code>fill_in</code> of a date field more like what the user would experience. My tests that worked with Poltergeist and PhantomJS didn’t work with headless Chrome and Selenium, although part of the problem may have been with the <code>change</code> event triggers I had on the date fields.</p> <p>I got the tests to work by (mysteriously) entering the date as “12312017”, in other words, in the date order used by only one country in the whole known universe. I still had to assert against dates in the format “yyyy-mm-dd”. </p> <p>I also discovered that PhantomJS and/or Poltergeist was more forgiving about date formats in asserts, so I had to change a bunch of asserts where I had used the “dd/mm/yyyy” format.</p>   <h2 id="alerts">Alerts</h2> <p>Alerts aren’t automatically dismissed, so I had to go through all my tests and put an <code>assert_accept</code> block around actions like deletes, like this:</p>   <pre class="prettyprint"><code class=" hljs livecodeserver">accept_alert <span class="hljs-built_in">do</span><br />  click_link <span class="hljs-string">"Delete"</span><br /><span class="hljs-function"><span class="hljs-keyword">end</span></span></code></pre>   <h2 id="empty-divs">Empty <code>div</code>s</h2> <p>Selenium and Chrome seem to treat an empty <code>div</code> as if it’s not visible. I had to change some selectors that were looking for an empty <code>div</code> to something like this:</p>   <pre class="prettyprint"><code class=" hljs ruby">assert_selector <span class="hljs-string">".test-home-page"</span>, <span class="hljs-symbol">visible:</span> <span class="hljs-symbol">:any</span></code></pre>   <h2 id="no-browser-logs-in-real-time-or-by-default">No Browser Logs in Real Time (or by Default)</h2> <p>Browser logs don’t appear by default, and don’t appear in real time. To show what was in the browser log, I had to put the following in the test script:</p>   <pre class="prettyprint"><code class=" hljs avrasm">puts page<span class="hljs-preprocessor">.driver</span><span class="hljs-preprocessor">.manage</span><span class="hljs-preprocessor">.get</span>_log(:browser)</code></pre> <p>To even have the browser log available at all, I had to set up the configuration as described at the beginning of this post.</p>   <h2 id="performance">Performance</h2> <p>My system tests take about 50 % longer with headless Chrome, compared to PhantomJS. </p>
+    <h2 id="introduction">Introduction</h2>
+<p>I recently switched a Rails 5.1 application’s system tests from <a href="https://github.com/teamcapybara/capybara">Capybara</a>, <a href="https://github.com/teampoltergeist/poltergeist">Poltergeist</a>, and <a href="http://phantomjs.org/">PhantomJS</a>, to Capybara, Selenium, and headless Chrome. We run the development and test environments of the application on a Vagrant box running Ubuntu 16.04 server.</p>
+
+<p>With the release of headless Chrome, <a href="https://github.com/ariya/phantomjs/issues/15105">PhantomJS is no longer being developed or maintained</a>. It also used a different browser engine that the major browsers, and I was noticing that some test cases didn’t run exactly like they would in a real browser. So when I saw that there was a <a href="https://github.com/rails/rails/pull/30930">pull request</a> in to Rails to change to Selenium and headless Chrome, I thought it was time to try it myself.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>The first thing I did was to install Google Chrome from a Google repository, so it’s easy to get updates:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt-get update
+sudo apt-get install google-chrome-stable
+</code></pre></div></div>
+
+<h2 id="configuration">Configuration</h2>
+<p>(Note that this configuration will change if/when <a href="https://github.com/rails/rails/pull/30930">Rails comes with configuration for headless Chrome</a>.)</p>
+
+<p>I set up the configuration in <code class="highlighter-rouge">test/application_system_test_case.rb</code>. The Rails 5.1 <code class="highlighter-rouge">driven_by</code> allows some options to be set, but I couldn’t figure out how to set the options I needed, so I registered a separate driver for headless Chrome:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Capybara.register_driver(:headless_chrome) do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+      # This makes logs available, but doesn't cause them to appear
+      # in real time on the console
+      loggingPrefs: {
+        browser: "ALL",
+        client: "ALL",
+        driver: "ALL",
+        server: "ALL"
+      }
+    )
+
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument("window-size=1400,1200")
+    options.add_argument("headless")
+    options.add_argument("disable-gpu")
+
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :chrome,
+      desired_capabilities: capabilities,
+      options: options
+    )
+  end
+
+  driven_by :headless_chrome
+</code></pre></div></div>
+
+<p>The arguments for <code class="highlighter-rouge">"headless"</code> and <code class="highlighter-rouge">"disable-gpu"</code> were necessary to make testing with headless Chrome work. I had to set the window size, because the default window size caused my application’s menu to collapse to a mobile device menu (I’m using Bootstrap 4).</p>
+
+<h2 id="upgrade-capybara">Upgrade Capybara</h2>
+<p>My 	<code class="highlighter-rouge">Gemfile</code> had the version of Capybara locked down. I found that a lot of problems went away simply by taking away the version constraint in the <code class="highlighter-rouge">Gemfile</code> and letting <code class="highlighter-rouge">bundle upgrade capybara --conservative</code> do its thing.</p>
+
+<h2 id="fill_in-doesnt-fire-change-event"><code class="highlighter-rouge">fill_in</code> Doesn’t Fire Change Event</h2>
+<p>I had some JavaScript that ran when input fields changed, via the <code class="highlighter-rouge">changed</code> event. I had to add a newline to the end of the input text for force the change event to fire:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fill_in "Fragment", with: "Outage B\n"
+</code></pre></div></div>
+
+<h2 id="fill_in-date-time-field-with--doesnt-work"><code class="highlighter-rouge">fill_in</code> Date Time Field With <code class="highlighter-rouge">""</code> Doesn’t Work</h2>
+<p>Filling in a date time field with <code class="highlighter-rouge">""</code> to clear it worked with Poltergeist/PhantomJS. With Selenium and headless Chrome it gives:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Selenium::WebDriver::Error::InvalidElementStateError: invalid element state: Element must be user-editable in order to clear it.
+</code></pre></div></div>
+<p>So I changed the places where I had to clear a date or date time field to this instead:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find_field("Outages Before").send_keys :delete
+</code></pre></div></div>
+
+<h2 id="fill_in-date-field-with-date-works-differently"><code class="highlighter-rouge">fill_in</code> Date Field With Date Works Differently</h2>
+<p>Selenium and headless Chrome seem to process <code class="highlighter-rouge">fill_in</code> of a date field more like what the user would experience. My tests that worked with Poltergeist and PhantomJS didn’t work with headless Chrome and Selenium, although part of the problem may have been with the <code class="highlighter-rouge">change</code> event triggers I had on the date fields.</p>
+
+<p>I got the tests to work by (mysteriously) entering the date as “12312017”, in other words, in the date order used by only one country in the whole known universe. I still had to assert against dates in the format “yyyy-mm-dd”.</p>
+
+<p>I also discovered that PhantomJS and/or Poltergeist was more forgiving about date formats in asserts, so I had to change a bunch of asserts where I had used the “dd/mm/yyyy” format.</p>
+
+<h2 id="alerts">Alerts</h2>
+<p>Alerts aren’t automatically dismissed, so I had to go through all my tests and put an <code class="highlighter-rouge">assert_accept</code> block around actions like deletes, like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>accept_alert do
+  click_link "Delete"
+end
+</code></pre></div></div>
+
+<h2 id="empty-divs">Empty <code class="highlighter-rouge">div</code>s</h2>
+<p>Selenium and Chrome seem to treat an empty <code class="highlighter-rouge">div</code> as if it’s not visible. I had to change some selectors that were looking for an empty <code class="highlighter-rouge">div</code> to something like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assert_selector ".test-home-page", visible: :any
+</code></pre></div></div>
+
+<h2 id="no-browser-logs-in-real-time-or-by-default">No Browser Logs in Real Time (or by Default)</h2>
+<p>Browser logs don’t appear by default, and don’t appear in real time. To show what was in the browser log, I had to put the following in the test script [Edit: The following has changed since I originally wrote this]:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>puts page.driver.browser.manage.logs.get(:browser)
+</code></pre></div></div>
+<p>To even have the browser log available at all, I had to set up the configuration as described at the beginning of this post.</p>
+
+<h2 id="performance">Performance</h2>
+<p>My system tests take about 50 % longer with headless Chrome, compared to PhantomJS.</p>
+
   </div><a class="u-url" href="/2017/11/01/switching-to-headless-chrome-for-rails_31.html" hidden></a>
 </article>
 
