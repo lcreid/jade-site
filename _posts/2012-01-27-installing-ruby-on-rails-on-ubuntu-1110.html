@@ -1,0 +1,13 @@
+---
+layout: post
+title: Installing Ruby on Rails on Ubuntu 11.10
+date: '2012-01-27T10:08:00.000-08:00'
+author: Larry Reid
+tags:
+- Ruby on Rails
+modified_time: '2012-02-21T22:25:07.537-08:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-7593359670339239360
+blogger_orig_url: http://technopragmatica.blogspot.com/2012/01/installing-ruby-on-rails-on-ubuntu-1110.html
+---
+
+[I've made an important change to this post -- steps 3 and 4 below are new. Apologies to anyone I've lead astray.]<br /><br />I'm back to playing with Rails a bit. NetBeans for Ruby is <a href="http://wiki.netbeans.org/RubySupport">gone</a>, so I'm going to do things the macho Rails way and just develop with an editor and a bunch of terminal windows. (One of my open source rules is "do whatever everyone else is doing." Trying to use an IDE with Rails was always a violation of that rule.)<br /><a href="http://beginrescueend.com/" target="_blank"><br class="Apple-interchange-newline" />rvm</a>&nbsp;is a great idea. I found it really helpful to read about&nbsp;<a href="http://beginrescueend.com/gemsets/basics/" target="_blank">named gemsets</a>&nbsp;early on. I had to install rvm, then install rails and a few other packages.<br /><div></div><ol><li>Install the Ruby Version Manager (rvm) from <a href="http://beginrescueend.com/rvm/install/" target="_blank">these instructions</a></li><li>Put this line at the end of your .bashrc: "[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function"</li><li>Run "rvm requirements" in a terminal window</li><li><i>Install all the packages the output of "rvm requirements" tells you to install (apt-get install...). </i>You must do this before you start installing any rubies with rvm.&nbsp;If you don't, you may have all sorts of problems crop up later, like weird messages from irb ("Readline was unable to be required, if you need completion or history install readline then reinstall the ruby.")</li><li>Do the following in a terminal window:</li></ol><code>rvm 1.9.3&nbsp;</code><br /><code>rvm --default 1.9.3&nbsp;</code><br /><code>gem install rails&nbsp;</code><br /><code>sudo apt-get install sqlite&nbsp;</code><br /><code>sudo apt-get install libsqlite3-dev&nbsp;</code><br /><code>sudo apt-get install nodejs&nbsp;</code><br /><br />Now create an application to test:<br /><br /><code>rails new testapp&nbsp;</code><br /><code>cd testapp&nbsp;</code><br /><code>rails server&nbsp;</code><br /><br />Browse to localhost:3000 and you should see the Rails default page.<br /><br /><br />

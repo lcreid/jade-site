@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Jade Systems Inc Accessing a SCSI Tape Drive from a VM</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/application-12da5280a458727aaeb8688175d798b537281705752dd2bdc70cc4e5d9c5a0c0.css">
+<script src="/assets/application-da8cbe894a308e89b1a3507e6010f3ac382cbf2d7b8ae2cdc365edd2b1a50ea9.js" type="text/javascript"></script>
+<!-- TODO: Remove the following line as see what happens -->
+<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- you don't need to keep this, but it's cool for stats! -->
+<meta name="generator" content="jekyll">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Jade Systems Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 mx-md-4">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/knowledgebase.html">Overview</a>
+            <a class="dropdown-item" href="/knowledgebase/static-web-sites.html">Static Web Sites</a>
+            <a class="dropdown-item" href="/knowledgebase/search-engines.html">Search Engines</a>
+          </div>
+        </li>
+        <li><a class="nav-item mx-md-4" href="/contact.html">Contact Us</a></li>
+      </ul>
+
+      <!-- <form class="form-inline ml-auto">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
+        </div>
+        <button type="button" class="btn btn-success" id="search-button">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div id="search-results">
+    <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+    <ul id="search-results-list"></ul>
+    <div id="pagination-outer-container">
+      <div id="pagination-inner-container" class="text-center mx-auto">
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="mt-2">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-12 col-lg-8">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Accessing a SCSI Tape Drive from a VM</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2008-04-12T01:35:00+00:00" itemprop="datePublished">Apr 12, 2008
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Larry Reid</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    I ordered my Dell SC440 with an internal DAT tape drive. <span style="font-family:courier new;">lsscsi</span> reports it as a Seagate DAT72-052. I'm pretty sure that the Ubuntu 6.06 installation picked it up automatically -- I flailed around a bit to get this working but I don't think at the end of the day that I did anything on the host to get the tape drive working.<br /><br />I'm creating a VM to run my backup. For large installations you won't want to do this, but for me I see no reason not to. And a big part of the reason I'm doing this is to see what's possible, so onward.<br /><br />To enable the tape on a VM, you have to shut down the VM. Then, in the VMWare Console select VM > Settings > Hardware > Generic SCSI, and specify the physical device to connect to. In my case it was <span style="font-family:courier new;">/dev/sg0</span>. You also have to specify the controller and target for the tape drive.<br /><br />I had no idea what the controller and target were, so on the VMWare host, I did:<br /><span style="font-family:courier new;"><blockquote>sudo apt-get install lsscsi<br />lsscsi -c</blockquote></span>and got:<br /><span style="font-family:courier new;"></span><blockquote><span style="font-family:courier new;">Attached devices:</span><br /><span style="font-family:courier new;">Host: scsi1 Channel: 00 Target: 06 Lun: 00</span><br /><span style="font-family:courier new;">  Vendor: SEAGATE  Model: DAT    DAT72-052 Rev: A16E</span><br /><span style="font-family:courier new;">  Type:   Sequential-Access                ANSI SCSI revision: 03</span><br /><span style="font-family:courier new;">Host: scsi2 Channel: 00 Target: 00 Lun: 00</span><br /><span style="font-family:courier new;">  Vendor: ATA      Model: WDC WD1600YS-18S Rev: 20.0</span><br /><span style="font-family:courier new;">  Type:   Direct-Access                    ANSI SCSI revision: 05</span><br /></blockquote>I took the channel as the controller: 0, and the target: 6. I entered all that into the VMWare Console and clicked enough okays to get out of the configuration. (I couldn't find the link in VMWare's on-line documentation for configuring generic SCSI devices, but if you type "SCSI" in the "Index" tab of the VMWare Console's help window you can find slightly more detailed instructions.)<br /><br />When I started the VM, I got a message that said, among other things: "Insufficient permissions to access the file." Since it looked like everything else was right, I did <span style="font-family:courier new;">ls -l /dev/sg0</span> on the VMWare host (not the VM) and got:<br /><span style="font-family:courier new;"></span><blockquote><span style="font-family:courier new;">crw-rw---- 1 root tape 21, 0 2008-03-23 17:23 /dev/sg0</span> </blockquote>Since VMWare was running as user <span style="font-family:courier new;">vmware</span>, I added the <span style="font-family:courier new;">vmware</span> user to the <span style="font-family:courier new;">tape</span> group:<br /><span style="font-family:courier new;"><blockquote>sudo adduser vmware tape</blockquote></span>Then I restarted the VM and it worked fine. It pays to read the error message closely.
+  </div><a class="u-url" href="/2008/04/12/accessing-scsi-tape-drive-from-vm.html" hidden></a>
+</article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="fixed-bottom bg-white">
+  <hr>
+  <footer class="text-center mb-2">
+    This site was built by Jade Systems Inc using
+    <a href="https://jekyllrb.com">Jekyll</a>.
+    Layout and styling by <a href="https://getbootstrap.com">Bootstrap</a>.
+    <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
+    Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
+  </footer>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1728165-2', 'jadesystems.ca');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+  <script src="/js/jadesystems_namespace.js"></script>
+  <script src="/js/dev.js"></script>
+  <script src="/js/search.js"></script>
+</div>
+
+  </body>
+</html>

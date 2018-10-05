@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Jade Systems Inc Making DVDs</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/application-12da5280a458727aaeb8688175d798b537281705752dd2bdc70cc4e5d9c5a0c0.css">
+<script src="/assets/application-da8cbe894a308e89b1a3507e6010f3ac382cbf2d7b8ae2cdc365edd2b1a50ea9.js" type="text/javascript"></script>
+<!-- TODO: Remove the following line as see what happens -->
+<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- you don't need to keep this, but it's cool for stats! -->
+<meta name="generator" content="jekyll">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Jade Systems Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 mx-md-4">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/knowledgebase.html">Overview</a>
+            <a class="dropdown-item" href="/knowledgebase/static-web-sites.html">Static Web Sites</a>
+            <a class="dropdown-item" href="/knowledgebase/search-engines.html">Search Engines</a>
+          </div>
+        </li>
+        <li><a class="nav-item mx-md-4" href="/contact.html">Contact Us</a></li>
+      </ul>
+
+      <!-- <form class="form-inline ml-auto">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
+        </div>
+        <button type="button" class="btn btn-success" id="search-button">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div id="search-results">
+    <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+    <ul id="search-results-list"></ul>
+    <div id="pagination-outer-container">
+      <div id="pagination-inner-container" class="text-center mx-auto">
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="mt-2">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-12 col-lg-8">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Making DVDs</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2011-05-23T17:30:00+00:00" itemprop="datePublished">May 23, 2011
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Larry Reid</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    My son's class at school raised and released some salmon this spring, and he had a project to produce a video about it. I offered to edit the raw video together. That spun into a project where I ended up putting together four short videos. Then I put them all on one DVD with a menu. Of course, it wasn't easy. It turned into another episode of all my spare time for two weeks being spent trying to do something useful with a computer.<br /><br />First I had to find the right tools for Ubuntu (10.04 in my case). It turns out that Kino, the video editor I had used before, is no longer under active development. It looks like everyone is using <a href="http://www.openshotvideo.com/">OpenShot</a> now. It's in the Ubuntu repository, but I found there were sufficient new features with the more recent version that I followed the <a href="http://www.openshot.org/ppa/">instructions</a> to get it from their PPA repository.<br /><br />I found OpenShot to be quite intuitive. There's also pretty good <a href="http://www.openshotusers.com/help/1.3/en/">documentation</a>. I think I observed a few random crashes, so it's worthwhile to remember to save your work frequently. There is an autosave feature as well, but you have to find it and turn it on. It isn't on by default.<br /><br />OpenShot will take your completed video project and turn it into a DVD image ready to burn. That's very slick. My earlier attempts at producing DVDs led to a lot of command line fiddling, and I found it very easy to burn DVDs that didn't actually work. OpenShot made it easy.<br /><br />The next part of my challenge was to put four videos on the DVD and stick a menu on the front. I found documentation <a href="http://www.tappin.me.uk/Linux/dvd.html#menus">here</a> and <a href="http://radagast.bglug.ca/linux/dvd_authoring/dvd_authoring.html">here</a> and elsewhere on how to do it (the <a href="http://floatinginspace.za.org/spumux/spumux.html">colour scheme</a> is a killer). However, it turns out that making DVD menus is very picky and error prone, at least for me. I never got anything working consistently.<br /><br />Finally I found <a href="http://www.dvdstyler.de/en/">DVD Styler</a>. Again, it's in the Ubuntu repository so it's easy to install. It has a GUI and lets you set up a menu, including automatically doing the typical "Play all or episode selection" scenario if you have multiple videos.<br /><br />There were a couple of tricks I discovered along the way:<br /><br /><ul><li>Some of the original videos were shot in HD. OpenShot can't deal with HD. I had to use ffmpeg to convert the format to ordinary MPEG-2 video ("ffmpeg -i input.mp4 -target ntsc-dvd -y output.mpg" if you're making a DVD for North America)</li><li>OpenShot by default makes a DVD. You don't want that when you're planning to use DVD Styler to make a menu. I had to go back and re-export my videos from OpenShot as "mpeg2" videos</li><li>DVD Styler sets up the DVD menu buttons to use "auto" navigation. That didn't work on my cheap DVD player. I had to go into the properties window for each menu button, and under "focus", change the target of each button to the explicit value I needed (this description will make sense when you look at the properties window for the buttons)</li></ul>DVD Styler lets you simply preview the menu, create an ISO file, or go straight to burning the DVD. I created the ISO so I could test it with video players (I used VLC and mplayer). Using the players didn't expose the menu button problem I mention in the second bullet above, but otherwise was a worthwhile step.<br /><br />I didn't try to do anything but the default menu background in DVD Styler. If you've done it, please comment here with your experience.<br /><br />Unfortunately, I can't post the final product. Since it was done at school, they're very careful not to release anything publicly when they don't have all the parents' permission. Makes sense, of course.
+  </div><a class="u-url" href="/2011/05/23/making-dvds.html" hidden></a>
+</article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="fixed-bottom bg-white">
+  <hr>
+  <footer class="text-center mb-2">
+    This site was built by Jade Systems Inc using
+    <a href="https://jekyllrb.com">Jekyll</a>.
+    Layout and styling by <a href="https://getbootstrap.com">Bootstrap</a>.
+    <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
+    Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
+  </footer>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1728165-2', 'jadesystems.ca');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+  <script src="/js/jadesystems_namespace.js"></script>
+  <script src="/js/dev.js"></script>
+  <script src="/js/search.js"></script>
+</div>
+
+  </body>
+</html>

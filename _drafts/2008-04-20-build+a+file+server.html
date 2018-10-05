@@ -1,0 +1,11 @@
+---
+layout: post
+title: Build a File Server
+date: '2008-04-20T08:19:00.000-07:00'
+author: Larry Reid
+tags: 
+modified_time: '2008-04-20T08:34:17.382-07:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-7846317749725899793
+---
+
+This post is meant to capture a complete build of an Ubuntu 6.06 general-purpose file server in a way the minimizes the amount of work.<br /><ol><li>Build the basic VM</li><li>Log in to console<br /></li><li>Edit /etc/dhcp3/dhclient.conf to send the host name<br /></li><li>ifdown and ifup</li><li>Install ssh</li><li>Log in from a decent shell (e.g. Putty)<br /></li><li>Edit /etc/apt/sources.lst to get from universe</li><li>sudo apt-get update</li><li>sudo apt-get upgrade # this takes some time<br /></li><li>Install a whole bunch of things sudo apt-get install ntp-simple snmpd snmp build-essential linux-headers-$(uname -r) bacula-client<br /><br /></li></ol>

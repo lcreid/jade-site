@@ -1,0 +1,12 @@
+---
+layout: post
+title: How to Move Some Servers
+date: '2014-11-12T00:53:00.000-08:00'
+author: Larry Reid
+tags: 
+modified_time: '2014-11-12T00:53:09.821-08:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-9051116400798482851
+blogger_orig_url: https://www.blogger.com/comment.g?blogID=5778824359157275227&postID=9051116400798482851
+---
+
+Let's break it down further, and in the process, look at the things that are involved in moving a server or group of servers from one place to another.<br /><br />First, the fundamental constant that I've run into is that you're going to change IP addresses. The network guys don't like to have subnets that span two geographically distinct data centres. This may change in the future, or your network group may be different, but this has been my experience.<br /><br />The simple case is to move a single, stand-alone server from one data centre to another, electronically. It might be a simple web app deployed to a LAMP stack on a single server, or a Windows box running all three tiers of a 90s-era 3-tier client/server application.<br /><br />Here's what you have to do. Each step below can be expanded into a post by itself, but at a high level:<br /><ol><li>Sometime before move day, change the TTL on all the DNS entries for the server that's going to move, to 5 minutes (300 seconds). Ideally, you've changed to TTL on all DNS entries to 5 minutes&nbsp; before you started the move, but that topic deserves its own post</li><li>Set up a new server in the destination data centre</li><li>Copy the server from the original data centre to the destination data centre. Typically this can be done while the server is running, because you don't need to have a completely consistent copy</li><li>Open any necessary firewall rules for the new IP address for the server</li><li>Shut down the original server</li><li>Change the DNS entry or entries for the server. This will take 2 and 1/2 minutes to take effect, on average</li><li>As soon as the server is down, do a final copy of the server</li><li>As soon as the copy is done, bring the destination server up</li><li>Test it</li><li>Proclaim it live</li></ol>(The above ignores all communication and business readiness, which, depending on the application and the business, may be a large and complex task in itself.)<br /><br />Here's the steps in more detail.

@@ -1,0 +1,12 @@
+---
+layout: post
+title: Screencasting with Linux Mint 13
+date: '2013-08-05T08:10:00.001-07:00'
+author: Larry Reid
+tags: 
+modified_time: '2013-08-05T08:10:58.863-07:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-1450572720449331831
+blogger_orig_url: https://www.blogger.com/comment.g?blogID=5778824359157275227&postID=1450572720449331831
+---
+
+<br />Useful page: <a href="http://ubuntuforums.org/showthread.php?p=8746719#post8746719">http://ubuntuforums.org/showthread.php?p=8746719#post8746719</a><br /><br />Finally, I did:<br /><br />apt-get install libavcodec-extra-53<br /><br />This let me use libx254, which gave crystal clear captures.<br /><br />The command line with the libx254 requires -r and -s twice. ???<br /><br />avconv wasn't installed on Marc's computer:<br /><br />sudo apt-get install libav-tools<br /><br />Don't use xwininfo -frame. It gets too large an area. How do I get rid of the decorations? Partially there, but then in Minecraft it actually leaves off the top of the window. No, that was just my problem. All good now.<br /><br />wmctrl: sudo apt-get install wmctrl<br /><br />For GTK2: gem install --no-rdoc --no-ri gdk_pixbuf2 cairo glib2 gtk2<br /><br />The gem install doesn't work with the 1.8.7 ruby and gem. I installed ruby1.9.1, which is really 1.9.3, and gem 1.8, which is really 1.8.something and works with 1.9.3. Then I had to update-alternatives --config ruby and update-alternatives --config gem. Using ruby was a very bad thing. 

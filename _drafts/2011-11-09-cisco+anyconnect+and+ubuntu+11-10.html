@@ -1,0 +1,11 @@
+---
+layout: post
+title: Cisco AnyConnect and Ubuntu 11.10
+date: '2011-11-09T19:00:00.000-08:00'
+author: Larry Reid
+tags: 
+modified_time: '2011-11-09T19:00:07.988-08:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-4768923789767175401
+---
+
+I need to use Cisco AnyConnect to establish a VPN to my current client's network when I'm working off-site. It's worked well for me from Ubuntu 10.04 to 11.04, but when I updated to 11.10, it broke.<br /><br />What actually happens is that the AnyConnect client presents me with a dialogue to get my username and password. That works fine, but then I'm supposed to be presented with a challenge question. The challenge question doesn't appear. I only get the box to put the answer in. So I can't get logged in because there's no way to answer the challenge without knowing the question.<br /><br />Googling didn't find an answer. But one thing I stumbled on is that it looks like the default Java in this version is OpenJava, not Oracle's. Hmmm.<br /><br />

@@ -1,0 +1,13 @@
+---
+layout: post
+title: Bacula Install Revisited
+date: '2009-03-26T07:51:00.000-07:00'
+author: Larry Reid
+tags:
+- Backups
+- Bacula
+modified_time: '2010-02-21T11:15:17.130-08:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-1473422697697902319
+---
+
+<ol><li>Install MySQL first, otherwise the Bacula installation won't create an example /etc/bacula/bacula-dir.conf file (If you install Bacula before installing MySQL, uninstall Bacula with apt-get purge bacula-directory-mysql to get rid of everything)</li><li>bacula-dir.conf (at least the one installed on Ubuntu) has lines in it that say, "FDAddress =". Remove those lines completely or remote clients won't be able to connect to the director. You'll get a "connection refused" message. A hint to test is just try to telnet to port 9101 on your backup server <span style="font-style: italic;">from another computer</span>. If you get "connection refused" and there's no firewall in the way, your problem might be that you have "FDAddress =" in the configuration file</li><li>Another problem is that all the ".conf" files have lines in them that say "DirAddress=". Take these out. This will cause "connection refused" messages too. To see if this is the problem, try "netstat -l" on the bacula director and storage host. If the output from netstat shows that the listeners on ports 9101 or 9103 are listening only to localhost, then check all your ".conf" files for this problem (or perhaps the problem under 2.)</li><li>This may be computer magic, but I swear I had to restart the director after getting one connection failure, or it wouldn't work even if I had corrected the ".conf" file and done a reload in bconsole</li><li>The key four parameters to get tape rotation working automatically include "Volume Use Duration" which you set to the time you want to a tape. E.g. if you have three sets of tapes and you use each set for a week, then set the Volume Use Duration to 1 week </li><li>The Windows client install was broken and the client configuration has to be modified using Notepad or some other editor. At least it was in February 2009<br /></li></ol>

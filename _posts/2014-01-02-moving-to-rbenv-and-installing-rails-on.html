@@ -1,0 +1,14 @@
+---
+layout: post
+title: Moving to rbenv and Installing Rails on LInux Mint 13
+date: '2014-01-02T06:38:00.001-08:00'
+author: Larry Reid
+tags:
+- rbenv
+- Ruby on Rails
+modified_time: '2014-01-02T06:38:58.714-08:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-2438295518403207404
+blogger_orig_url: http://technopragmatica.blogspot.com/2014/01/moving-to-rbenv-and-installing-rails-on.html
+---
+
+I'm back to doing a bit of Rails. As always, the world has moved on. Rails is at 4.0.2, and Ruby 2.0 is out. The Rails folks are recommending <a href="https://github.com/sstephenson/rbenv" target="_blank">rbenv</a> to manage different Ruby versions and their gems. I knew I still had some learning to do to be using <a href="http://rvm.io/" target="_blank">rvm</a> properly, so I decided to invest the learning time in learning rbenv, since that's what the mainstream was using.<br /><br />First, I had to remove the lines at the end of my ~/.bashrc, ~/.profile, and ~/.bash_profile, and restart all my terminal windows. <br /><br />I followed the rbenv installation instructions here: <a href="https://github.com/sstephenson/rbenv#installation">https://github.com/sstephenson/rbenv#installation</a>, including the optional <a href="https://github.com/sstephenson/ruby-build#installing-as-an-rbenv-plugin-recommended" target="_blank">ruby-build installation</a>.<br /><br />Then, I did:<br /><br />rbenv install -l<br /><br />that shows 2.0.0-p353 as the newest production version of MRI. So I did: <br /><br />rbenv install 2.0.0-p353<br />rbenv rehash # Either this or the next was necessary to avoid trying to install Rails in the system gem directories.<br />rbenv global 2.0.0-p353 <br />gem install rails<br />rbenv rehash # Don't forget this again<br /><br />Now I was ready to test a new application: <br /><br />rails new example<br />cd example<br />rails server<br /><br />Then I pointed a browser to: http://localhost:3000, and voilà.<br /><br />I'm not sure I want to leave the rbenv global in place... 

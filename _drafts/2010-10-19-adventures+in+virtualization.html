@@ -1,0 +1,13 @@
+---
+layout: post
+title: Adventures in Virtualization
+date: '2010-10-19T18:28:00.001-07:00'
+author: Larry Reid
+tags:
+- VirtualBox
+- Virtualization
+modified_time: '2010-10-19T18:51:19.178-07:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-4632042637247160515
+---
+
+Scenario: A Windows XP VMware VM used to run iTunes to sync an iPhone, and Quickbooks.<br /><br />Converted to a KVM qcow2 file -- adventure in itself.<br /><br />Qemu/KVM doesn't support USB 2, which means it can't support the iPhone. It was fine with Quickbooks.<br /><br />Here's what I had to do:<br /><br /><ol><li>mergeide.reg</li><li>Convert the file from qcow2 to ovi</li><li>Set the network adapter to Intel PRO/1000 MT Desktop (NAT)</li><li>Create a new VM in VirtualBox. When you get to the part about defining the storage for the VM, select the ovi file</li><li>Repair the installation of Windows XP</li><li>Activate XP by phone, since the network is broken. No need to talk to a human. Just use the touch tone phone</li><li>Log in</li><li>I didn't have a network adapter in Windows so I had no network</li><li>Delete the VMware network driver</li><li>Install the Guest Additions</li><li>Set up a shared folder, meaning you make a folder on the host accessible to the Windows guest</li><li>Use a browser on the host to download pro2kxp.exe from the internet to the shared folder. <a href="http://download.cnet.com/PRO2KXP-exe/3000-2112_4-196642.html">CNET should be a reliable source</a></li><li>Connect to the shared folder in the guest</li><li>In the XP guest, run&nbsp;pro2kxp.exe (it's the installer for the driver)</li></ol>You should now have a workable system.<br /><br />My Quickbooks installation was broken after this.

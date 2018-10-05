@@ -1,0 +1,13 @@
+---
+layout: post
+title: Can't Run VMWare Server 2 Management Interface Part Too Many
+date: '2010-08-02T10:44:00.001-07:00'
+author: Larry Reid
+tags:
+- VMWare
+- Ubuntu
+modified_time: '2010-08-02T18:41:21.748-07:00'
+blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-960117881631841801
+---
+
+about:config<br /><br />Find securitiy.enable.ssl2 and set it to true.<br /><br />It worked for me without a restart.<br /><br />Another thing to watch for: If you're trying several machines, make sure you log out of one VM management session before trying another. Don't just close the tab or the browser. You need to click on "log out" in the upper right area of the window.

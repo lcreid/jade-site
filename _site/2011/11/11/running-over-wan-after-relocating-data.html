@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Jade Systems Inc Running Over the WAN After Relocating a Data Centre</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/application-12da5280a458727aaeb8688175d798b537281705752dd2bdc70cc4e5d9c5a0c0.css">
+<script src="/assets/application-da8cbe894a308e89b1a3507e6010f3ac382cbf2d7b8ae2cdc365edd2b1a50ea9.js" type="text/javascript"></script>
+<!-- TODO: Remove the following line as see what happens -->
+<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- you don't need to keep this, but it's cool for stats! -->
+<meta name="generator" content="jekyll">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Jade Systems Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 mx-md-4">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/knowledgebase.html">Overview</a>
+            <a class="dropdown-item" href="/knowledgebase/static-web-sites.html">Static Web Sites</a>
+            <a class="dropdown-item" href="/knowledgebase/search-engines.html">Search Engines</a>
+          </div>
+        </li>
+        <li><a class="nav-item mx-md-4" href="/contact.html">Contact Us</a></li>
+      </ul>
+
+      <!-- <form class="form-inline ml-auto">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
+        </div>
+        <button type="button" class="btn btn-success" id="search-button">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div id="search-results">
+    <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+    <ul id="search-results-list"></ul>
+    <div id="pagination-outer-container">
+      <div id="pagination-inner-container" class="text-center mx-auto">
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="mt-2">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-12 col-lg-8">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Running Over the WAN After Relocating a Data Centre</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2011-11-11T16:06:00+00:00" itemprop="datePublished">Nov 11, 2011
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Larry Reid</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    My current data centre relocation has us moving the data centre about 400 kms away from its current location. This has resulted in a total round-trip change in latency of 6 ms. We implemented WAN acceleration in certain locations to address the issue, and we've learned some lessons in the process. Lessons learned is what this post is about.<br /><br />We have offices all over the province, so not everyone sees the 6 ms change in latency as a negative. Many users are now closer to the data centre than they were before, and we always had users who had worse than 6 ms latency to our data centre. That gave us a lot of confidence that everything would be fine after the relocation.<br /><br />However, the old data centre location was the head office, so a large number of users are now experiencing latency where they never did before, including senior management. Most of the remote sites were much smaller than head office. <br /><br />The one or two issues we've had up to recently were due to our phased approach to moving. In one case we had to move a shared database server without moving all the application servers that used it. After the move, we had to do a quick move of one application server, because we discovered it just couldn't live far from its database server.<br /><br />That changed recently. Like many organizations, we have shared folders on Windows file shares. Windows file shares are generally considered a performance risk for data centre relocations when latency changes. In preparation, we implemented WAN acceleration technology.<br /><br />We moved the main file share, and by about 10 AM we were experiencing lots of calls to the help desk about slow performance. After a hour or two of measuring and testing, we decided to turn off WAN acceleration to improve the performance. Indeed, the calls to help desk stopped after turning off the WAN acceleration.<br /><br />Analysis showed that the Windows file share was using SMB signing. SMB signing not only prevents the WAN accelerator from doing its job, but the number of log messages being written by the WAN accelerator may have actually been degrading performance to worse than an un-accelerated state.<br /><br />So we turned off SMB signing, and tried again a few days later. No luck. Around 9:30 AM we started to get lots of calls, and again we turned off the WAN acceleration. We're lucky that performance is acceptable even without WAN acceleration (for the time being -- we'll need it soon).<br /><br />We're still working this issue, so I don't know what the final solution is. I'll update this post when I know.<br /><br />A non-technical lesson learned: If I were to implement WAN acceleration again, I'd get all the silos in a room in the planning stages, before I even bought anything. I'd make the network people, Windows administrators, and storage administrators understand each others' issues. I would have the WAN accelerator vendor and the storage device vendor at the table as well. And I'd make everyone research the topic using Google so we could find out what issues other people ran into.<br /><br />Oh, and one final lesson learned: Bandwidth hasn't been an issue at all. In this day and age, 1 Gbps WAN connections are within the reach of a medium-sized organization's budget. We're finding 1 Gbps is more than enough bandwidth, even with the large data replication demands of the our project. And those demands will go away once the data centre is fully relocated.<br /><br />
+  </div><a class="u-url" href="/2011/11/11/running-over-wan-after-relocating-data.html" hidden></a>
+</article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="fixed-bottom bg-white">
+  <hr>
+  <footer class="text-center mb-2">
+    This site was built by Jade Systems Inc using
+    <a href="https://jekyllrb.com">Jekyll</a>.
+    Layout and styling by <a href="https://getbootstrap.com">Bootstrap</a>.
+    <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
+    Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
+  </footer>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1728165-2', 'jadesystems.ca');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+  <script src="/js/jadesystems_namespace.js"></script>
+  <script src="/js/dev.js"></script>
+  <script src="/js/search.js"></script>
+</div>
+
+  </body>
+</html>

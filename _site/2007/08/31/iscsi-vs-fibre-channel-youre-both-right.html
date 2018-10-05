@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Latest compiled and minified CSS -->
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Jade Systems Inc iSCSI vs. Fibre Channel - You're Both Right</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/application-12da5280a458727aaeb8688175d798b537281705752dd2bdc70cc4e5d9c5a0c0.css">
+<script src="/assets/application-da8cbe894a308e89b1a3507e6010f3ac382cbf2d7b8ae2cdc365edd2b1a50ea9.js" type="text/javascript"></script>
+<!-- TODO: Remove the following line as see what happens -->
+<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700|Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- you don't need to keep this, but it's cool for stats! -->
+<meta name="generator" content="jekyll">
+
+  </head>
+  <body>
+    <div class="container-fluid">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Jade Systems Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 mx-md-4">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/knowledgebase.html">Overview</a>
+            <a class="dropdown-item" href="/knowledgebase/static-web-sites.html">Static Web Sites</a>
+            <a class="dropdown-item" href="/knowledgebase/search-engines.html">Search Engines</a>
+          </div>
+        </li>
+        <li><a class="nav-item mx-md-4" href="/contact.html">Contact Us</a></li>
+      </ul>
+
+      <!-- <form class="form-inline ml-auto">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control" id="search" name="query" value="" autocomplete="off" />
+        </div>
+        <button type="button" class="btn btn-success" id="search-button">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div id="search-results">
+    <div id="clear-results" class="clear-button" style="display: block;">&nbsp;</div>
+    <ul id="search-results-list"></ul>
+    <div id="pagination-outer-container">
+      <div id="pagination-inner-container" class="text-center mx-auto">
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="mt-2">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-12 col-lg-8">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">iSCSI vs. Fibre Channel - You&#39;re Both Right</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-08-31T14:27:00+00:00" itemprop="datePublished">Aug 31, 2007
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Larry Reid</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    Reading another <a href="http://www.eweek.com/article2/0,1759,2172315,00.asp?kc=EWRSS03129TX1K0000606">article</a> from an expert who provides less than useful information has finally prompted me to try to provide useful guidance for IT managers of 50 to 1,000 diverse servers running a variety of applications.<br /><br /><a href="http://en.wikipedia.org/wiki/Iscsi"><span class="blsp-spelling-error" id="SPELLING_ERROR_0">iSCSI</span></a> vs. <a href="http://en.wikipedia.org/wiki/Fibre_channel">fibre channel</a> (<span class="blsp-spelling-error" id="SPELLING_ERROR_1">FC</span>) is a classic technology debate with two camps bombarding each other mercilessly with claims that one or the other is right. The reason the debate is so heated and long lived is because there isn't a right answer: there are different situations in which each one is better than the other. Here's how to figure out what's best for you:<br /><br />Start with the assumption that you'll use <span class="blsp-spelling-error" id="SPELLING_ERROR_2">iSCSI</span>. It's less expensive, so if it does what you need, it should be your choice. It's less expensive at all levels: The switches and cables enjoy the <span class="blsp-spelling-error" id="SPELLING_ERROR_3">ecnomy</span> of scale of the massive market for <span class="blsp-spelling-error" id="SPELLING_ERROR_4">IP</span> networking. You already have staff who know how to manage <span class="blsp-spelling-error" id="SPELLING_ERROR_5">IP</span> networks. You already have a stock of Cat 6 cables hanging in your server rooms or network closets.<br /><br />If you have mostly commodity servers, they transfer data to and from direct-attached storage at less than <span class="blsp-spelling-error" id="SPELLING_ERROR_6">gigabit</span> speeds. <span class="blsp-spelling-error" id="SPELLING_ERROR_7">Gigabit</span> <span class="blsp-spelling-error" id="SPELLING_ERROR_8">iSCSI</span> is fine. If you have a lot of servers, you have to size the switches correctly, but you have to do that with <span class="blsp-spelling-error" id="SPELLING_ERROR_9">FC</span> as well, and the <span class="blsp-spelling-error" id="SPELLING_ERROR_10">FC</span> switch will be more expensive.  Implement jumbo frames so backups go quickly.<br /><br />Just because you're using <span class="blsp-spelling-error" id="SPELLING_ERROR_11">iSCSI</span> doesn't mean you're running your storage network over the same cables and switches as your data centre LAN. In fact, you probably aren't. The cost saving doesn't come from sharing the existing LAN, it comes from the lower cost per port and the reduced people cost (skill sets, training, availability of administrators in the labour market) of using the same technology. As long as your storage and general-purpose networks are not sharing the same physical network, a lot of the criticisms of <span class="blsp-spelling-error" id="SPELLING_ERROR_12">iSCSI</span> evaporate.<br /><br />If you have large, specialized servers that can and do need to sustain high data transfer rates, then definitely look at <span class="blsp-spelling-error" id="SPELLING_ERROR_13">FC</span>. Be sure you're measuring (not just guessing) that you need the data transfer rates.<br /><br />If you have a large farm of physical servers running a huge number of virtual machines (<span class="blsp-spelling-error" id="SPELLING_ERROR_14">VMs</span>), look at <span class="blsp-spelling-error" id="SPELLING_ERROR_15">FC</span>. My experience is that virtual machine infrastructures tend to be limited by RAM on the physical servers, but your environment may be different. You may especially want to think about how you <a href="http://technopragmatica.blogspot.com/2007/04/virtualization-theres-gotta-be-catch.html">back up your <span class="blsp-spelling-error" id="SPELLING_ERROR_16">VMs</span></a>. You may not need the <span class="blsp-spelling-error" id="SPELLING_ERROR_17">FC</span> performance during the day, but when backups start, watch out. It's often the only time of day when your IT infrastructure actually breaks a sweat.<br /><br />You might look at a <span class="blsp-spelling-error" id="SPELLING_ERROR_18">FC</span> network between your backup media servers and backup devices, especially if you already have an <span class="blsp-spelling-error" id="SPELLING_ERROR_19">FC</span> network for one of the reasons above.<br /><br />Yes, <span class="blsp-spelling-error" id="SPELLING_ERROR_20">FC</span> will give you higher data transfer rates, but only if your servers and storage devices can handle it, and few today go much beyond one <span class="blsp-spelling-error" id="SPELLING_ERROR_21">gigabit</span>. <span class="blsp-spelling-error" id="SPELLING_ERROR_22">FC</span> will guarantee low latency so your servers won't do their equivalent of "Device not ready, Abort, Retry, Ignore?"<br /><br />The challenge for an IT manager, even (or especially) those like me who have a strong technical background, is that it's easy to get talked into spending too much money because you <span style="font-style: italic;">might </span>need the performance or low latency. The problem with that thinking is that you spend too much money on your storage network, and you don't have the money left over to, for example, mirror your storage, which may be far more valuable to your business.<br /><br />A final warning: neither technology is as easy to deal with as the vendor would have you believe (no really?). Both will give you headaches for some reason along the way. If it wasn't hard, we wouldn't get the big bucks, would we?
+  </div><a class="u-url" href="/2007/08/31/iscsi-vs-fibre-channel-youre-both-right.html" hidden></a>
+</article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="fixed-bottom bg-white">
+  <hr>
+  <footer class="text-center mb-2">
+    This site was built by Jade Systems Inc using
+    <a href="https://jekyllrb.com">Jekyll</a>.
+    Layout and styling by <a href="https://getbootstrap.com">Bootstrap</a>.
+    <!-- Search by <%= link_to("Solr", "http://lucene.apache.org/solr", target: "_blank") %>.
+    Crawl by <%= link_to("Nutch", "http://nutch.apache.org/", target: "_blank") %>. -->
+  </footer>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1728165-2', 'jadesystems.ca');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+  <script src="/js/jadesystems_namespace.js"></script>
+  <script src="/js/dev.js"></script>
+  <script src="/js/search.js"></script>
+</div>
+
+  </body>
+</html>
