@@ -88,7 +88,64 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <span style="font-weight: bold;"></span>I'm building a web site using Drupal 6 for my son's school's parent advisory council. The idea of the site is to facilitate community participation. Since we're a volunteer group and we aren't at the same workplace every day, I thought screencasts might be a great way to help people learn how to use the site.<br /><br />This post covers the technical how-to for screencasts with Ubuntu 8.10 on a Lenovo x300. When we get some feedback about whether the screencasts are helpful, I'll post about the social part of the experience.<br /><br />It took me an afternoon and a morning of thrashing to get everything working. Here's what I did:<br /><ol><li>Install gtk-recordmydesktop and gnome-alsamixer:</li><pre>sudo apt-get install gtk-recordmydesktop gnome-alsamixer</pre><li>Open Applications-> Sound &amp; Video-> GNOME ALSA Mixer and make sure the microphone is recording and isn't muted. The controls you have available in the ALSA Mixer depend on your sound hardware, so you may have to do some research on your own to find the right settings for your sound card. At this point, you should be able to record sound and video with RecordMyDesktop (Applications-> Sound &amp; Video-> gtk_recordMyDesktop)<br /></li><li>If you find that the sound stutters on playing back your screencast, run recordmydesktop from a terminal window<pre>recordmydesktop</pre>If you see "Broken pipe: Overrun occurred.", the problem is when you record the screencast, not on playback. I installed the Jack audio server and that fixed it<br /></li></ol>To install Jack and use Jack,<br /><ol><li>Install (I think this is right -- I installed using the Synaptic GUI)<pre>sudo apt-get install jackd libjack-dev</pre>Note that including the development library (libjack-dev) is very important. If you don't include it, you'll get and error when you start recording with RecordMyDesktop ("<span>dlopen/dlsym error on libjack.so")</span></li><li>Do Applications-> Sound &amp; Video-> JACK Control</li><li>Click on Start in the JACK window</li><li>Do Applications-> Sound &amp; Video-> gtk_recordMyDesktop</li><li>Click on Advanced</li><li>Click on the Sound tab and make it look like this<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://4.bp.blogspot.com/_O0zu9v4qHys/ScK7qD6TyvI/AAAAAAAACJk/hUfLiT8ZWps/s1600-h/Screenshot-recordMyDesktop:+Advanced.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 213px; height: 400px;" src="http://4.bp.blogspot.com/_O0zu9v4qHys/ScK7qD6TyvI/AAAAAAAACJk/hUfLiT8ZWps/s400/Screenshot-recordMyDesktop:+Advanced.png" alt="" id="BLOGGER_PHOTO_ID_5315016841529379570" border="0" /></a></li><li>Close the window</li><li>Record the screencast (Select Window if you want, then click Record)</li><li>When you're done, <span style="font-style: italic;">stop Jack and Quit from the control window before you try to play back the screencast.</span> I found that playback would freeze up if Jack was still running. This is a moderately big nuisance, but I haven't found a way to make it work with Jack open.<br /></li></ol>recordmydesktop creates a video file in .ogv format, which isn't a commonly installed codec on Windows Media Player or Quicktime (on Windows, at least). However, if you upload the video to YouTube, it will be converted to a format watchable anywhere, as far as I can tell. You do seem to lose some quality of video in the conversion. There are video conversion tools available for Ubuntu, but I haven't tried to convert myself. I don't know if that would help the YouTube resolution anyway, as the more times you convert video the worse it tends to be.
+    <p>I’m building a web site using Drupal 6 for my son’s school’s parent advisory council. The idea of the site is to facilitate community participation. Since we’re a volunteer group and we aren’t at the same workplace every day, I thought screencasts might be a great way to help people learn how to use the site.</p>
+
+<p>This post covers the technical how-to for screencasts with Ubuntu 8.10 on a Lenovo x300. When we get some feedback about whether the screencasts are helpful, I’ll post about the social part of the experience.</p>
+
+<p>It took me an afternoon and a morning of thrashing to get everything working. Here’s what I did:</p>
+
+<ol>
+  <li>Install <code class="highlighter-rouge">gtk-recordmydesktop</code> and <code class="highlighter-rouge">gnome-alsamixer</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo apt-get install gtk-recordmydesktop gnome-alsamixer
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Open Applications-&gt; Sound &amp; Video-&gt; GNOME ALSA Mixer and make sure the microphone is recording and isn’t muted. The controls you have available in the ALSA Mixer depend on your sound hardware, so you may have to do some research on your own to find the right settings for your sound card. At this point, you should be able to record sound and video with RecordMyDesktop (Applications-&gt; Sound &amp; Video-&gt; gtk_recordMyDesktop)</p>
+  </li>
+  <li>If you find that the sound stutters on playing back your screencast, run <code class="highlighter-rouge">recordmydesktop</code> from a terminal window. If you see “Broken pipe: Overrun occurred.”, the problem is when you record the screencast, not on playback. I installed the Jack audio server and that fixed it</li>
+</ol>
+
+<p>To install Jack and use Jack,</p>
+
+<ol>
+  <li>
+    <p>Install (I think this is right – I installed using the Synaptic GUI)</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo apt-get install jackd libjack-dev
+</code></pre></div>    </div>
+
+    <p>Note that including the development library (<code class="highlighter-rouge">libjack-dev</code>) is very important. If you don’t include it, you’ll get an error when you start recording with RecordMyDesktop (“dlopen/dlsym error on libjack.so”)</p>
+  </li>
+  <li>
+    <p>Do Applications-&gt; Sound &amp; Video-&gt; JACK Control</p>
+  </li>
+  <li>
+    <p>Click on Start in the JACK window</p>
+  </li>
+  <li>
+    <p>Do Applications-&gt; Sound &amp; Video-&gt; gtk_recordMyDesktop</p>
+  </li>
+  <li>
+    <p>Click on Advanced</p>
+  </li>
+  <li>
+    <p>Click on the Sound tab and make it look like this</p>
+
+    <p><img src="/assets/record-my-desktop-advanced-27ca9ec73cd7cf7bd280f95d8cde64f30f03de56b8eadb5a3f990d72caebcf45.png" /></p>
+  </li>
+  <li>
+    <p>Close the window</p>
+  </li>
+  <li>
+    <p>Record the screencast (Select Window if you want, then click Record)</p>
+  </li>
+  <li>
+    <p>When you’re done, <em>stop Jack and Quit from the control window before you try to play back the screencast.</em> I found that playback would freeze up if Jack was still running. This is a moderately big nuisance, but I haven’t found a way to make it work with Jack open.</p>
+  </li>
+</ol>
+
+<p><code class="highlighter-rouge">recordmydesktop</code> creates a video file in .ogv format, which isn’t a commonly installed codec on Windows Media Player or Quicktime (on Windows, at least). However, if you upload the video to YouTube, it will be converted to a format watchable anywhere, as far as I can tell. You do seem to lose some quality of video in the conversion. There are video conversion tools available for Ubuntu, but I haven’t tried to convert myself. I don’t know if that would help the YouTube resolution anyway, as the more times you convert video the worse it tends to be.</p>
+
   </div><a class="u-url" href="/2009/03/19/creating-screencasts-on-ubuntu.html" hidden></a>
 </article>
 
