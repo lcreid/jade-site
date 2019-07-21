@@ -5,8 +5,8 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "ubuntu@ec2-52-60-244-53.ca-central-1.compute.amazonaws.com",
-  user: "ubuntu",
+server "ubuntu@ec2-52-60-207-132.ca-central-1.compute.amazonaws.com",
+  user: "jadesystems",
   roles: %w[web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}

@@ -41,6 +41,7 @@ plugins:
 # to override the default setting.
 # If you customize this list, you have to include the old defaults.
 exclude:
+  - .jekyll-ca
   - log/
   - Capfile
   - config/
