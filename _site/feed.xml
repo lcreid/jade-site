@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-07-21T20:11:54+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Jade Systems Inc.</title><subtitle>Jade Systems builds custom web applications for enterprises and start-ups.</subtitle><entry><title type="html">Changing Fonts on Linux Fillable PDF Forms</title><link href="http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf.html" rel="alternate" type="text/html" title="Changing Fonts on Linux Fillable PDF Forms" /><published>2018-01-26T19:50:00+00:00</published><updated>2018-01-26T19:50:00+00:00</updated><id>http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf</id><content type="html" xml:base="http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf.html">&lt;p&gt;I was trying to fill out the &lt;a href=&quot;https://www.canada.ca/content/dam/ircc/migration/ircc/english/passport/forms/pdf/pptc054.pdf&quot;&gt;Canadian passport renewal form&lt;/a&gt; on my Ubuntu 16.04 laptop. I was able to enter data into the fields just fine, but the font that was displayed after I left each field was almost unreadable.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2019-09-04T03:34:02+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Jade Systems Inc.</title><subtitle>Jade Systems builds custom web applications for enterprises and start-ups.</subtitle><entry><title type="html">Changing Fonts on Linux Fillable PDF Forms</title><link href="http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf.html" rel="alternate" type="text/html" title="Changing Fonts on Linux Fillable PDF Forms" /><published>2018-01-26T19:50:00+00:00</published><updated>2018-01-26T19:50:00+00:00</updated><id>http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf</id><content type="html" xml:base="http://0.0.0.0:4000/2018/01/26/changing-fonts-on-linux-fillable-pdf.html">&lt;p&gt;I was trying to fill out the &lt;a href=&quot;https://www.canada.ca/content/dam/ircc/migration/ircc/english/passport/forms/pdf/pptc054.pdf&quot;&gt;Canadian passport renewal form&lt;/a&gt; on my Ubuntu 16.04 laptop. I was able to enter data into the fields just fine, but the font that was displayed after I left each field was almost unreadable.&lt;/p&gt;
 
 &lt;p&gt;I had seen this problem before with other fillable PDFs, like for example some from the Canadian Revenue Agency, so I decided it was time to figure out the problem.&lt;/p&gt;
 
@@ -11,7 +11,8 @@
 &lt;p&gt;So I poked around on Google and found a few useful pages. From them, I figured out the following:&lt;/p&gt;
 
 &lt;p&gt;First, I put the following into &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/fontconfig/conf.avail/69-courierstd-to-couriernew.conf&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;&lt;/span&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;fontconfig&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;match&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pattern&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -24,8 +25,10 @@
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/fontconfig&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;By putting it in that directory, I made it available but not enabled. To enable it, I made a symbolic link to it by doing:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ln -s ~/.config/fontconfig/conf.avail/69-courierstd-to-couriernew.conf ~/.config/fontconfig/conf.d
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; ~/.config/fontconfig/conf.avail/69-courierstd-to-couriernew.conf ~/.config/fontconfig/conf.d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;CourierStd was one of the fonts that was in the PDF form, and was being substituted with DejaVu Sans. I knew that Courier New was a font on my system because it shows up in Libre Office Writer and other programs that deal with fonts. So the contents of the file tell Linux to use Courier New when a document asks for CourierStd.&lt;/p&gt;

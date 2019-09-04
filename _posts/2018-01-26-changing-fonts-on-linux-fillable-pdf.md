@@ -21,7 +21,8 @@ I recognized two of the fonts as likely being [monospaced](https://en.wikipedia.
 So I poked around on Google and found a few useful pages. From them, I figured out the following:
 
 First, I put the following into `~/.config/fontconfig/conf.avail/69-courierstd-to-couriernew.conf`:
-```
+
+```html
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -35,8 +36,10 @@ First, I put the following into `~/.config/fontconfig/conf.avail/69-courierstd-t
   </match>
 </fontconfig>
 ```
+
 By putting it in that directory, I made it available but not enabled. To enable it, I made a symbolic link to it by doing:
-```
+
+```bash
 ln -s ~/.config/fontconfig/conf.avail/69-courierstd-to-couriernew.conf ~/.config/fontconfig/conf.d
 ```
 
