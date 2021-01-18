@@ -1,6 +1,12 @@
+_site
+_tmp
 .sass-cache
-.jekyll-cache
 .jekyll-metadata
-
+.jekyll-cache
 .vagrant
+
 log/capistrano.log
+Guardfile
+crash.log
+vendor
+node_modules
