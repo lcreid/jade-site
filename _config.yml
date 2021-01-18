@@ -30,7 +30,6 @@ github_username:  lcreid
 markdown: kramdown
 sass:
   sass_dir: assets/css
-theme: minima
 plugins:
   - jekyll-assets
   - jekyll-feed
