@@ -42,3 +42,8 @@ Using the [importer](https://import.jekyllrb.com/docs/blogger/) to get all the b
 
 Simplify deploy, as I don't need Capistrano, really.
 Just do the right `rsync`.
+
+## Historical Development NOtes
+
+* January, 2021, removed the search coffescript.
+

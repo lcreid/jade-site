@@ -32,6 +32,3 @@ gem "sprockets", "~> 3.7"
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
-
-# TODO: Remove when coffeescript is gone.
-gem "jekyll-coffeescript"

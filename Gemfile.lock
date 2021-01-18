@@ -28,10 +28,6 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     colorator (1.1.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -73,9 +69,6 @@ GEM
       nokogiri (~> 1.8)
       pathutil (~> 0.16)
       sprockets (>= 3.3, < 4.1.beta)
-    jekyll-coffeescript (2.0.0)
-      coffee-script (~> 2.2)
-      coffee-script-source (~> 1.12)
     jekyll-feed (0.15.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-sanity (1.6.0)
@@ -83,6 +76,8 @@ GEM
       pathutil (~> 0.16)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
+    jekyll-seo-tag (2.7.1)
+      jekyll (>= 3.8, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -99,6 +94,10 @@ GEM
     mercenary (0.3.6)
     method_source (1.0.0)
     mini_portile2 (2.5.0)
+    minima (2.5.1)
+      jekyll (>= 3.5, < 5.0)
+      jekyll-feed (~> 0.9)
+      jekyll-seo-tag (~> 2.1)
     minitest (5.14.3)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
@@ -161,8 +160,8 @@ DEPENDENCIES
   bootstrap
   jekyll (~> 3.8.4)
   jekyll-assets
-  jekyll-coffeescript
   jekyll-feed (~> 0.6)
+  minima (~> 2.0)
   sprockets (~> 3.7)
 
 BUNDLED WITH
