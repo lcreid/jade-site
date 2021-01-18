@@ -10,9 +10,17 @@ We now prefer to use Docker for the Jekyll part.
 With Docker, just use a standard Docker Jekyll container:
 
 ```bash
-JEKYLL_VERSION=3.8.4
+JEKYLL_VERSION=4.1 # Or whichever version you want
 docker run -p 4000:4000 --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll serve
 ```
+
+To deploy:
+
+```bash
+rsync -r _site/ jadesystems.ca:/var/www/jadesystems.ca/html
+```
+
+(May need a more privileged user.)
 
 ### This will change soon
 
@@ -25,6 +33,8 @@ Once I had that figured out, I just removed the link to Bootstrap from the CDN, 
 Oops. It looks like I should have put the source SASS in `_assets`.
 
 Okay. Now on to Javascript. Using the Rails gem (`jquery-rails`) didn't seem to work, but simply copying the `jquery-3.1.1.js` file into the `_assets/js` directory and changing its name to `jquery3` seems to have worked. (I could have also changed the file name in `application.js` instead).
+
+### This won't change. Historical info
 
 Using the [importer](https://import.jekyllrb.com/docs/blogger/) to get all the blog posts from blogger was pleasantly easy. Figuring out how to show them in anything other than a long list is still an unsolved problem. The `jekyll-archives` gem solves some of the problem, but it didn't seem to really be what I wanted, so I dropped it for now. The Jekyll documentation shows a variety of examples of various approaches. This may be one of those problems that are general enough that a gem or plug-in isn't a useful approach.
 
