@@ -4,10 +4,6 @@ source "https://rubygems.org"
 
 gem "bootstrap"
 
-group :development do
-  gem "capistrano", require: false
-end
-
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
@@ -30,9 +26,6 @@ group :jekyll_plugins do
   gem "jekyll-assets"
   gem "jekyll-feed", "~> 0.6"
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # https://github.com/envygeeks/jekyll-assets/issues/622
 gem "sprockets", "~> 3.7"
