@@ -22,33 +22,29 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lenchoreyes
 github_username:  lcreid
 
-# I used this page when setting up to use Bootstrap with Jekyll:
-# https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/
-# TODO: Automate the install of the Bootstrap files.
-
 # Build settings
 markdown: kramdown
 sass:
-  sass_dir: assets/css
-plugins:
-  - jekyll-assets
-  - jekyll-feed
+  load_paths:
+    - _sass
+    - node_modules
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# If you customize this list, you have to include the old defaults.
 exclude:
-  - .jekyll-ca
-  - log/
-  - Capfile
-  - config/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
+  - LICENSE
+  - Makefile
   - README.md
+  - package.json
+  - package-lock.json
   - Vagrantfile
+  - yarn.lock
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+include:
+  - node_modules/jquery/dist/jquery.min.js
+  - node_modules/popper.js/dist/popper.min.js
+  - node_modules/popper.js/dist/popper.min.js.map
+  - node_modules/bootstrap/dist/js/bootstrap.min.js
+  - node_modules/bootstrap/dist/js/bootstrap.min.js.map

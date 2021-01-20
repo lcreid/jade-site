@@ -37,7 +37,7 @@ Unsupported codec with id 0 for input stream 0
 ```
 Next, I opened OpenShot and created a new profile: Edit-> Preferences, then click on the "Profiles" tab, then click on the "Manage Profiles" button, then click on the plus sign to add a new profile. I made it look like this, and then clicked "Save":
 
-{% asset profile.png %}
+![Profile](/assets/images/profile.png)
 
 The output of avprobe didn't map exactly to what Openshot was looking for, so I had to guess a bit at what to fill in. I suspected that "PAR" from avprobe was the "Pixel Ratio" and that "DAR" was the "Aspect Ratio". The frame rate was "15 fps" (frames per second). The size was given by "864x512" in the avprobe output.
 
@@ -47,6 +47,6 @@ Next I created a new project selecting the profile I just created in the "Projec
 
 I selected File-&gt; Export Video... and went straight to the "Advanced" tab. Then I changed the "Profile", "Video Settings", and "Audio Settings" to look like this:
 
-{% asset advanced.png %}
+![Advanced Tab](/assets/images/advanced.png)
 
 Then I clicked "Export Video", and I had a video that would upload with acceptable quality to YouTube.

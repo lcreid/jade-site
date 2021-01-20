@@ -11,4 +11,4 @@ blogger_orig_url: http://technopragmatica.blogspot.com/2007/07/thats-protection.
 
 David de Leeuw reports in the Risks Digest that he got this:
 
-{% asset windowserror.jpg %}
+![Windows Error](/assets/images/windowserror.jpg)

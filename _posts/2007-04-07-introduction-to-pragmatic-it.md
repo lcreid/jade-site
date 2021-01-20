@@ -11,7 +11,7 @@ blogger_orig_url: http://technopragmatica.blogspot.com/2007/04/introduction-to-p
 
 In this blog I'm going to write about issues that I run into when trying to implement information technology in the real world. Most of my life has been spent as a software developer, but over the last few years (and at certain times in the past) I've worked on the infrastructure side. I started in IT when an IBM S/370 (predecessor of the computer that my son Marc is standing beside) filled a room.
 
-{% asset s390.JPG %}
+![System 390](/assets/images/s390.JPG){:class="mx-auto d-block"}
 
 Throughout my career I've been cursed by a need to provide real value to my clients, whether it be in the software I was building or the infrastructure I was implementing. (I'll explain why I say "cursed" in a later posting, since this posting is mainly to test out the blog.) I've seen a lot of value left on the table or even destroyed by qualified, competent IT people who had the best intentions, and I hope to explore why in this blog.
 

@@ -8,15 +8,15 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav w-100">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-item mx-md-4 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase/index.md %}">Overview</a>
-            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase/static-web-sites.md %}">Static Web Sites</a>
-            <a class="dropdown-item" href="{{ site.baseurl }}{% link knowledgebase/search-engines.md %}">Search Engines</a>
+          <a href="#" class="mx-md-4 nav-link dropdown-toggle" id="knowledgebaseMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Knowledgebase</span></a>
+          <div class="dropdown-menu" aria-labelledby="knowledgebaseMenu">
+            <a class="nav-link" href="{% link knowledgebase/index.md %}">Overview</a>
+            <a class="nav-link" href="{% link knowledgebase/static-web-sites.md %}">Static Web Sites</a>
+            <a class="nav-link" href="{% link knowledgebase/search-engines.md %}">Search Engines</a>
           </div>
         </li>
-        <li><a class="nav-item mx-md-4" href="{{ site.baseurl }}{% link blog/index.html %}">Blog</a></li>
-        <li><a class="nav-item mx-md-4" href="{{ site.baseurl }}{% link contact/index.html %}">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link mx-md-4" href="{{ site.baseurl }}{% link blog/index.html %}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link mx-md-4" href="{{ site.baseurl }}{% link contact/index.html %}">Contact Us</a></li>
       </ul>
 
       <!-- <form class="form-inline ml-auto">

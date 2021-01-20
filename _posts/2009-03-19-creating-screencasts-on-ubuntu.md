@@ -47,7 +47,7 @@ To install Jack and use Jack,
 
 6. Click on the Sound tab and make it look like this
 
-    {% asset record-my-desktop-advanced.png %}
+    ![RecordMyDesktop](/assets/images/record-my-desktop-advanced.png)
 
 7. Close the window
 
