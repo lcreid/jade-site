@@ -5,7 +5,7 @@ Jade Systems Inc web site.
 ## Development
 
 This is the third and a half implementation of the modern site, in [Jekyll](https://jekyllrb.com).
-We now prefer to use Docker for the Jekyll part.
+We now prefer to use Docker in development for the Jekyll part.
 
 With Docker, just use a standard Docker Jekyll container:
 
@@ -14,13 +14,15 @@ JEKYLL_VERSION=4.1 # Or whichever version you want
 docker run -p 4000:4000 --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll serve
 ```
 
+If you're doing Jekyll upgrades or anything else that requires experimenting with new gems, you may find it more convenient to start a shell in the container and run `jekyll serve` from there.
+This lets you quit the server and install or remove the gems you want, without restarting the container, which has to re-install _all_ the gems.
+Even with a minimal set of gems, `bundle install` from scratch for jekyll takes enough time to be annoying.
+
 To deploy:
 
 ```bash
 rsync -r _site/ jadesystems.ca:/var/www/jadesystems.ca/html
 ```
-
-(May need a more privileged user.)
 
 ### This won't change. Historical info
 
