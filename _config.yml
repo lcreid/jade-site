@@ -43,8 +43,7 @@ exclude:
   - vendor/ruby/
 
 include:
-  - node_modules/jquery/dist/jquery.min.js
-  - node_modules/popper.js/dist/popper.min.js
-  - node_modules/popper.js/dist/popper.min.js.map
+  - node_modules/@popperjs/core/dist/umd/popper.min.js
+  - node_modules/@popperjs/core/dist/umd/popper.min.js.map
   - node_modules/bootstrap/dist/js/bootstrap.min.js
   - node_modules/bootstrap/dist/js/bootstrap.min.js.map
