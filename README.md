@@ -11,7 +11,7 @@ With Docker, just use a standard Docker Jekyll container:
 
 ```bash
 JEKYLL_VERSION=4.2.2 # Or whichever version you want
-docker run -p 4000:4000 --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll serve
+docker run --rm -p 4000:4000 --volume="$PWD:/srv/jekyll" --name jekyll jekyll/jekyll:$JEKYLL_VERSION jekyll serve
 ```
 
 If you're doing Jekyll upgrades or anything else that requires experimenting with new gems, you may find it more convenient to start a shell in the container and run `jekyll serve` from there.
