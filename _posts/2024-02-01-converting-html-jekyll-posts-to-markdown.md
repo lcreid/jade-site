@@ -5,7 +5,7 @@ author: Larry Reid
 tags:
 ---
 
-I had never got around to converting the majority of my posts to Markdown after I moved my blog from Blogspot.
+I had never gotten around to converting the majority of my posts to Markdown after I moved my blog from Blogspot.
 
 This is the script I used:
 
