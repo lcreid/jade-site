@@ -4,9 +4,19 @@ _tmp
 .jekyll-metadata
 .jekyll-cache
 .vagrant
+.gitconfig
 
 log/capistrano.log
 Guardfile
 crash.log
 vendor
 node_modules
+
+.bundle/
+.vscode-server/
+.gnupg/
+.cache/
+.local/
+.npm/
+.vscode/
+.irb_history
