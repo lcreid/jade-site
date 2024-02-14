@@ -1,0 +1,12 @@
+services:
+  jekyll:
+    image: lenchoreyes/jade:rails-app-3.3-bookworm
+    stdin_open: true
+    tty: true
+    volumes:
+      - ${PWD}:/app
+    user: 1000:1000
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    # command: jekyll serve -H 0.0.0.0 -w --livereload
