@@ -1,9 +1,10 @@
 ---
 title: Static Web Sites
-layout: default
+layout: content_wrapper
 ---
 
-# Static Web Sites
+## Static Web Sites
+
 A previous version of the Jade Systems web site was built with [Drupal](http://drupal.org). Drupal is a fine content management system. But with all the capability comes complexity, and with complexity, inevitably, security issues. Drupal provides frequent security updates, but I have other work to do, and updating my web site's content management system was becoming a drag.
 
 For years I thought there had to be a different way. Many web sites don't need to be interactive. They certainly don't need all the functionality in a general purpose content management system. Web sites that have as a main goal to provide information, like wikis and blogs, don't need to be interactive. Marketing sites are another example. A corporate knowledge base would also be a good candidate for a static site.
@@ -17,6 +18,7 @@ About the same time as I was getting tired of doing Drupal updates, I stumbled a
 So I got serious about looking into static web sites.
 
 ## Static Web Site Generators
+
 45 seconds with Google showed me that lots of people have been working on static web site generators. Check out this page of [static web site generators](https://www.staticgen.com/).
 
 Around 2012, I picked [Nanoc](http://nanoc.ns). In part because my Ruby experience was transferable. In part because a lot of serious sites used it.
@@ -30,6 +32,7 @@ Nanoc did a fine job for me for a about five years, but I've moved on to [Jekyll
 In the end, what really drove me off Nanoc was the fact that every time I went to update my website, it seemed there were breaking changes in the platform. For a tool that I used occasionally, having to re-learn it every time I went to use it means the cost to switch to another platform was low. I can't fault the creator of Nanoc. He does a great job with limited resources. If I were using Nanoc every day and was keeping up with it as it evolved, I probably never would have switched to Jekyll.
 
 ## Pros and Cons of Static Sites
+
 A static site is much easier to make secure. If you have control over the web server software itself, you can turn off all its ability to execute code on the server, and make it only serve up static content. Aside from keeping your operating system and web server software up-to-date, you're pretty much secure. No more constant updates of a large, complicated content management system.
 
 A static site will be supported by any hosting service. Nowadays that's not such a big issue -- most cheap hosting services provide Drupal and other content management systems. However, if your preference is for other technologies, you may be able to find a static web site generator based on those technologies.
@@ -55,6 +58,7 @@ A simple example of using an API is [how I added search]({{ site.baseurl }}{% li
 If the static web site is to be updated by many people (as opposed to just a single person maintaining a personal blog), the tools I've used don't solve all the workflow issues. I'm using Capistrano to push changes, because it's a tool I'm familiar with and I have it all set up already for other sites I manage. The flexibility around the workflow is good and bad: Good, because you can use tools you're already using. Bad, because you may have to find new tools, and you have to train the team on how to use them.
 
 ## When to Use a Static Site
+
 Here are my ideas about when to consider using a static web site. The more often you answer "yes" to the following, the more likely you have a good fit for a static site:
 
 * The people creating content are comfortable with basic HTML, and some are comfortable with CSS and JavaScript

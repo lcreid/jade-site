@@ -1,19 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    {% include head.html %}
-  </head>
-  <body>
-    <div class="container">
-      {% include header.html %}
-      <section class="mt-2">
-        <div class="row justify-content-around">
-          <div class="col-12 col-lg-8">
-            {{ content }}
-          </div>
-        </div>
-      </div>
-    </section>
-    {% include footer.html %}
-  </body>
+
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+  {% include header.html %}
+  {{ content }}
+  {% include footer.html %}
+</body>
+
 </html>
