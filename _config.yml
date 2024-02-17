@@ -41,9 +41,20 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - Capfile
+  - Gemfile
+  - Gemfile.lock
+  - log/
+  - lib/
+  - .devcontainer/
+  - compose-override.yml
 
 include:
   - node_modules/@popperjs/core/dist/umd/popper.min.js
   - node_modules/@popperjs/core/dist/umd/popper.min.js.map
   - node_modules/bootstrap/dist/js/bootstrap.min.js
   - node_modules/bootstrap/dist/js/bootstrap.min.js.map
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap

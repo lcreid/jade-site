@@ -16,9 +16,10 @@ docker run --rm -p 4000:4000 --volume="$PWD:/srv/jekyll" --name jekyll jekyll/je
 
 If you're doing Jekyll upgrades or anything else that requires experimenting with new gems, you may find it more convenient to start a shell in the container and run `jekyll serve` from there.
 This lets you quit the server and install or remove the gems you want, without restarting the container, which has to re-install _all_ the gems.
+
 Even with a minimal set of gems, `bundle install` from scratch for jekyll takes enough time to be annoying.
 
-To deploy to a location that accepts `rsync`:
+To deploy to a location that accepts `rsync` (_not_ HostPapa):
 
 ```bash
 rsync -r _site/ jadesystems.ca:/var/www/jadesystems.ca/html
