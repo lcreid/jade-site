@@ -20,3 +20,5 @@ node_modules
 .npm/
 .vscode/
 .irb_history
+.bash_history
+.ssh/
