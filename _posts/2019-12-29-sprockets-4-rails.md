@@ -5,7 +5,7 @@ author: Larry Reid
 tags:
 ---
 
-At some point upgrading your an existing Rails application, you're going to pull in Sprockets 4.
+At some point upgrading an existing Rails application, you're going to pull in Sprockets 4.
 (Not the `sprockets-rails` gem. The actual `sprockets` gem.)
 At this point, your assets will probably fail to compile.
 
