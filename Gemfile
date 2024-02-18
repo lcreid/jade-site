@@ -8,5 +8,6 @@ gem "webrick"
 
 group :plugins do
   gem "jekyll-feed"
+  gem "jekyll-paginate"
   gem "jekyll-sitemap"
 end

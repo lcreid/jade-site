@@ -22,6 +22,10 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lenchoreyes
 github_username:  lcreid
 
+# Paginator for blog posts.
+paginate: 10
+paginate_path: "/blog/page:num/"
+
 # Build settings
 markdown: kramdown
 sass:
@@ -60,4 +64,5 @@ include:
 
 plugins:
   - jekyll-feed
+  - jekyll-paginate
   - jekyll-sitemap

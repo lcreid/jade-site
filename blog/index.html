@@ -22,7 +22,27 @@ title: Pragmatic IT
 </div>
 <div class="container-md">
   <div class="row justify-content-around">
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-md-9">
+      {% include paginator.html %}
+      {% for post in paginator.posts %}
+      <div class="card mb-3">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">
+            {{ post.content | strip_html | truncatewords: 20 }}
+          </p>
+          <div class="card-footer">
+            <a href="{{ post.url }}" class="btn btn-primary">
+              {{ post.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% include paginator.html %}
+    </div>
+    <div class="col-md-3 d-none d-md-block">
       {%- if site.posts.size > 0 -%}
       <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
       <ul class="list-unstyled">

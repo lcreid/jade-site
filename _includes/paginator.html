@@ -1,0 +1,77 @@
+{% if paginator.total_pages > 1 %}
+<div class="d-flex justify-content-center">
+  <nav aria-label="Blog navigation">
+    <ul class="pagination mx-auto">
+      <div class="pagination">
+        {% if paginator.page != 1 %}
+        <li class="page-item">
+          <a class="page-link" href="{{ " /blog" | prepend: site.baseurl }}">&laquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;</span>
+        </li>
+        {% endif %}
+
+        {% if paginator.previous_page %}
+        <li class="page-item">
+          <a class="page-link"
+            href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&lsaquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&lsaquo;</span>
+        </li>
+        {% endif %}
+
+        {% assign upper_bound = paginator.total_pages | minus: 4 %}
+        {% assign min_page = paginator.page | minus: 2 | at_least: 1 | at_most: upper_bound %}
+        {% assign max_page = min_page | plus: 4 | at_most: paginator.total_pages %}
+        {% for page in (min_page..max_page) %}
+        <li class="page-item">
+          {% if page == paginator.page %}
+          {% assign classes = ' active' %}
+          {% assign attributes = ' aria-current="page"' %}
+          {% else %}
+          {% assign classes = '' %}
+          {% assign attributes = '' %}
+          {% endif %}
+
+          {% if page == 1 %}
+          {% assign page_url = "/blog" | prepend: site.baseurl %}
+          {% else %}
+          {% assign page_url = site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page
+          %}
+          {% endif %}
+          <a class="page-link{{ classes }}" {{ attributes }} href="{{ page_url }}">
+            {{ page }}
+          </a>
+        </li>
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <li class="page-item">
+          <a class="page-link"
+            href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&rsaquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <span class="page-link disabled">&rsaquo;</span>
+        </li>
+        {% endif %}
+
+        {% if paginator.page != paginator.total_pages %}
+        <li class="page-item">
+          <a class="page-link"
+            href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', paginator.total_pages }}">&raquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;</span>
+        </li>
+        {% endif %}
+      </div>
+    </ul>
+  </nav>
+</div>
+{% endif %}
