@@ -7,6 +7,6 @@ gem "rubocop"
 gem "webrick"
 
 group :plugins do
-  gem "jekyll-sitemap"
   gem "jekyll-feed"
+  gem "jekyll-sitemap"
 end
