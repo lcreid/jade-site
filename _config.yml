@@ -47,6 +47,9 @@ exclude:
   - log/
   - lib/
   - .devcontainer/
+  - .vscode/
+  - .vscode-server/
+  - compose.yml
   - compose-override.yml
 
 include:
