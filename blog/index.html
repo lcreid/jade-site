@@ -26,7 +26,6 @@ title: Pragmatic IT
       {% include paginator.html %}
       {% for post in paginator.posts %}
       <div class="card mb-3">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">
@@ -43,22 +42,7 @@ title: Pragmatic IT
       {% include paginator.html %}
     </div>
     <div class="col-md-3 d-none d-md-block">
-      {%- if site.posts.size > 0 -%}
-      <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
-      <ul class="list-unstyled">
-        {%- for post in site.posts -%}
-        <li>
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <span class="post-meta">{{ post.date | date: date_format }}</span>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-          {%- if site.show_excerpts -%} {{ post.excerpt }} {%- endif -%}
-        </li>
-        {%- endfor -%}
-      </ul>
-      <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
-      {%- else -%} No posts. {%- endif -%}
+      {% include blog_sidebar.html %}
     </div>
   </div>
 </div>

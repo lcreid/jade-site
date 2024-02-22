@@ -5,3 +5,31 @@
 .post-meta {
   @extend .small;
 }
+
+.triangle {
+  height: 5rem;
+  width: 5rem;
+  white-space: nowrap;
+  @include caret();
+
+  &::after {
+    content: '';
+    white-space: nowrap;
+    }
+}
+
+.blog-sidebar {
+  font-size: 0.75rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  ul {
+    padding-inline-start: 0.5rem;
+  }
+}
