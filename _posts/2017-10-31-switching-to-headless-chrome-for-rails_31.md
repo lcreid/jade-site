@@ -9,7 +9,6 @@ blogger_id: tag:blogger.com,1999:blog-5778824359157275227.post-39618512118741546
 blogger_orig_url: http://technopragmatica.blogspot.com/2017/10/switching-to-headless-chrome-for-rails_31.html
 ---
 
-## Introduction
 I recently switched a Rails 5.1 application's system tests from [Capybara](https://github.com/teamcapybara/capybara), [Poltergeist](https://github.com/teampoltergeist/poltergeist), and [PhantomJS](http://phantomjs.org/), to Capybara, Selenium, and headless Chrome. We run the development and test environments of the application on a Vagrant box running Ubuntu 16.04 server.
 
 With the release of headless Chrome, [PhantomJS is no longer being developed or maintained](https://github.com/ariya/phantomjs/issues/15105). It also used a different browser engine that the major browsers, and I was noticing that some test cases didn't run exactly like they would in a real browser. So when I saw that there was a [pull request](https://github.com/rails/rails/pull/30930) in to Rails to change to Selenium and headless Chrome, I thought it was time to try it myself.
