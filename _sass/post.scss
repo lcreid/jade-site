@@ -1,9 +1,10 @@
-.post-list {
-  @extend .list-unstyled;
-}
-
 .post-meta {
   @extend .small;
+}
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .triangle {

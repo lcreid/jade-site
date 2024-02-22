@@ -31,15 +31,13 @@ title: Pragmatic IT
       {% for post in paginator.posts %}
       <div class="card mb-3">
         <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">
-            {{ post.content | strip_html | truncatewords: 20 }}
-          </p>
-          <div class="card-footer">
-            <a href="{{ post.url }}" class="btn btn-primary">
-              {{ post.title }}
-            </a>
-          </div>
+          <a href="{{ post.url }}" class="post-link">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">
+              {{ post.excerpt }}
+              <!-- {{ post.content | strip_html | truncatewords: 20 }} -->
+            </p>
+          </a>
         </div>
       </div>
       {% endfor %}
