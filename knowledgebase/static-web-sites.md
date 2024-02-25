@@ -1,6 +1,7 @@
 ---
 title: Static Web Sites
 layout: content_wrapper
+toc: true
 ---
 
 ## Static Web Sites

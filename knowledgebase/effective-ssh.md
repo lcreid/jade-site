@@ -1,5 +1,6 @@
 ---
-layout: content_wrapper
+layout: kb
+toc: true
 title: Effective SSH
 author: Larry Reid
 tags: ssh
@@ -371,7 +372,7 @@ The lesson is that if you're having trouble making an SSH connection, you can de
 * Check if you have an agent running in the terminal where you're running `ssh`: `env | grep SSH`. (If you're manually running the `ssh-agent`, it's easy to try to `ssh` in another window that doesn't have the agent.)
 * Check that the key you need is loaded: `ssh-add -l`.
 
-## Boring Stories of SSH Debugging.
+## Boring Stories of SSH Debugging
 
 Earlier we mentioned an ugly situation we ran into: We could log into the remote server using `ssh` without a password. But when we tried to log in to do a deploy with Capistrano, the login to the target server would fail.
 

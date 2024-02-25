@@ -1,8 +1,8 @@
 ---
+title: Jeykyll Cheat Sheet
 layout: content_wrapper
+toc: true
 ---
-
-# Jeykyll Cheat Sheet
 
 ## Directories
 
