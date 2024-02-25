@@ -50,6 +50,7 @@ exclude:
   - Gemfile.lock
   - log/
   - lib/
+  - node_modules/
   - .devcontainer/
   - .vscode/
   - .vscode-server/
@@ -66,3 +67,5 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-toc
+

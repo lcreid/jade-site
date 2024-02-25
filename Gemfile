@@ -10,4 +10,5 @@ group :plugins do
   gem "jekyll-feed"
   gem "jekyll-paginate"
   gem "jekyll-sitemap"
+  gem "jekyll-toc"
 end
