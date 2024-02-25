@@ -1,53 +1,56 @@
-{%- if site.posts.size > 0 -%}
-<h4>Archive</h3>
-{% assign previous_year = "1969" %}
-{%- for post in site.posts -%}
-{% assign year = post.date | date: "%Y" %}
+<div class="sidebar">
+  {%- if site.posts.size > 0 -%}
+  <h4>Archive</h4>
+  {% assign previous_year = "1969" %}
+  {%- for post in site.posts -%}
+  {% assign year = post.date | date: "%Y" %}
 
-<ul class="blog-sidebar list-unstyled">
-  {% if year != previous_year %}
-  <li class="">
-    <a data-bs-toggle="collapse" href="#d-{{ year }}" role="button" aria-expanded="false" aria-controls="d-{{ year }}">
-      <span class="triangle">{{ year }}</span>
-    </a>
-    <div class="collapse" id="d-{{ year }}">
-      <ul>
-        {% assign previous_month = "" %}
-        {%- for post in site.posts -%}
-        {% assign inner_year = post.date | date: "%Y" %}
-        {% if year == inner_year %}
-        {% assign month = post.date | date: "%B" %}
-        {% if month != previous_month %}
-        <li>
-          <a class="" data-bs-toggle="collapse" href="#d-{{ year }}-{{ month }}" role="button" aria-expanded="false"
-            aria-controls="d-{{ year }}-{{ month }}">
-            <span class="triangle">{{ month }}</span>
-          </a>
-        </li>
-        <div class="collapse" id="d-{{ year }}-{{ month }}">
-          <ul>
-            {%- for post in site.posts -%}
-            {% assign inner_inner_year = post.date | date: "%Y" %}
-            {% assign inner_month = post.date | date: "%B" %}
-            {% if year == inner_inner_year and month == inner_month %}
-            <a href="{{ post.url }}">
-              <li>
-                {{ post.title }} ({{ post.date | date: "%d" }})
-              </li>
+  <ul class="blog-sidebar list-unstyled">
+    {% if year != previous_year %}
+    <li class="">
+      <a data-bs-toggle="collapse" href="#d-{{ year }}" role="button" aria-expanded="false"
+        aria-controls="d-{{ year }}">
+        <span class="triangle">{{ year }}</span>
+      </a>
+      <div class="collapse" id="d-{{ year }}">
+        <ul>
+          {% assign previous_month = "" %}
+          {%- for post in site.posts -%}
+          {% assign inner_year = post.date | date: "%Y" %}
+          {% if year == inner_year %}
+          {% assign month = post.date | date: "%B" %}
+          {% if month != previous_month %}
+          <li>
+            <a class="" data-bs-toggle="collapse" href="#d-{{ year }}-{{ month }}" role="button" aria-expanded="false"
+              aria-controls="d-{{ year }}-{{ month }}">
+              <span class="triangle">{{ month }}</span>
             </a>
-            {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-        {% endif %}
-        {% assign previous_month = month %}
-        {% endfor %}
-      </ul>
-    </div>
-  </li>
-  {% assign previous_year = year %}
-  {% endif %}
-</ul>
-{%- endfor -%}
-{%- else -%} No posts. {%- endif -%}
+          </li>
+          <div class="collapse" id="d-{{ year }}-{{ month }}">
+            <ul>
+              {%- for post in site.posts -%}
+              {% assign inner_inner_year = post.date | date: "%Y" %}
+              {% assign inner_month = post.date | date: "%B" %}
+              {% if year == inner_inner_year and month == inner_month %}
+              <a href="{{ post.url }}">
+                <li>
+                  {{ post.title }} ({{ post.date | date: "%d" }})
+                </li>
+              </a>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endif %}
+          {% assign previous_month = month %}
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+    {% assign previous_year = year %}
+    {% endif %}
+  </ul>
+  {%- endfor -%}
+  {%- else -%} No posts. {%- endif -%}
+</div>
