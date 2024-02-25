@@ -1,6 +1,6 @@
 ---
 title: Static Web Sites
-layout: content_wrapper
+layout: kb
 toc: true
 ---
 

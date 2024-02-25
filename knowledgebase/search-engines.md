@@ -1,6 +1,6 @@
 ---
 title: Search Engines
-layout: content_wrapper
+layout: kb
 ---
 
 ## Search Engines

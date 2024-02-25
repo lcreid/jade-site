@@ -1,6 +1,6 @@
 ---
 title: Jeykyll Cheat Sheet
-layout: content_wrapper
+layout: kb
 toc: true
 ---
 
