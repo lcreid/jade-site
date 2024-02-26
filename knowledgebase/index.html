@@ -9,75 +9,18 @@ layout: content_wrapper
 </p>
 
 <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+  {% for article in site.knowledgebase %}
   <div class="col">
     <div class="card">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title">Effective SSH</h5>
-        <p class="card-text">
-          {% assign this-page = site.pages | where: "path", "knowledgebase/effective-ssh.md" | first %}
-          {{ this-page.content | strip_html | truncatewords: 20 }}
-        </p>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}{% link knowledgebase/effective-ssh.md %}" class="btn btn-primary">
-            Effective SSH
-          </a>
+      <a href="{{ article.url }}" class="post-link">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title | smartify }}</h5>
+          <p class="card-text">
+            {{ article.content | strip_html | truncatewords: 40 }}
+          </p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
-
-  <div class="col">
-    <div class="card">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title">Jekyll Cheat Sheet</h5>
-        <p class="card-text">
-          {% assign this-page = site.pages | where: "path", "knowledgebase/jekyll.md" | first %}
-          {{ this-page.content | strip_html | truncatewords: 20 }}
-        </p>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}{% link knowledgebase/jekyll.md %}" class="btn btn-primary">
-            Jekyll Cheat Sheet
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title">Static Web Sites</h5>
-        <p class="card-text">
-          {% assign this-page = site.pages | where: "path", "knowledgebase/static-web-sites.md" | first %}
-          {{ this-page.content | strip_html | truncatewords: 20 }}
-        </p>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}{% link knowledgebase/static-web-sites.md %}" class="btn btn-primary">
-            Static Web Sites
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title">Search Engines</h5>
-        <p class="card-text">
-          {% assign this-page = site.pages | where: "path", "knowledgebase/search-engines.md" | first %}
-          {{ this-page.content | strip_html | truncatewords: 20 }}
-        </p>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}{% link knowledgebase/search-engines.md %}" class="btn btn-primary">
-            Search Engines
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>

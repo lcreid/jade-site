@@ -54,7 +54,7 @@ Even then, a static web site doesn't have to mean a simple web site. As JavaScri
 
 If you're using APIs that require authentication, you'll have to think about managing the token that gives you access to the API. Anything on a page is visible to a user that knows how to press F12 in the browser. APIs that provide a [JSON web token](https://en.wikipedia.org/wiki/JSON_Web_Token) (JWT) would be suitable for calling from a static web site.
 
-A simple example of using an API is [how I added search]({{ site.baseurl }}{% link knowledgebase/search-engines.md %}) to Jade's web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client's browser.
+A simple example of using an API is [how I added search]({{ site.baseurl }}{% link _knowledgebase/search-engines.md %}) to Jade's web site. I put up a search engine on a different server, and wrote JavaScript to call the search engine from the web site, in the client's browser.
 
 If the static web site is to be updated by many people (as opposed to just a single person maintaining a personal blog), the tools I've used don't solve all the workflow issues. I'm using Capistrano to push changes, because it's a tool I'm familiar with and I have it all set up already for other sites I manage. The flexibility around the workflow is good and bad: Good, because you can use tools you're already using. Bad, because you may have to find new tools, and you have to train the team on how to use them.
 

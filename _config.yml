@@ -33,6 +33,10 @@ sass:
     - _sass
     - node_modules
 
+collections:
+  knowledgebase:
+    output: true
+
 exclude:
   - LICENSE
   - Makefile
