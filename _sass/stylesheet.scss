@@ -28,6 +28,14 @@ body {
   color: inherit;
 }
 
+code, pre {
+  background-color: rgb(246, 248, 250);
+}
+
+:root {
+  --bs-code-color: --bs-body-color;
+}
+
 .triangle {
   height: 5rem;
   width: 5rem;
