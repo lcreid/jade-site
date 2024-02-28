@@ -3,8 +3,12 @@
 // screens.
 // See: http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
 // @media (min-width: 980px) {
+
+// It appears the rlh in Chrome is 18px and the navbar is 56px high.
+$navbar-height: 3.1111rlh;
+
 body {
-  padding-top: 2.333rlh; // 56px;
+  padding-top: $navbar-height; // 56px;
   padding-bottom: 42px;
   overflow-y: scroll;
 }
@@ -80,3 +84,7 @@ ul#toc {
 }
 
 // End jekyll-toc gem.
+
+h1, h2, h3, h3, h5, h5 {
+  scroll-margin-top: $navbar-height;
+}
