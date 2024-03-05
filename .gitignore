@@ -22,3 +22,6 @@ node_modules
 .irb_history
 .bash_history
 .ssh/
+
+# Need to ignore JavaScript that passes by the assets/ directory.
+assets/application.js*
