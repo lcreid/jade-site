@@ -7,17 +7,38 @@ Jade Systems Inc web site.
 This is the third and a half implementation of the modern site, in [Jekyll](https://jekyllrb.com).
 We now prefer to use Docker in development for the Jekyll part.
 
-With Docker, just use a standard Docker Jekyll container:
+With Docker, use my Rails app and the included `compose.yml` file:
+
+```bash
+docker compose up -d
+docker compose exec jekyll serve -l -H 0.0.0.0
+```
+
+I used to use a standard Docker Jekyll container:
 
 ```bash
 JEKYLL_VERSION=4.2.2 # Or whichever version you want
 docker run --rm -p 4000:4000 --volume="$PWD:/srv/jekyll" --name jekyll jekyll/jekyll:$JEKYLL_VERSION jekyll serve
 ```
 
+But that doesn't seem to work very well anymore.
+
 If you're doing Jekyll upgrades or anything else that requires experimenting with new gems, you may find it more convenient to start a shell in the container and run `jekyll serve` from there.
 This lets you quit the server and install or remove the gems you want, without restarting the container, which has to re-install _all_ the gems.
 
 Even with a minimal set of gems, `bundle install` from scratch for jekyll takes enough time to be annoying.
+
+## Deploy
+
+With FileZilla, copy the contents of `_site` to the destination.
+
+HostPapa does SFTP, but I'm not sure we can securely script it:
+
+```bash
+sftp -rC -o "PreferredAuthentications=password" $HOSTPAPA_USERNAME@ftp.domain
+put -P _site/* public_html
+exit
+```
 
 To deploy to a location that accepts `rsync` (_not_ HostPapa):
 
@@ -26,8 +47,6 @@ rsync -r _site/ jadesystems.ca:/var/www/jadesystems.ca/html
 ```
 
 (May need a more privileged user.)
-
-With FileZilla, copy `_site` to the destination.
 
 ### This will change soon
 

@@ -19,9 +19,11 @@ node_modules
 .local/
 .npm/
 .vscode/
+.dotnet/
 .irb_history
 .bash_history
 .ssh/
 
 # Need to ignore JavaScript that passes by the assets/ directory.
-assets/application.js*
+assets/js/application.js*
+

@@ -62,6 +62,7 @@ exclude:
   - compose-override.yml
   - .cache/
   - .npm/
+  - .dotnet/
 
 include:
   - node_modules/@popperjs/core/dist/umd/popper.min.js
