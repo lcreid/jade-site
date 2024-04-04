@@ -11,7 +11,14 @@ With Docker, use my Rails app and the included `compose.yml` file:
 
 ```bash
 docker compose up -d
-docker compose exec jekyll serve -l -H 0.0.0.0
+docker compose exec jekyll foreman start
+```
+
+To see draft blog posts, too:
+
+```bash
+docker compose up -d
+docker compose exec jekyll foreman -f Procfile.drafts start
 ```
 
 I used to use a standard Docker Jekyll container:

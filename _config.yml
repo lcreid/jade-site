@@ -52,6 +52,7 @@ exclude:
   - Capfile
   - Gemfile
   - Gemfile.lock
+  - Procfile*
   - log/
   - lib/
   - node_modules/

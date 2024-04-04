@@ -1,0 +1,2 @@
+web: jekyll server -H 0.0.0.0 --livereload --drafts
+js: yarn build --watch
