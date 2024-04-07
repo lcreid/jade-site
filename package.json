@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "esbuild": "^0.20.1"
   },
   "scripts": {
     "build": "esbuild _assets/javascript/application.js --bundle --sourcemap --outdir=assets/js --public-path=assets --log-level=debug"

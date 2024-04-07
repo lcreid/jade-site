@@ -64,6 +64,7 @@ exclude:
   - .cache/
   - .npm/
   - .dotnet/
+  - .bash_history
 
 include:
   - node_modules/@popperjs/core/dist/umd/popper.min.js

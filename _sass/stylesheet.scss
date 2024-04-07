@@ -13,8 +13,6 @@ body {
   overflow-y: scroll;
 }
 
-// }
-
 .jumbotron {
   @extend .text-light;
 }
@@ -93,4 +91,14 @@ h3,
 h5,
 h5 {
   scroll-margin-top: $navbar-height;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+div.highlight {
+  position: relative;
 }
