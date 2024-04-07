@@ -23,12 +23,12 @@ Here's the prerequisites, or what you need to know how to do, that aren't covere
 
 You may find [this article]({% link _knowledgebase/effective-ssh.md %}) useful if you want to learn about password-less log-in and the use of key agents and agent forwarding.
 
-I followed Digital Ocean'a excellent instructions. They organize them as these two pages:
+I followed Digital Ocean's excellent instructions. They organize them as these two pages:
 
 * [Set up a small server](https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-debian-11) as your Certificate Authority (CA). It only generates key-pairs and can be off most of the time (and should be off, they say, so it's harder to steal the keys).
 * [Set up the VPN server](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11).
 
-This page summarizes what I did to set up a VPN. It reorganizes and leaves out some steps from the Digital Ocean instructions. The re-organization was to separate out the instructions for adding a new client to an existing VPN. The instructions removed were mostly for the CA server, as they included additional steps for the use case where you want to test or deploy internal HTTPS servers using your own certificates.
+This page summarizes what I did to set up a VPN. It reorganizes and leaves out some steps from the Digital Ocean instructions. The re-organization was to separate out the instructions for adding a new client to an existing VPN. The instructions removed were mostly for the CA server, as they included additional steps for the use case where you want to test or deploy internal HTTPS servers using your own certificates -- steps that aren't needed for a VPN.
 
 Random notes (to self):
 
