@@ -40,7 +40,7 @@ When asked for a passphrase, just hit `Enter` (or enter a passphrase, if you're 
 
 This will create files called `~/.ssh/id_ed25519` and `~/.ssh/id_ed25519.pub`. `~/.ssh/id_ed25519.pub` is the public key.
 
-At this point it's worth checking the premissions on the files you just created:
+At this point it's worth checking the permissions on the files you just created:
 
 ```bash
 ls -ld .ssh # =>
@@ -65,7 +65,7 @@ ssh server-username@server
 ls -ld ~/.ssh
 mkdir ~/.ssh && chmod 700 ~/.ssh # If the directory didn't exist.
 cp -a ~/.ssh/authorized_keys ~/.ssh/authorized_keys.old # A backup, in case something goes wrong.
-curl https://github.com/<your GitHub user name>.keys >> .ssh/authorized_keys
+curl https://github.com/your-GitHub-user-name.keys >> .ssh/authorized_keys
 chmod 611 .ssh/authorized_keys
 ```
 
@@ -118,7 +118,7 @@ sudo -iu server-username
 ls -ld ~/.ssh
 mkdir ~/.ssh && chmod 700 ~/.ssh # If the directory didn't exist.
 cp -a ~/.ssh/authorized_keys ~/.ssh/authorized_keys.old # A backup, in case something goes wrong.
-curl https://github.com/<your GitHub user name>.keys >> .ssh/authorized_keys
+curl https://github.com/your-GitHub-user-name.keys >> .ssh/authorized_keys
 chmod 611 .ssh/authorized_keys
 exit
 ```
