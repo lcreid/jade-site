@@ -30,11 +30,6 @@ body {
   color: inherit;
 }
 
-code,
-pre {
-  background-color: rgb(246, 248, 250);
-}
-
 :root {
   --bs-code-color: --bs-body-color;
 }
@@ -104,4 +99,13 @@ h5 {
 
 div.highlight {
   position: relative;
+}
+
+code,
+pre {
+  background-color: rgb(246, 248, 250);
+}
+
+pre.highlight {
+  min-height: 28px;
 }
