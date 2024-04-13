@@ -380,5 +380,5 @@ Part of the origin of the story is that the server had existed before with the s
 
 What we believe was happening is: Capistrano uses a Ruby implementation of SSH, built on some of the same code as the regular `ssh` client, but with some differences. One of the differences, at the time of this issue, anyway, was that the Ruby implementation couldn't write hashed keys in the `known_hosts` file. But it would read them fine (or so they said). On Ubuntu 22.04, the `ssh` client _was_ using hashed keys in the `known_hosts` file.
 
-The line for _unhashed_ keys in the `known_hosts` file can start with a comma-separated list of host names, typically the DNS name and the numeric IP address of the host. The line for _hashed_ keys can only have one host, so you'll find _two_lines for many hosts: one for the DNS name and one for the IP address.
+The line for _unhashed_ keys in the `known_hosts` file can start with a comma-separated list of host names, typically the DNS name and the numeric IP address of the host. The line for _hashed_ keys can only have one host, so you'll find _two_ lines for many hosts: one for the DNS name and one for the IP address.
 

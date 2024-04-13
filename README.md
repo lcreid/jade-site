@@ -42,7 +42,7 @@ With FileZilla, copy the contents of `_site` to the destination.
 HostPapa does SFTP, but I'm not sure we can securely script it:
 
 ```bash
-sftp -rC -o "PreferredAuthentications=password" $HOSTPAPA_USERNAME@ftp.$SITE_DOMAIN
+sftp -rC -o "PreferredAuthentications=password" $SITE_USERNAME@ftp.$SITE_DOMAIN
 put -P _site/* public_html
 exit
 ```
@@ -50,7 +50,7 @@ exit
 To deploy to a location that accepts `rsync` (_not_ HostPapa):
 
 ```bash
-rsync -r _site/ $SITE_DOMAIN:/var/www/$SITE_DOMAIN/html
+rsync -r _site/ $SITE_USERNAME@$SITE_DOMAIN:/var/www/$SITE_DOMAIN/html
 ```
 
 (May need a more privileged user, or have `rsync` log you in as the user who owns the `html` directory.)
