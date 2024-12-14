@@ -313,11 +313,11 @@ If you want to access other servers behind the jump server, add something like t
 
 ```config
 Host server-a
-  Host server-a
+  HostName server-a
   ProxyJump jump-server-name
 
 Host server-b
-  Host server-b
+  HostNaame server-b
   ProxyJump jump-server-name
 ```
 
@@ -329,12 +329,12 @@ You can do other things with `~/.ssh/config`. For example, if you have one serve
 
 ```config
 Host application-a.com
-  Host server-a
+  HostName server-a
   User application-a
   ProxyJump jump-server-name
 
 Host application-b.com
-  Host server-a
+  HostName server-a
   User application-b
   ProxyJump jump-server-name
 ```
