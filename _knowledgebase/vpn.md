@@ -14,9 +14,9 @@ Here's how I set up a pass-through (tunnel) VPN, which allows me to browse the i
 
 Here's the prerequisites, or what you need to know how to do, that aren't covered by this page. You need:
 
+* Access to and knowledge of how to route traffic coming from the internet, to your domain name or IP address, on port 1194/UDP. If you're doing this for a home network, most home routers will allow you to do this. But each is different, so you'll have to figure that out yourself. _Very important:_ see the notes [below](routing).
 * Two relatively small servers. I used a 1 GB RAM and 8 GB disk Ubuntu for the Certificate Authority (CA) server, and a 2 GB RAM 32 GB SSD card Raspberry Pi 4 for the VPN server. These instructions work for Ubuntu and Debian servers (specifically Ubuntu 22.04 and Debian Bookworm).
 * Access to a DNS domain's nameserver, on which you can create a sub-domain where clients connect to the VPN. (Strictly speaking, you _could_ use a hard-coded IP address, but that has a lot of disadvantages. You should know what the trade-offs are, and plan accordingly, before you set up your VPN).
-* Access to and knowledge of how to route traffic coming from the internet, to your domain name or IP address, on port 1194/UDP. If you're doing this for a home network, most home routers will allow you to do this. But each is different, so you'll have to figure that out yourself.
 * If you're doing this for anything other than home personal use, you should have a security expert confirm that these instructions provide the level of security you need.
 * The instructions below assume you have password-less SSH log-in ability from your desktop/laptop to the CA and VPN servers. You can do this without password-less SSH, but you'll be typing your password a lot.
 * In addition to password-less log-in, your desktop/laptop should have a key agent running. Most Linux desktop distributions, and Macos, have this. I believe that WSL on Windows does not have it by default, but you can set one up. There's a lot of SSH-ing and rysnc-ing between servers in these instructions, and it's convenient if you always SSH to another server with `ssh -A` so you don't have to copy credentials in so many places.
@@ -34,6 +34,16 @@ Random notes (to self):
 
 * For the Ubuntu servers, I used the minimal Ubuntu install.
 * Because of the minimal install, I had to `sudo apt install vim rsync` on both servers.
+
+### Routing
+
+Much to my chagrin, I discoverd that not all ISPs in the world do things the same as the common (in my experience) approach in North America. In one of the places where I wanted to put a VPN, it turned out that between my home router and the whole internet, there was another router doing NAT, and obviously I had no way of changing that router.
+
+Reading on the internet convinced me that double-NATting is possible. In addition, I observed that the WAN address on my router was not the same as the IP address I got from browsing to whatsmyip.org.
+
+In addition, sometime in the last year, this ISP started changing the password on their clients' routers every day at midnight local time. It was tremendously inconvenient to get the password from them, although at least it was possible. But then it was only good for the one day.
+
+So all in all, the whole adventure stalled there. It's beyond my current network fu to build a VPN that originates in the "double-NATted" ISP to the "single-NATted" ISP, but I'm hoping that I will someday be able to do something like that.
 
 ## How Does It Work
 
