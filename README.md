@@ -69,7 +69,7 @@ Okay. Now on to Javascript. Using the Rails gem (`jquery-rails`) didn't seem to 
 
 ### This won't change. Historical info
 
-Using the [importer](https://import.jekyllrb.com/docs/blogger/) to get all the blog posts from blogger was pleasantly easy. Figuring out how to show them in anything other than a long list is still an unsolved problem. The `jekyll-archives` gem solves some of the problem, but it didn't seem to really be what I wanted, so I dropped it for now. The Jekyll documentation shows a variety of examples of various approaches. This may be one of those problems that are general enough that a gem or plug-in isn't a useful approach.
+Using the [importer](https://import.jekyllrb.com/docs/blogger/) to get all the blog posts from blogger was pleasantly easy. Figuring out how to show them in anything other than a long list took some work. The `jekyll-archives` gem solves some of the problem, but it didn't seem to really be what I wanted, so I dropped it. The Jekyll documentation shows a variety of examples of various approaches. This may be one of those problems that are general enough that a gem or plug-in isn't a useful approach. That was my thinking in the end, and I built something myself, although still quite within Jekyll out-of-the-box.
 
 ## Historical Development Notes
 
