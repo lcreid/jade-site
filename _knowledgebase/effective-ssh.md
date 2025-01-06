@@ -63,7 +63,7 @@ If you're using GitHub, [put your public key on GitHub](https://docs.github.com/
 ```bash
 ssh server-username@server
 ls -ld ~/.ssh
-mkdir ~/.ssh && chmod 700 ~/.ssh # If the directory didn't exist.
+mkdir -m 700 ~/.ssh # If the directory didn't exist.
 cp -a ~/.ssh/authorized_keys ~/.ssh/authorized_keys.old # A backup, in case something goes wrong.
 curl https://github.com/your-GitHub-user-name.keys >> .ssh/authorized_keys
 chmod 611 .ssh/authorized_keys
@@ -116,7 +116,7 @@ ssh server-superusername@server
 sudo -iu server-username
 # The following are the steps from above:
 ls -ld ~/.ssh
-mkdir ~/.ssh && chmod 700 ~/.ssh # If the directory didn't exist.
+mkdir -m 700 ~/.ssh # If the directory didn't exist.
 cp -a ~/.ssh/authorized_keys ~/.ssh/authorized_keys.old # A backup, in case something goes wrong.
 curl https://github.com/your-GitHub-user-name.keys >> .ssh/authorized_keys
 chmod 611 .ssh/authorized_keys
@@ -136,7 +136,7 @@ ssh server-superusername@server
 sudo -iu server-username
 # The following are the steps from above:
 ls -ld ~/.ssh
-mkdir ~/.ssh && chmod 700 ~/.ssh # If the directory didn't exist.
+mkdir -m 700 ~/.ssh # If the directory didn't exist.
 cp -a ~/.ssh/authorized_keys ~/.ssh/authorized_keys.old # A backup, in case something goes wrong.
 cat ~server-superuser/public_key_file_name >> $SERVER_USER_HOME/.ssh/authorized_keys
 chmod 611 .ssh/authorized_keys
@@ -317,7 +317,7 @@ Host server-a
   ProxyJump jump-server-name
 
 Host server-b
-  HostNaame server-b
+  HostName server-b
   ProxyJump jump-server-name
 ```
 
@@ -342,6 +342,8 @@ Host application-b.com
 With the above, when you `ssh application-b.com`, you will be logged in to `server-a` as user `application-b`.
 
 ### Simple VPN
+
+(For the following to work, you must first set up a [jump server](#bastion-or-jump-server).)
 
 Last time I was out of the country for a while, Chrome's support on Linux for proxies was not great. The way I found to be able to browse the internet as if I were at home was to create a small script to start a separate instance of Chrome:
 
