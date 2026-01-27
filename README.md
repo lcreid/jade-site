@@ -7,6 +7,15 @@ Jade Systems Inc web site.
 This is the third and a half implementation of the modern site, in [Jekyll](https://jekyllrb.com).
 We now prefer to use Docker in development for the Jekyll part.
 
+With my `tool`:
+
+```bash
+tool up
+tool edit
+tool server --service jekyll "foreman start -f Procfile.drafts"
+tool terminal --service jekyll
+```
+
 With Docker, use my Rails app and the included `compose.yml` file:
 
 ```bash
