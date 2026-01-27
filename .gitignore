@@ -12,17 +12,18 @@ crash.log
 vendor
 node_modules
 
+.bash_history
 .bundle/
-.vscode-server/
-.gnupg/
 .cache/
+.devcontainer/
+.dotnet/
+.gnupg/
+.irb_history
 .local/
 .npm/
-.vscode/
-.dotnet/
-.irb_history
-.bash_history
 .ssh/
+.vscode-server/
+.vscode/
 
 # Need to ignore JavaScript that passes by the assets/ directory.
 assets/js/application.js*
