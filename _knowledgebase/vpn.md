@@ -10,6 +10,12 @@ tags: ssh
 
 Here's how I set up a pass-through (tunnel) VPN, which allows me to browse the internet as if I were in my home country, when I'm out of the country. This is not a VPN for logging in to a local network and becoming a member of that local network.
 
+**You have to renew the client certificates every two years.** To see which ones need to be renewed soon, on the VPN server:
+
+```bash
+for f in ~/client-configs/keys/*.crt; do echo -n $f: ; openssl x509 -in $f -text -noout | grep -A 2 "Validity"; done
+```
+
 ## Prerequisites
 
 Here's the prerequisites, or what you need to know how to do, that aren't covered by this page. You need:
@@ -55,7 +61,7 @@ If you're interested, here's a higher level description of how it will all work 
 * The VPN server sends the CSR to the CA.
 * The CA server "signs" (actually encrypts) the CSR using its private key.
 * The CA server gives the signed certificate back to the VPN server.
-* The VPN server generates a CSR on behalf of a client.
+* For each client, the VPN server generates a CSR on behalf of a client.
 * The CA server "signs" the CSR using its private key.
 * The CA server gives the signed certificate back to the VPN server.
 * The VPN server builds a `.ovpn` file for the client.
@@ -72,7 +78,7 @@ I tried to separate out the steps you need to do one-time per VPN, from those th
 1. One-time install client software on client.
 1. Install certificate on client.
 1. Every 180 days, renew the certificate revocation list on the CA and move to the VPN servers.
-1. Off in the future: Renew the certificate.
+1. Every two years: Renew the client certificate.
 
 ### CA Set-Up
 
@@ -81,7 +87,7 @@ I tried to separate out the steps you need to do one-time per VPN, from those th
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-debian-11#step-2-preparing-a-public-key-infrastructure-directory](https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-debian-11#step-2-preparing-a-public-key-infrastructure-directory).
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-debian-11#step-3-creating-a-certificate-authority](https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-debian-11#step-3-creating-a-certificate-authority).
 
-I believe you don't have to do the rest of the steps for the VPN use case.
+You don't have to do the rest of the steps for the VPN use case.
 
 ### VPN Set-Up
 
@@ -96,15 +102,80 @@ This one has the most steps, and isn't really described as a unit in the Digital
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-5-adjusting-the-server-networking-configuration](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-5-adjusting-the-server-networking-configuration).
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-6-starting-and-enabling-the-openvpn-service](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-6-starting-and-enabling-the-openvpn-service).
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-7-creating-the-client-configuration-infrastructure](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-7-creating-the-client-configuration-infrastructure).
-1.
+1. Create directories on the VPN server, and set permissions, in preparation for per-client credential generation:
+
+    ```
+    mkdir -p ~/client-configs/keys
+    chmod -R 700 ~/client-configs
+    ```
+1. Copy the CA cert and the TA key to the new directory:
+    ```
+    sudo cp ~/easy-rsa/ta.key ~/client-configs/keys/
+    sudo cp /etc/openvpn/ca.crt ~/client-configs/keys/
+    ```
 
 ### Per-Client Credential Generation
 
 *Note:* there are some tweaks to the template client configuration file you need to do if you plan on using Macos clients (and perhaps Windows -- I haven't tested a Windows client). Instead of using the default template configuration file, you can get one [here](https://github.com/lcreid/vpn/raw/main/base.conf) that has most of the configuraton done for you, including the additional tweaks for Macos.
 
-1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-3-generating-a-client-certificate-and-key-pair](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-3-generating-a-client-certificate-and-key-pair).
-1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-8-generating-client-configurations](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-8-generating-client-configurations).
-1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-9-installing-the-client-configuration](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-9-installing-the-client-configuration).
+This is something I have to do every two years, so I'm going to write my own instructions here. They are mostly copied from the Digital Ocean pages, but among others, I've optimized them so it's easier to just cut and paste the commands.
+
+1.  Set some environment variables. Replace the values with the correct name for you:
+
+    ```
+    CLIENT_COMMON_NAME=client
+    CA_SERVER_NAME=ca-server
+    VPN_SERVER_NAME=vpn-server
+    ```
+    If you're creating a batch of client `.ovpn` files, you should only have to change the first environment variable for each one.
+
+1. On the VPN server, generate the request.
+
+    ```
+    cd ~/easy-rsa
+    ./easyrsa gen-req $CLIENT_COMMON_NAME nopass
+    ```
+    Press Enter to confirm the common name.
+1. Copy the resulting key to the key directory.
+
+    ```
+    cp pki/private/$CLIENT_COMMON_NAME.key ~/client-configs/keys
+    ```
+1. Transfer the request file securely to the CA server:
+
+    ```
+    rsync pki/reqs/$CLIENT_COMMON_NAME.req $CA_SERVER_NAME:/tmp
+    ```
+1. _On the CA server_, import the ceritificate request (if this is not the first time you've imported a request for this common name, delete the existing file first):
+
+    ```
+    cd ~/easy-rsa
+    rm pki/reqs/$CLIENT_COMMON_NAME.req
+    ./easyrsa import-req /tmp/$CLIENT_COMMON_NAME.req $CLIENT_COMMON_NAME
+    ```
+1. Sign the request:
+
+    ```
+    ./easyrsa sign-req client $CLIENT_COMMON_NAME
+    ```
+    Type "yes" to confirm that you intend to sign the request.
+1. Transfer the file back to the VPN server:
+
+    ```
+    rsync pki/issued/$CLIENT_COMMON_NAME.crt $VPN_SERVER_NAME:/tmp
+    ```
+1. On the VPN server, mv the signed file to the keys directory:
+
+    ```
+    mv /tmp/$CLIENT_COMMON_NAME.crt ~/client-configs/keys
+    ```
+1. Generate the `.ovpn` file:
+
+    ```
+    cd ~/client-configs
+    sudo ./make_config.sh $CLIENT_COMMON_NAME
+    ```
+
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-10-testing-your-vpn-connection-optional](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-10-testing-your-vpn-connection-optional).
 
 ### Per-Client Software Install
@@ -120,16 +191,20 @@ This will be specific to your VPN client, so consult the instructions for the cl
 The Digital Ocean instructions for Linux and the OpenVPN client show a way to test the connection, and then the internet tells you have to configure Network Manager to have the VPN. _Both_ will permanently add the VPN to Network Manager, so you'll end up with two. You can just do the following to import the `.ovpn` file on Linux:
 
 ```bash
-nmcli connection import type openvpn file common-name-of-your-vpn.ovpn
+nmcli connection import type openvpn file $CLIENT_COMMON_NAME.ovpn
 ```
 
 If you need to remove the connection, do:
 
 ```bash
-nmcli connection delete id common-name-of-your-vpn
+nmcli connection delete id $CLIENT_COMMON_NAME
 ```
 
 The above will remove all connections with the same CN, but then you can add back (just once) the `.ovpn` file you want.
+
+#### Digital Ocean's Instructions
+
+For reference, Digital Ocean's installation instructions are [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-9-installing-the-client-configuration).
 
 ### Renew the Certificate Revocation List
 
@@ -157,6 +232,22 @@ sudo systemctl restart openvpn@common-name-of-your-vpn.service
 ```
 
 That's it. No need to regenerate certificates or `.ovpn` files.
+
+### Renew the Client Certificate
+
+Simply generate a new `.ovpn` file for each client when needed. Follow the instructions [here](#per-client-credential-generation).
+
+I read of a `./easyvpn renew $CLIENT_COMMON_NAME` command, but it didn't work for me.
+
+### Checking Validity of Certificates
+
+The certificates will expire. You can check your certs on the server by (for the server):
+
+```bash
+openssl x509 -in <service-name>.crt -text -noout | grep -A 2 "Validity"
+```
+
+For clients, if you have the `.crt` files on the server still, you can use the above command. If the certs are only on the clients, and they're not Linux systems, I don't know what to do.
 
 ### Revoking Access
 
