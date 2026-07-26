@@ -4,9 +4,13 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ${PWD}:/app
-    user: 1000:1000
+      - .:/home/dev/app
+      - dev_home:/home/dev
+    user: dev:dev
     ports:
       - "4000:4000"
       - "35729:35729"
     # command: jekyll serve -H 0.0.0.0 -w --livereload
+
+volumes:
+  dev_home:
