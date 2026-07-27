@@ -8,6 +8,7 @@ tags:
 It's a common pattern to store some aspects of an application in a database.
 
 One of the challenges of this pattern is that application behaviour depends on something that isn't under version control.
+
 * Deploy requires an extra step.
 * Promoting application through test environments requires moving data as well as deploying code. But not all the data.
 
