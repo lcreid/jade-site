@@ -1,16 +1,21 @@
 services:
-  jekyll:
-    image: lenchoreyes/jade:rails-app-3.3-bookworm
+  web:
+    image: lenchoreyes/jade:rails-app-4.0-trixie
     stdin_open: true
     tty: true
+    user: "dev:dev"
     volumes:
       - .:/home/dev/app
       - dev_home:/home/dev
-    user: dev:dev
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
+      - NODE_ENV=development
+      - BOOTSNAP_CACHE_DIR=/usr/local/bundle/_bootsnap
+      - WEB_CONCURRENCY=1
+      - LIVERELOAD_PORT=32759 # This is the default, but other projects would have to choose something else.
     ports:
-      - "4000:4000"
-      - "35729:35729"
-    # command: jekyll serve -H 0.0.0.0 -w --livereload
+      - "4000"
+      - "32759:32759"
 
 volumes:
   dev_home:
