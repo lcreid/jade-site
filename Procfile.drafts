@@ -1,2 +1,2 @@
-web: bundle exec jekyll server -H 0.0.0.0 --livereload --drafts
+web: bundle exec jekyll server -H 0.0.0.0 --livereload --livereload-port $LIVERELOAD_PORT --drafts
 js: yarn build --watch
