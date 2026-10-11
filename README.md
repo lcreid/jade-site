@@ -12,8 +12,8 @@ With my `tool`:
 ```bash
 tool up
 tool edit
-tool server --service jekyll "foreman start -f Procfile.drafts"
-tool terminal --service jekyll
+tool server "foreman start -f Procfile.drafts"
+tool terminal
 ```
 
 With Docker, use my Rails app and the included `compose.yml` file:
