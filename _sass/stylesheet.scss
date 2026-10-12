@@ -9,12 +9,8 @@ $navbar-height: 3.1111rlh;
 
 body {
   padding-top: $navbar-height; // 56px;
-  padding-bottom: 42px;
+  padding-bottom: 4lh;
   overflow-y: scroll;
-}
-
-.jumbotron {
-  @extend .text-light;
 }
 
 .vertical_align_children * {
@@ -41,7 +37,7 @@ body {
   @include caret();
 
   &::after {
-    content: '';
+    content: "";
     white-space: nowrap;
   }
 }
@@ -92,9 +88,9 @@ h5 {
   position: absolute;
   top: 0;
   right: 0;
-  --bs-btn-padding-y: .25rem;
-  --bs-btn-padding-x: .25rem;
-  --bs-btn-font-size: .75rem;
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.25rem;
+  --bs-btn-font-size: 0.75rem;
 }
 
 div.highlight {
