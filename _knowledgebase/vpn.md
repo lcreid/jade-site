@@ -12,6 +12,15 @@ Here's how I set up a pass-through (tunnel) VPN, which allows me to browse the i
 
 **You have to renew the client certificates every two years.** To see which ones need to be renewed soon, on the VPN server:
 
+These instructions are valid for IPv4 connections. In many places in the world, you may get an IPv6 connection. Browsers (and perhaps other apps) may choose to use IPv6, and so they won't connect using the VPN, and you'll still be blocked.
+
+Other techniques that sites might use, that will render this VPN useless, are:
+
+- Comparing your systems time zone with the presumed time zone of your IPv4 address.
+- The ISP or your network configuration may leak the DNS server being used, and there are databases that sites can use to determine of your DNS provider "matches" the IP address of your VPN. See https://dnsleaktest.com.
+
+See [below](ipv6) for what to do about IPv6.
+
 ```bash
 for f in ~/client-configs/keys/*.crt; do echo -n $f: ; openssl x509 -in $f -text -noout | grep -A 2 "Validity"; done
 ```
@@ -252,3 +261,26 @@ For clients, if you have the `.crt` files on the server still, you can use the a
 ### Revoking Access
 
 1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-11-revoking-client-certificates](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-debian-11#step-11-revoking-client-certificates).
+
+## IPv6
+
+To disable IPv6 on all interfaces until the next boot:
+
+```bash
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+```
+
+To re-enable:
+
+```bash
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+```
+
+To check the above, see if this reports any addresses:
+
+```bash
+ip -6 addr show
+```
+
