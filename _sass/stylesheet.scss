@@ -4,17 +4,20 @@
 // See: http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
 // @media (min-width: 980px) {
 
+:root {
+  --bs-code-color: --bs-body-color;
+  --navbar-height: 3.1111rlh;
+  --footer-height: 5rlh;
+}
+
 // It appears the rlh in Chrome is 18px and the navbar is 56px high.
-$navbar-height: 3.1111rlh;
+$navbar-height: var(--navbar-height);
+$footer-height: var(--footer-height);
 
 body {
   padding-top: $navbar-height; // 56px;
-  padding-bottom: 4lh;
+  padding-bottom: var(--footer-height);
   overflow-y: scroll;
-}
-
-.vertical_align_children * {
-  vertical-align: middle;
 }
 
 .post-meta {
@@ -24,10 +27,6 @@ body {
 .post-link {
   text-decoration: none;
   color: inherit;
-}
-
-:root {
-  --bs-code-color: --bs-body-color;
 }
 
 .triangle {
@@ -45,7 +44,7 @@ body {
 .sidebar {
   position: -webkit-sticky;
   position: sticky;
-  top: 56px;
+  top: var(--header-height);
 }
 
 .blog-sidebar {
