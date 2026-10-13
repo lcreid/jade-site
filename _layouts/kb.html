@@ -3,12 +3,12 @@ layout: default
 ---
 
 <div class="container-fluid container-md">
-  <div class="row justify-content-around">
-    <div class="col-12 col-md-9">
+  <div class="sidebar-grid">
+    <div>
       {{ content }}
     </div>
-    <div class="col-md-3 d-none d-md-block">
-      <div class="sidebar">
+    <div class="sidebar">
+      <div class="sticky-top pad-for-navbar">
         <h4>Table of Contents</h4>
         {{ content | toc_only }}
       </div>

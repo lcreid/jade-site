@@ -15,9 +15,13 @@ $navbar-height: var(--navbar-height);
 $footer-height: var(--footer-height);
 
 body {
-  padding-top: $navbar-height; // 56px;
+  padding-top: var(--navbar-height); // 56px;
   padding-bottom: var(--footer-height);
   overflow-y: scroll;
+}
+
+.pad-for-navbar {
+  padding-top: var(--navbar-height);
 }
 
 .post-meta {
@@ -103,4 +107,25 @@ pre {
 
 pre.highlight {
   min-height: 28px;
+}
+
+.sidebar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  .sidebar {
+    display: none;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .sidebar-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    column-gap: 1rem;
+
+    .sidebar {
+      display: block;
+    }
+  }
 }
